@@ -1,0 +1,3 @@
+# Игнор исходников TypeScript для Node
+utils/**/*.ts
+!build/**/*.js

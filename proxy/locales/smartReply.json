@@ -1,0 +1,37 @@
+{
+  "es": {
+    "generic": "Entiendo: {{message}}. Vamos a aclarar algunos detalles para ayudarte mejor.",
+    "withAlgo": "Parece relacionado con: {{algo}}. ¿Quieres que te haga más preguntas?",
+    "firstStep": "➡️ Primer paso: {{step}}"
+  },
+  "en": {
+    "generic": "I got it: {{message}}. Let's clarify some details to help better.",
+    "withAlgo": "It seems related to: {{algo}}. Shall I ask more details?",
+    "firstStep": "➡️ First step: {{step}}"
+  },
+  "ru": {
+    "generic": "Поняла: {{message}}. Давайте уточним детали, чтобы я могла помочь точнее.",
+    "withAlgo": "Похоже, это связано с: {{algo}}. Хотите, я задам уточняющие вопросы?",
+    "firstStep": "➡️ Первый шаг: {{step}}"
+  },
+  "fr": {
+    "generic": "J'ai compris : {{message}}. Clarifions certains détails pour mieux vous aider.",
+    "withAlgo": "Cela semble lié à : {{algo}}. Voulez-vous que je pose plus de questions ?",
+    "firstStep": "➡️ Première étape : {{step}}"
+  },
+  "de": {
+    "generic": "Verstanden: {{message}}. Klären wir einige Details, um besser zu helfen.",
+    "withAlgo": "Es scheint mit {{algo}} zusammenzuhängen. Soll ich mehr Fragen stellen?",
+    "firstStep": "➡️ Erster Schritt: {{step}}"
+  },
+  "it": {
+    "generic": "Ho capito: {{message}}. Chiarisci alcuni dettagli per aiutarmi meglio.",
+    "withAlgo": "Sembra collegato a: {{algo}}. Vuoi che ti faccia altre domande?",
+    "firstStep": "➡️ Primo passo: {{step}}"
+  },
+  "he": {
+    "generic": "הבנתי: {{message}}. בואי נבהיר כמה פרטים כדי שאוכל לעזור טוב יותר.",
+    "withAlgo": "נראה שזה קשור ל{{algo}}. תרצי שאשאל עוד שאלות?",
+    "firstStep": "➡️ צעד ראשון: {{step}}"
+  }
+}

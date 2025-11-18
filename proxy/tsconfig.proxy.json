@@ -1,0 +1,33 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "verbatimModuleSyntax": true,
+    "allowJs": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "resolveJsonModule": true,
+    "allowImportingTsExtensions": true
+  },
+  "include": [
+    "../utils/pets.ts",
+    "../utils/knowledgeBase.ts",
+    "./mamascota-agent.mjs",
+    "./server.mjs",
+    "./check-agent-access.mjs",
+    "./utils/buildAgentContext.mjs"
+  ],
+  "exclude": [
+    "**/*.d.ts",
+    "../types",
+    "../node_modules",
+    "../src",
+    "../app",
+    "../assets",
+    "../locales",
+    "../hooks",
+    "../screens",
+    "../constants"
+  ]
+}

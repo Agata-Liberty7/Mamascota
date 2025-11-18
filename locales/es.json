@@ -1,0 +1,166 @@
+{
+  "language_notice_title": "Idioma detectado",
+  "language_notice_message": "El idioma de la interfaz se ha configurado automáticamente.",
+  "ok_button": "Entendido",
+
+  "exit_title": "¿Deseas salir?",
+  "exit_message": "Puedes guardar tu sesión para continuar más tarde o eliminar todos los datos.",
+  "exit_save": "Guardar sesión",
+  "exit_delete": "Eliminar sesión",
+  "exit_button": "Salir",
+
+  "terms_title": "Términos y condiciones",
+  "terms_paragraph1": "Quiero que sepas algo importante.",
+  "terms_paragraph2": "Soy tu asistente y no reemplazo la atención veterinaria profesional. Mi orientación es solo informativa, para ayudarte a comprender mejor a tu compañero.",
+  "terms_paragraph3": "Si ves que su estado empeora, acude siempre a un veterinario.",
+  "terms_accept": "Acepto los términos",
+  "terms_decline": "No acepto",
+
+  "privacy_policy": "Política de privacidad",
+  "privacy_paragraph1": "Al usarme, confirmas que comprendes estos límites y aceptas que puedo usar tus datos solo para apoyarte mejor.",
+  "privacy_paragraph2": "Si estás de acuerdo, sigamos juntos.",
+  "privacy_accept": "Aceptar",
+  "privacy_decline": "Rechazar",
+
+
+  "animal_cat": "gato",
+  "animal_dog": "perro",
+  "animal_cat_male": "gato",
+  "animal_cat_female": "gata",
+  "animal_dog_male": "perro",
+  "animal_dog_female": "perra",
+  "animal_rabbit": "Conejo",
+  "animal_ferret": "Hurón",
+  "animal_bird": "Ave",
+  "animal_rodent": "Roedor",
+  "animal_reptile": "Reptil",
+  "animal_fish": "Pez",
+  "animal_exotic": "Exótico",
+
+  "animal_question": "¿Sobre qué animal quieres preguntar?",
+  "not_in_list": "¿No está en la lista?",
+  "add_other": "Agregar",
+  "animal_data": "Datos del animal",
+  "species_placeholder": "Especie / raza",
+  "age_placeholder": "Edad",
+  "name_placeholder": "Nombre",
+
+  "continue_without_data_title": "¿Deseas continuar sin completar los datos?",
+  "continue_without_data_message": "Esta información me ayuda a ofrecerte una mejor experiencia.",
+
+  "back": "Atrás",
+  "alert-back": "Atrás",
+  "continue": "Continuar",
+  "cancel": "Cancelar",
+  "save": "Guardar", 
+  "delete": "Eliminar",
+
+  "start_subtitle": "Cuidadora de bienestar animal",
+  "start_description": "Te ayudo a entender lo que siente",
+  "start_button": "Iniciar",
+  "continue_title": "¿Continuar?",
+  "continue_message": "Puedes retomar tu sesión anterior o empezar una nueva.",
+  "start_new": "Empezar nueva",
+  "continue_session": "Continuar sesión",
+
+  "menu": {
+    "animal_selection": "Al inicio",
+    "change_language": "Cambiar idioma",
+    "lang_en": "Inglés",
+    "lang_es": "Español",
+    "lang_ru": "Ruso",
+    "lang_he": "Hebreo",
+    "chat": "Chat",
+    "summary": "Resumen",
+    "settings": "Configuración",
+    "about": "Acerca de",
+    "open": "Menú",
+    "close": "Cerrar"
+  },
+
+  "about": {
+    "tagline": "Cómo funciona Mamascota",
+    "p1": "Esta app ayuda a los cuidadores a observar síntomas y comportamientos, sin sustituir la atención veterinaria.",
+    "p2": "Está basada en algoritmos veterinarios y lógica de comportamiento, adaptados al nivel del usuario familiar.",
+    "p3": "No damos diagnósticos. Ayudamos a hacer las preguntas correctas y buscar ayuda a tiempo.",
+    "signature": "Creado con amor por los animales y atención a las personas.",
+    "follow": "Seguir el proyecto en Instagram"
+  },
+
+  "symptomSelector": {
+    "title": "¿Qué has notado en tu mascota?",
+    "hint": "Selecciona hasta 3 síntomas principales que hayas notado",
+    "confirm": "Preguntar al asistente"
+  },
+
+  "symptoms": {
+    "lethargy": "Letargo",
+    "vomiting": "Vómito",
+    "diarrhea": "Diarrea",
+    "cough": "Tos",
+    "appetite_loss": "Falta de apetito",
+    "limping": "Cojera",
+    "drinking_too_much": "Bebe en exceso",
+    "blood_in_urine": "Sangre en la orina",
+    "seizures": "Convulsiones",
+    "custom": "Otro síntoma"
+  },
+
+  "chat": {
+    "pet_default": "La mascota",
+    "symptom_intro": "muestra los siguientes síntomas",
+    "ask_confirmation": "Por favor confirma si es correcto o añade detalles",
+    "placeholder": "Escribe tu mensaje...",
+    "invite": "¿Puedes ayudarme a entender qué podría significar esto?"
+
+  },
+
+  "onboarding_1_title": "¡Bienvenido!",
+  "onboarding_1_subtitle": "Mamascota te ayuda a notar lo importante y no olvidar lo esencial. Es fácil",
+  "onboarding_2_title": "Tú observas — yo te guío",
+  "onboarding_2_subtitle": "No tienes que saberlo todo. Solo cuéntame lo que ves y te diré qué puede ser relevante",
+  "onboarding_3_title": "Sin diagnósticos, pero con claridad",
+  "onboarding_3_subtitle": "La app no da diagnósticos, pero te ayuda a entender qué pasa y cuándo ir al veterinario",
+  "onboarding_4_title": "Cada animal es un mundo",
+  "onboarding_4_subtitle": "Edad, especie, carácter — todo cuenta. Me adapto a tu realidad",
+  "onboarding_skip": "Saltar",
+  "onboarding_next": "Siguiente",
+  "onboarding_start": "Empezar",
+
+  "settings": {
+    "remind_in_6h": "Recordar de nuevo en 6 horas",
+    "remind_hint": "Programaremos un recordatorio para revisar a tu mascota más tarde hoy.",
+    "max_symptoms": "Límite de síntomas",
+    "max_symptoms_hint": "Elige cuántos síntomas se pueden seleccionar (3 o 5).",
+    "clear_data": "Borrar datos guardados",
+    "clear_hint": "Esto eliminará las sesiones guardadas y los datos en caché.",
+    "text_size": "Texto más grande",
+    "text_size_hint": "Aumenta el tamaño del texto de la app (sin cambiar el tamaño del sistema).",
+    "text_size_system": "Sistema",
+    "pets": {
+      "title": "Mis mascotas",
+      "add": "Añadir",
+      "empty": "Aún no hay mascotas",
+      "default": "Predeterminado",
+      "set_default": "Predeterminar",
+      "add_pet": "Añadir mascota",
+      "edit_pet": "Editar mascota",
+      "name_label": "Nombre *",
+      "species_label": "Especie *",
+      "breed_label": "Raza",
+      "age_label": "Edad (años)"
+    },
+    "clear": "Borrar",
+    "clear_data_title": "¿Borrar datos?",
+    "clear_data_message": "Se eliminarán todas las sesiones guardadas y la caché. ¿Continuar?",
+    "clear_done_title": "Datos borrados",
+    "clear_done_message": "Todos los datos guardados se han eliminado."
+  },
+
+  "sex": "Sexo",
+  "male": "Macho",
+  "female": "Hembra",
+  "not_set": "Sin especificar",
+  "neutered_spayed": "Esterilizado/a",
+  "animal_other": "Otro"
+}

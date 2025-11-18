@@ -1,0 +1,5196 @@
+fuente: Algoritmos diagnóstico terapéuticos en medicina interna para perros y gatos
+algoritmos:
+  - id: alopecia_gato
+    nombre: Alopecia en gatos
+    pagina: 26
+    tipoSintoma: visual
+    nivelUsuario: familiar
+    especie: gato
+    esquema:
+      - id: 1
+        tipo: acción
+        accion: Realizar examen dermatológico inicial (lámpara de Wood, raspado, citología)
+        siguiente: 2
+      - id: 2
+        tipo: pregunta
+        pregunta: ¿Hay lesiones inflamatorias visibles en la piel?
+        opciones:
+          - afirmativo: 3
+          - negativo: 6
+      - id: 3
+        tipo: pregunta
+        pregunta: ¿Las lesiones son localizadas o generalizadas?
+        opciones:
+          - Localizadas: 4
+          - Generalizadas: 5
+      - id: 4
+        tipo: diagnóstico
+        titulo: Alopecia inflamatoria localizada
+        recomendaciones: Considerar dermatofitosis, pioderma o demodicosis localizada. Realizar raspado cutáneo, citología y lámpara de Wood.
+        fin: true
+      - id: 5
+        tipo: diagnóstico
+        titulo: Alopecia inflamatoria generalizada
+        recomendaciones: Hipersensibilidad, dermatitis por contacto o infecciones extensas. Considerar pruebas alérgicas y tratamiento antimicrobiano.
+        fin: true
+      - id: 6
+        tipo: pregunta
+        pregunta: ¿La alopecia es simétrica?
+        opciones:
+          - afirmativo: 7
+          - negativo: 8
+      - id: 7
+        tipo: diagnóstico
+        titulo: Alopecia no inflamatoria simétrica
+        recomendaciones: Posible causa endocrina (hiperadrenocorticismo, hipotiroidismo). Recomendado análisis hormonal.
+        fin: true
+      - id: 8
+        tipo: diagnóstico
+        titulo: Alopecia no inflamatoria asimétrica
+        recomendaciones: Puede deberse a comportamiento, trauma o fricción local. Observar el comportamiento y la ubicación de la lesión.
+        fin: true
+
+  - id: alopecia_perro
+    nombre: Alopecia en perros
+    pagina: 32
+    tipoSintoma: visual
+    nivelUsuario: familiar
+    especie: perro
+    esquema:
+      - id: 1
+        tipo: pregunta
+        pregunta: ¿La alopecia es inflamatoria?
+        opciones:
+          - afirmativo: 2
+          - negativo: 3
+      - id: 2
+        tipo: diagnóstico
+        titulo: Alopecia inflamatoria
+        recomendaciones: Considerar demodicosis, dermatofitosis, foliculitis bacteriana.
+        fin: true
+      - id: 3
+        tipo: pregunta
+        pregunta: ¿Hay signos de endocrinopatía?
+        opciones:
+          - afirmativo: 4
+          - negativo: 5
+      - id: 4
+        tipo: diagnóstico
+        titulo: Alopecia endocrina
+        recomendaciones: Evaluar hipotiroidismo, hipercortisolismo.
+        fin: true
+      - id: 5
+        tipo: diagnóstico
+        titulo: Otras causas no inflamatorias
+        recomendaciones: Alopecia X, displasia folicular, post-clipping, biopsia.
+        fin: true
+
+  - id: anemia_no_regenerativa
+    nombre: "Anemia: no regenerativa"
+    pagina: 38
+    tipoSintoma: analitico
+    nivelUsuario: técnico
+    especie: perro_gato
+    esquema:
+      - id: 1
+        tipo: pregunta
+        pregunta: ¿El recuento de reticulocitos es bajo?
+        opciones:
+          - afirmativo: 2
+          - negativo: 6
+      - id: 2
+        tipo: pregunta
+        pregunta: ¿Existen signos de enfermedad renal crónica?
+        opciones:
+          - afirmativo: 3
+          - negativo: 4
+      - id: 3
+        tipo: diagnóstico
+        titulo: Anemia secundaria a enfermedad renal
+        recomendaciones: Evaluar función renal (urea, creatinina, SDMA). Considerar terapia con eritropoyetina o darbepoetina.
+        fin: true
+      - id: 4
+        tipo: pregunta
+        pregunta: ¿Hay signos de inflamación crónica o enfermedad sistémica?
+        opciones:
+          - afirmativo: 5
+          - negativo: 6
+      - id: 5
+        tipo: diagnóstico
+        titulo: Anemia por enfermedad inflamatoria crónica
+        recomendaciones: Investigar infecciones crónicas, neoplasias o enfermedades autoinmunes. Tratar la causa subyacente.
+        fin: true
+      - id: 6
+        tipo: diagnóstico
+        titulo: Anemia medular primaria
+        recomendaciones: Considerar médula ósea hipoplásica o aplásica. Realizar aspirado o biopsia medular.
+        fin: true
+
+  - id: anemia_regenerativa
+    nombre: "Anemia: regenerativa"
+    pagina: 44
+    tipoSintoma: visual
+    nivelUsuario: familiar
+    especie: perro_gato
+    esquema:
+      - id: 1
+        tipo: pregunta
+        pregunta: ¿Hay signos de hemorragia evidente?
+        opciones:
+          - afirmativo: 2
+          - negativo: 3
+      - id: 2
+        tipo: diagnóstico
+        titulo: Pérdida sanguínea aguda o crónica
+        recomendaciones: Evaluar pérdida digestiva, trauma, sangrado visible.
+        fin: true
+      - id: 3
+        tipo: pregunta
+        pregunta: ¿Hay signos de hemólisis?
+        opciones:
+          - afirmativo: 4
+          - negativo: 5
+      - id: 4
+        tipo: diagnóstico
+        titulo: Hemólisis
+        recomendaciones: Ictericia, hemoparasitos, AIHA.
+        fin: true
+      - id: 5
+        tipo: acción
+        accion: Continuar estudio hematológico (reticulocitos, frotis, bioquímica)
+
+  - id: anomalias_marcha
+    nombre: Anomalías de la marcha
+    pagina: 49
+    tipoSintoma: conductual
+    nivelUsuario: familiar
+    especie: perro_gato
+    esquema:
+      - id: 1
+        tipo: pregunta
+        pregunta: ¿El problema es en una extremidad específica?
+        opciones:
+          - afirmativo: 2
+          - negativo: 4
+      - id: 2
+        tipo: diagnóstico
+        titulo: Claudicación localizada
+        recomendaciones: Realizar examen ortopédico y neurológico de la extremidad afectada. Considerar radiografía, palpación, manipulación y pruebas de dolor.
+        fin: true
+      - id: 4
+        tipo: pregunta
+        pregunta: ¿Hay pérdida de coordinación generalizada?
+        opciones:
+          - afirmativo: 5
+          - negativo: 6
+      - id: 5
+        tipo: diagnóstico
+        titulo: Ataxia generalizada
+        recomendaciones: Considerar causas neurológicas (cerebelo, médula espinal, sistema vestibular). Realizar examen neurológico completo.
+        fin: true
+      - id: 6
+        tipo: diagnóstico
+        titulo: Marcha anormal no localizada
+        recomendaciones: Posible debilidad generalizada, dolor, alteración metabólica. Evaluar estado general, analítica, función neuromuscular.
+        fin: true
+
+  - id: anorexia
+    nombre: Anorexia/disminución del apetito
+    pagina: 53
+    tipoSintoma: conductual
+    nivelUsuario: familiar
+    especie: perro_gato
+    esquema:
+      - id: 1
+        tipo: pregunta
+        pregunta: ¿Hay signos acompañantes como vómito, diarrea o fiebre?
+        opciones:
+          - afirmativo: 2
+          - negativo: 3
+      - id: 2
+        tipo: diagnóstico
+        titulo: Anorexia por enfermedad sistémica
+        recomendaciones: Considerar patología digestiva, infecciosa o febril. Evaluar estado general, analítica, temperatura.
+        fin: true
+      - id: 3
+        tipo: pregunta
+        pregunta: ¿El animal come si se le ofrece comida diferente o manualmente?
+        opciones:
+          - afirmativo: 4
+          - negativo: 5
+      - id: 4
+        tipo: diagnóstico
+        titulo: Anorexia parcial por factores conductuales o ambientales
+        recomendaciones: Observar entorno, tipo de alimento, estrés, cambios recientes. Intentar con dieta palatable.
+        fin: true
+      - id: 5
+        tipo: diagnóstico
+        titulo: Anorexia completa sin causa evidente
+        recomendaciones: Considerar examen clínico completo, pruebas complementarias. Posible enfermedad subyacente sin síntomas aparentes.
+        fin: true
+  - id: taquicardia_supraventricular
+    nombre: "Arritmia: taquicardias supraventriculares"
+    pagina: 58
+    tipoSintoma: clínico
+    nivelUsuario: experto
+    especie: perro_gato
+    esquema:
+      - id: 1
+        tipo: pregunta
+        pregunta: ¿Frecuencia cardíaca > 180 lpm y complejos QRS estrechos?
+        opciones:
+          - afirmativo: 2
+          - negativo: 5
+      - id: 2
+        tipo: pregunta
+        pregunta: ¿El ECG muestra ondas P anómalas o ausentes?
+        opciones:
+          - afirmativo: 3
+          - negativo: 4
+      - id: 3
+        tipo: diagnóstico
+        titulo: Taquicardia atrial o fibrilación auricular
+        recomendaciones: Considerar ecocardiografía para evaluar dilatación auricular. Tratamiento con diltiazem, digoxina u otros.
+        fin: true
+      - id: 4
+        tipo: diagnóstico
+        titulo: Taquicardia por reentrada nodal (NAVRT)
+        recomendaciones: Confirmar con ECG; tratamiento incluye vagotonía o betabloqueadores.
+        fin: true
+      - id: 5
+        tipo: diagnóstico
+        titulo: No corresponde a taquicardia supraventricular
+        recomendaciones: "Reconsiderar diagnóstico: posible taquicardia ventricular o sinusal inapropiada."
+        fin: true
+
+  - id: taquicardia_ventricular
+    nombre: "Arritmia: taquicardias ventriculares"
+    pagina: 63
+    tipoSintoma: clínico
+    nivelUsuario: experto
+    especie: perro_gato
+    esquema:
+      - id: 1
+        tipo: pregunta
+        pregunta: ¿Complejos QRS anchos (> 0.08 s) y ritmo regular?
+        opciones:
+          - afirmativo: 2
+          - negativo: 4
+      - id: 2
+        tipo: pregunta
+        pregunta: ¿Frecuencia cardíaca > 160 lpm y ondas P no relacionadas?
+        opciones:
+          - afirmativo: 3
+          - negativo: 4
+      - id: 3
+        tipo: diagnóstico
+        titulo: Taquicardia ventricular
+        recomendaciones: Confirmar con ECG de 6 derivaciones. Considerar lidocaína, sotalol o cardioversión si inestable.
+        fin: true
+      - id: 4
+        tipo: diagnóstico
+        titulo: Otra arritmia (revalorar)
+        recomendaciones: Puede tratarse de taquicardia supraventricular con aberrancia o ritmo sinusal rápido. Repetir ECG y evaluación clínica.
+        fin: true
+
+  - id: ataxia
+    nombre: Ataxia
+    pagina: 68
+    tipoSintoma: conductual
+    nivelUsuario: técnico
+    especie: perro_gato
+    esquema:
+      - id: 1
+        tipo: pregunta
+        pregunta: ¿La ataxia es acompañada de inclinación de cabeza o nistagmo?
+        opciones:
+          - afirmativo: 2
+          - negativo: 4
+      - id: 2
+        tipo: diagnóstico
+        titulo: Ataxia vestibular
+        recomendaciones: Evaluar oído interno, realizar pruebas neurológicas. Considerar otitis, tumores, causas idiopáticas.
+        fin: true
+      - id: 4
+        tipo: pregunta
+        pregunta: ¿Hay hipermetría o movimientos exagerados?
+        opciones:
+          - afirmativo: 5
+          - negativo: 6
+      - id: 5
+        tipo: diagnóstico
+        titulo: Ataxia cerebelosa
+        recomendaciones: Lesiones en cerebelo (inflamatorias, neoplásicas, congénitas). Realizar neuroimagen si es posible.
+        fin: true
+      - id: 6
+        tipo: diagnóstico
+        titulo: Ataxia medular
+        recomendaciones: Considerar lesión de médula espinal (trauma, mielopatía degenerativa, discos). Evaluar marcha, reflejos y tono muscular.
+        fin: true
+
+  - id: atrofia_muscular
+    nombre: Atrofia muscular
+    pagina: 73
+    tipoSintoma: visual
+    nivelUsuario: técnico
+    especie: perro_gato
+    esquema:
+      - id: 1
+        tipo: pregunta
+        pregunta: ¿La atrofia es focal o generalizada?
+        opciones:
+          - Focal: 2
+          - Generalizada: 4
+      - id: 2
+        tipo: diagnóstico
+        titulo: Atrofia muscular focal
+        recomendaciones: Evaluar uso de extremidad, daño nervioso periférico, denervación. Considerar electromiografía o estudio neurológico.
+        fin: true
+      - id: 4
+        tipo: pregunta
+        pregunta: ¿Hay signos de debilidad generalizada?
+        opciones:
+          - afirmativo: 5
+          - negativo: 6
+      - id: 5
+        tipo: diagnóstico
+        titulo: Atrofia muscular por inactividad o caquexia
+        recomendaciones: Posible enfermedad sistémica, desnutrición, inactividad prolongada. Evaluar estado general y masa corporal.
+        fin: true
+      - id: 6
+        tipo: diagnóstico
+        titulo: Atrofia muscular idiopática o relacionada a edad
+        recomendaciones: Puede corresponder a sarcopenia geriátrica o pérdida no patológica.
+        fin: true
+
+  - id: aumento_peso
+    nombre: Aumento de peso
+    pagina: 78
+    tipoSintoma: visual
+    nivelUsuario: familiar
+    especie: perro_gato
+    esquema:
+      - id: 1
+        tipo: pregunta
+        pregunta: ¿El animal tiene un apetito normal o reducido?
+        opciones:
+          - afirmativo: 2
+          - negativo: 3
+      - id: 2
+        tipo: diagnóstico
+        titulo: Aumento de peso por disminución de actividad o edad
+        recomendaciones: Evaluar dieta, rutina de ejercicios, edad y esterilización. Controlar la cantidad de alimento ofrecido.
+        fin: true
+      - id: 3
+        tipo: diagnóstico
+        titulo: Aumento de peso por sobrealimentación
+        recomendaciones: Revisar raciones, número de premios, cambios en el tipo de alimento. Ajustar la dieta a sus necesidades energéticas.
+        fin: true
+  - id: azotemia
+    nombre: Azotemia
+    pagina: 83
+    tipoSintoma: analitico
+    nivelUsuario: técnico
+    especie: perro_gato
+    esquema:
+      - id: 1
+        tipo: acción
+        accion: Confirmar azotemia mediante urea/creatinina elevadas en análisis sanguíneo
+        siguiente: 2
+      - id: 2
+        tipo: pregunta
+        pregunta: ¿La densidad urinaria es mayor de 1.030 (perro) o 1.035 (gato)?
+        opciones:
+          - afirmativo: 3
+          - negativo: 4
+      - id: 3
+        tipo: diagnóstico
+        titulo: Azotemia pre-renal
+        recomendaciones: Indica deshidratación o hipoperfusión. Rehidratar y reevaluar.
+        fin: true
+      - id: 4
+        tipo: pregunta
+        pregunta: ¿Hay signos de enfermedad renal estructural?
+        opciones:
+          - afirmativo: 5
+          - negativo: 6
+      - id: 5
+        tipo: diagnóstico
+        titulo: Azotemia renal
+        recomendaciones: Sospechar insuficiencia renal. Evaluar ecografía y urianálisis.
+        fin: true
+      - id: 6
+        tipo: diagnóstico
+        titulo: Azotemia post-renal
+        recomendaciones: Considerar obstrucción urinaria o ruptura vesical. Requiere atención inmediata.
+        fin: true
+
+  - id: t4_baja
+    nombre: Baja concentración sérica de T4
+    pagina: 88
+    tipoSintoma: analitico
+    nivelUsuario: técnico
+    especie: perro
+    esquema:
+      - id: 1
+        tipo: pregunta
+        pregunta: ¿El animal presenta signos clínicos compatibles con hipotiroidismo?
+        opciones:
+          - afirmativo: 2
+          - negativo: 4
+      - id: 2
+        tipo: acción
+        accion: Medir T4 libre y TSH para confirmar diagnóstico
+        siguiente: 3
+      - id: 3
+        tipo: diagnóstico
+        titulo: Hipotiroidismo primario
+        recomendaciones: Confirmar con T4 libre baja y TSH elevada. Iniciar tratamiento con levotiroxina.
+        fin: true
+      - id: 4
+        tipo: diagnóstico
+        titulo: Eutiroideo enfermo
+        recomendaciones: T4 baja secundaria a enfermedad sistémica. Tratar la causa subyacente, no iniciar tratamiento hormonal.
+        fin: true
+
+  - id: bradiarritmias
+    nombre: Bradiarritmias
+    pagina: 93
+    tipoSintoma: visual
+    nivelUsuario: técnico
+    especie: perro_gato
+    esquema:
+      - id: 1
+        tipo: pregunta
+        pregunta: ¿Bradicardia persistente y asociada a signos clínicos?
+        opciones:
+          - afirmativo: 2
+          - negativo: 5
+      - id: 2
+        tipo: acción
+        accion: Confirmar con ECG y valorar tipo de bradiarritmia
+        siguiente: 3
+      - id: 3
+        tipo: diagnóstico
+        titulo: Bloqueo AV o paro sinusal
+        recomendaciones: Considerar marcapasos si hay colapsos o intolerancia al ejercicio.
+        fin: true
+      - id: 4
+        tipo: diagnóstico
+        titulo: Bradicardia sinusal por fármacos o vagotonía
+        recomendaciones: Revisar medicación (ej. opioides, betabloqueantes). Suspender si es necesario.
+        fin: true
+      - id: 5
+        tipo: diagnóstico
+        titulo: Bradicardia fisiológica
+        recomendaciones: Común en animales en reposo o deportistas. No requiere intervención.
+        fin: true
+
+  - id: ceguera
+    nombre: Ceguera
+    pagina: 98
+    tipoSintoma: visual
+    nivelUsuario: familiar
+    especie: perro_gato
+    esquema:
+      - id: 1
+        tipo: pregunta
+        pregunta: ¿La ceguera es de aparición repentina?
+        opciones:
+          - afirmativo: 2
+          - negativo: 4
+      - id: 2
+        tipo: pregunta
+        pregunta: ¿Hay midriasis, sin respuesta pupilar?
+        opciones:
+          - afirmativo: 3
+          - negativo: 5
+      - id: 3
+        tipo: diagnóstico
+        titulo: Ceguera cortical o neurológica
+        recomendaciones: Evaluar sistema nervioso. Puede requerir pruebas de imagen.
+        fin: true
+      - id: 4
+        tipo: diagnóstico
+        titulo: Degeneración progresiva
+        recomendaciones: Posible atrofia retinal, cataratas, glaucoma crónico. Requiere oftalmoscopia.
+        fin: true
+      - id: 5
+        tipo: diagnóstico
+        titulo: Lesión ocular reciente
+        recomendaciones: Evaluar traumatismos, exposición a toxinas o inflamación ocular aguda.
+        fin: true
+
+  - id: cianosis
+    nombre: Cianosis
+    pagina: 103
+    tipoSintoma: visual
+    nivelUsuario: técnico
+    especie: perro
+    esquema:
+      - id: 1
+        tipo: pregunta
+        pregunta: ¿La cianosis es generalizada?
+        opciones:
+          - afirmativo: 2
+          - negativo: 6
+      - id: 2
+        tipo: pregunta
+        pregunta: ¿Hay signos respiratorios o anomalías cardíacas?
+        opciones:
+          - afirmativo: 3
+          - negativo: 5
+      - id: 3
+        tipo: pregunta
+        pregunta: ¿La PaO₂ está baja?
+        opciones:
+          - afirmativo: 4
+          - negativo: 5
+      - id: 4
+        tipo: diagnóstico
+        titulo: Cianosis central (enfermedad respiratoria grave o shunt intracardiaco)
+        acciones: Evaluar función respiratoria, imagen torácica, gasometría arterial
+        fin: true
+      - id: 5
+        tipo: diagnóstico
+        titulo: Cianosis central (posible hemoglobina anormal, p.ej. metahemoglobinemia)
+        acciones: Realizar cooximetría y análisis de sangre completa
+        fin: true
+      - id: 6
+        tipo: diagnóstico
+        titulo: Cianosis periférica
+        acciones: Sospechar hipoperfusión, vasoconstricción o trombosis. Evaluar temperatura, pulso, capilarización
+        fin: true
+      - id: 7
+        tipo: diagnóstico
+        titulo: Cianosis diferencial
+        acciones: Sospechar shunt extracardiaco de derecha a izquierda. Valorar imagen Doppler
+        fin: true
+      - id: 8
+        tipo: diagnóstico
+        titulo: Evaluar otras causas
+        acciones: Considerar coloraciones falsas, tóxicos o dishemoglobinemias
+        fin: true
+
+  - id: cojera
+    nombre: Cojera
+    pagina: 109
+    tipoSintoma: visual
+    nivelUsuario: familiar
+    especie: perro_gato
+    esquema:
+      - id: 1
+        tipo: pregunta
+        pregunta: ¿La cojera apareció de forma repentina?
+        opciones:
+          - afirmativo: 2
+          - negativo: 4
+      - id: 2
+        tipo: pregunta
+        pregunta: ¿Hay antecedentes de golpe, caída o ejercicio brusco?
+        opciones:
+          - afirmativo: 3
+          - negativo: 5
+      - id: 3
+        tipo: diagnóstico
+        titulo: Trauma agudo
+        recomendaciones: Posible esguince, luxación, fractura. Reposo inmediato y consulta veterinaria.
+        fin: true
+      - id: 4
+        tipo: pregunta
+        pregunta: ¿La cojera es progresiva o intermitente?
+        opciones:
+          - Progresiva: 6
+          - Intermitente: 7
+      - id: 5
+        tipo: diagnóstico
+        titulo: Origen agudo no traumático
+        recomendaciones: Posible cuerpo extraño, insecto, rotura de ligamento. Observar signos asociados.
+        fin: true
+      - id: 6
+        tipo: diagnóstico
+        titulo: Dolor crónico o articular
+        recomendaciones: Evaluar displasia, artrosis, luxación rotuliana, degeneración ligamentosa.
+        fin: true
+      - id: 7
+        tipo: diagnóstico
+        titulo: Cojera mecánica leve
+        recomendaciones: Puede estar relacionada con cambios de temperatura, esfuerzo físico o inicio de patología articular.
+        fin: true
+
+  - id: crisis_epilepticas
+    nombre: Crisis epilépticas
+    pagina: 114
+    tipoSintoma: visual
+    nivelUsuario: técnico
+    especie: perro_gato
+    esquema:
+      - id: 1
+        tipo: pregunta
+        pregunta: ¿Ha habido más de un episodio?
+        opciones:
+          - afirmativo: 2
+          - negativo: 3
+      - id: 2
+        tipo: diagnóstico
+        titulo: Epilepsia idiopática o secundaria
+        acciones: Examen neurológico, pruebas metabólicas, imagen
+        fin: true
+      - id: 3
+        tipo: diagnóstico
+        titulo: Evento aislado (síncope, intoxicación)
+        acciones: Observación y seguimiento
+        fin: true
+
+  - id: derrame_abdominal
+    nombre: Derrame abdominal
+    pagina: 119
+    tipoSintoma: visual
+    nivelUsuario: técnico
+    especie: perro_gato
+    esquema:
+      - id: 1
+        tipo: pregunta
+        pregunta: ¿El animal presenta abdomen distendido o signo de onda líquida?
+        opciones:
+          - afirmativo: 2
+          - negativo: 7
+      - id: 2
+        tipo: acción
+        accion: Realizar paracentesis para análisis del líquido (color, proteínas, células)
+        siguiente: 3
+      - id: 3
+        tipo: pregunta
+        pregunta: ¿El líquido es transudado puro (bajo en proteínas y células)?
+        opciones:
+          - afirmativo: 4
+          - negativo: 5
+      - id: 4
+        tipo: diagnóstico
+        titulo: Hipoalbuminemia o hipertensión portal
+        recomendaciones: Evaluar función hepática, enteropatías perdedoras de proteínas, ICC derecha.
+        fin: true
+      - id: 5
+        tipo: pregunta
+        pregunta: ¿El líquido es hemorrágico o exudado séptico?
+        opciones:
+          - afirmativo: 6
+          - negativo: 8
+      - id: 6
+        tipo: diagnóstico
+        titulo: Hemoperitoneo o peritonitis
+        recomendaciones: Sospechar ruptura de órgano, neoplasia o infección bacteriana. Evaluar urgencia quirúrgica.
+        fin: true
+      - id: 7
+        tipo: acción
+        accion: Si no hay líquido evidente, monitorizar signos clínicos y repetir exploración
+      - id: 8
+        tipo: diagnóstico
+        titulo: Derrame mixto o quiloso
+        recomendaciones: Considerar linfangiectasia, ruptura de ducto torácico, procesos inflamatorios crónicos.
+        fin: true
+  - id: derrame_pericardico
+    nombre: Derrame pericárdico
+    pagina: 124
+    tipoSintoma: clínico
+    nivelUsuario: técnico
+    especie: perro_gato
+    esquema:
+      - id: 1
+        tipo: pregunta
+        pregunta: ¿El animal presenta disnea, debilidad o abdomen distendido?
+        opciones:
+          - afirmativo: 2
+          - negativo: 7
+      - id: 2
+        tipo: pregunta
+        pregunta: ¿Hay ruidos cardíacos apagados o pulso débil al tacto?
+        opciones:
+          - afirmativo: 3
+          - negativo: 4
+      - id: 3
+        tipo: diagnóstico
+        titulo: Sospecha de taponamiento cardíaco
+        recomendaciones: Signos de derrame severo. Requiere ecocardiografía urgente y posible pericardiocentesis.
+        fin: true
+      - id: 4
+        tipo: pregunta
+        pregunta: ¿Hay antecedentes de tumor, infección o trauma reciente?
+        opciones:
+          - afirmativo: 5
+          - negativo: 6
+      - id: 5
+        tipo: diagnóstico
+        titulo: Derrame pericárdico secundario
+        recomendaciones: Considerar causas como hemangiosarcoma, pericarditis infecciosa, trauma torácico. Evaluar con ecografía, toracocentesis, hemograma.
+        fin: true
+      - id: 6
+        tipo: diagnóstico
+        titulo: Derrame idiopático o leve
+        recomendaciones: Puede ser incidental. Repetir controles y buscar signos progresión.
+        fin: true
+      - id: 7
+        tipo: acción
+        accion: Observar y reevaluar si aparecen signos respiratorios o debilidad progresiva
+  - id: derrame_pleural
+    nombre: Derrame pleural
+    pagina: 129
+    tipoSintoma: clínico
+    nivelUsuario: técnico
+    especie: perro_gato
+    esquema:
+      - id: 1
+        tipo: pregunta
+        pregunta: ¿Hay disnea con ruidos pulmonares reducidos y tórax dilatado?
+        opciones:
+          - afirmativo: 2
+          - negativo: 7
+      - id: 2
+        tipo: acción
+        accion: Realizar toracocentesis para confirmar y obtener líquido
+        siguiente: 3
+      - id: 3
+        tipo: pregunta
+        pregunta: ¿El líquido es quiloso, hemorrágico o purulento?
+        opciones:
+          Quiloso: 4
+          Hemorrágico: 5
+          Purulento: 6
+          Otro: 8
+      - id: 4
+        tipo: diagnóstico
+        titulo: Quilotórax
+        recomendaciones: Considerar ruptura del conducto torácico, neoplasias, idiopático. Confirmar con triglicéridos.
+        fin: true
+      - id: 5
+        tipo: diagnóstico
+        titulo: Hemotórax
+        recomendaciones: Sospechar trauma, coagulopatía o neoplasia. Estabilizar y realizar pruebas complementarias.
+        fin: true
+      - id: 6
+        tipo: diagnóstico
+        titulo: Piotórax
+        recomendaciones: Infección purulenta pleural. Requiere antibióticos y posible drenaje.
+        fin: true
+      - id: 7
+        tipo: acción
+        accion: Evaluar otras causas de disnea si no hay signos de líquido evidente
+      - id: 8
+        tipo: diagnóstico
+        titulo: Derrame pleural no específico
+        recomendaciones: Puede ser transudado o exudado no diagnosticado. Evaluar proteínas, células, imagen.
+        fin: true
+  - id: diarrea_aguda
+    nombre: "Diarrea: aguda"
+    pagina: 134
+    tipoSintoma: visual
+    nivelUsuario: familiar
+    especie: perro_gato
+    esquema:
+      - id: 1
+        tipo: pregunta
+        pregunta: ¿Hay sangre o vómitos?
+        opciones:
+          - afirmativo: 2
+          - negativo: 3
+      - id: 2
+        tipo: diagnostico
+        titulo: Enteritis hemorrágica / parvovirus
+        acciones: Rehidratación, aislamiento, análisis
+        fin: true
+      - id: 3
+        tipo: diagnostico
+        titulo: Diarrea simple aguda
+        acciones: Dieta blanda, monitoreo 24–48h
+        fin: true
+  - id: diarrea_cronica
+    nombre: "Diarrea: crónica"
+    pagina: 140
+    tipoSintoma: visual
+    nivelUsuario: técnico
+    especie: perro_gato
+    esquema:
+      - id: 1
+        tipo: pregunta
+        pregunta: ¿Es intermitente o continua?
+        opciones:
+          - Intermitente: 2
+          - Continua: 3
+      - id: 2
+        tipo: diagnostico
+        titulo: Posible sensibilidad alimentaria
+        acciones: Cambio de dieta, seguimiento
+        fin: true
+      - id: 3
+        tipo: diagnostico
+        titulo: Enfermedad inflamatoria intestinal o parasitosis
+        acciones: Coproparasitario, biopsia intestinal
+        fin: true
+  - id: disfagia
+    nombre: Disfagia
+    pagina: 145
+    tipoSintoma: visual
+    nivelUsuario: técnico
+    especie: perro_gato
+    esquema:
+      - id: 1
+        tipo: pregunta
+        pregunta: ¿El animal muestra dificultad al iniciar la deglución o mantiene el alimento en la boca?
+        opciones:
+          - afirmativo: 2
+          - negativo: 3
+      - id: 2
+        tipo: diagnóstico
+        titulo: Disfagia oral
+        recomendaciones: Sospechar alteraciones neuromusculares, miositis masticatoria, lesiones orales. Realizar examen físico y neurológico focal.
+        fin: true
+      - id: 3
+        tipo: pregunta
+        pregunta: ¿El alimento se expulsa por la nariz o hay tos durante la deglución?
+        opciones:
+          - afirmativo: 4
+          - negativo: 5
+      - id: 4
+        tipo: diagnóstico
+        titulo: Disfagia faríngea
+        recomendaciones: Debilidad faríngea, disfunción nerviosa, miastenia gravis. Confirmar con pruebas neuromusculares o videofluoroscopía.
+        fin: true
+      - id: 5
+        tipo: pregunta
+        pregunta: ¿Hay regurgitación posterior a la deglución o distensión esofágica?
+        opciones:
+          - afirmativo: 6
+          - negativo: 7
+      - id: 6
+        tipo: diagnóstico
+        titulo: Disfagia esofágica
+        recomendaciones: Megaesófago, cuerpo extraño, estenosis. Realizar estudio radiográfico con contraste.
+        fin: true
+      - id: 7
+        tipo: acción
+        accion: Observar evolución; si persiste, derivar para diagnóstico por imagen avanzada
+  - id: disnea_aguda
+    nombre: Disnea aguda
+    pagina: 150
+    tipoSintoma: clínico
+    nivelUsuario: familiar
+    especie: perro_gato
+    esquema:
+      - id: 1
+        tipo: pregunta
+        pregunta: ¿La dificultad respiratoria apareció de forma repentina?
+        opciones:
+          - afirmativo:: 2
+          - negativo:: 6
+      - id: 2
+        tipo: pregunta
+        pregunta: ¿Hay ruidos audibles o respiración con la boca abierta?
+        opciones:
+          - afirmativo:: 3
+          - negativo:: 4
+      - id: 3
+        tipo: diagnóstico
+        titulo: Obstrucción vías respiratorias altas
+        recomendaciones: Posible cuerpo extraño, colapso laríngeo o inflamación. Urgencia médica.
+        fin: true
+      - id: 4
+        tipo: pregunta
+        pregunta: ¿El abdomen se mueve excesivamente al respirar (disnea espiratoria)?
+        opciones:
+          - afirmativo:: 5
+          - negativo:: 6
+      - id: 5
+        tipo: diagnóstico
+        titulo: Afección de vías bajas
+        recomendaciones: Sospechar bronquitis, asma, colapso traqueal, edema pulmonar.
+        fin: true
+      - id: 6
+        tipo: acción
+        accion: Mantener al animal en calma, evitar estrés, y acudir al veterinario lo antes posible
+
+  - id: distension_abdominal
+    nombre: Distensión abdominal
+    pagina: 155
+    tipoSintoma: visual
+    nivelUsuario: familiar
+    especie: perro_gato
+    esquema:
+      - id: 1
+        tipo: pregunta
+        pregunta: ¿Es súbita o progresiva?
+        opciones:
+          - Súbita: 2
+          - Progresiva: 3
+      - id: 2
+        tipo: diagnóstico
+        titulo: Torsión gástrica o hemoperitoneo
+        acciones: Urgencia veterinaria, imagen abdominal inmediata
+        fin: true
+      - id: 3
+        tipo: diagnóstico
+        titulo: Ascitis, gestación o masa
+        acciones: Palpación, ecografía abdominal
+        fin: true
+
+  - id: dolor
+    nombre: Dolor
+    pagina: 160
+    tipoSintoma: visual
+    nivelUsuario: familiar
+    especie: perro_gato
+    esquema:
+      - id: 1
+        tipo: pregunta
+        pregunta: ¿El animal presenta vocalización, temblores o cambios de postura?
+        opciones:
+          - afirmativo: 2
+          - negativo: 6
+      - id: 2
+        tipo: pregunta
+        pregunta: ¿El dolor parece localizado o generalizado?
+        opciones:
+          Localizado: 3
+          Generalizado: 4
+      - id: 3
+        tipo: diagnóstico
+        titulo: Dolor localizado
+        recomendaciones: Puede indicar trauma, cuerpo extraño, inflamación localizada o fractura. Observar zona afectada y restringir movimiento.
+        fin: true
+      - id: 4
+        tipo: pregunta
+        pregunta: ¿El dolor se acompaña de rigidez o intolerancia al movimiento?
+        opciones:
+          - afirmativo: 5
+          - negativo: 6
+      - id: 5
+        tipo: diagnóstico
+        titulo: Dolor osteomuscular generalizado
+        recomendaciones: Posible miopatía, poliartritis o dolor secundario a enfermedad sistémica. Requiere valoración veterinaria y pruebas complementarias.
+        fin: true
+      - id: 6
+        tipo: acción
+        accion: Si no hay signos claros pero hay cambios de comportamiento, monitorizar y consultar si persiste
+  - id: dolor_articular
+    nombre: Dolor articular
+    pagina: 170
+    tipoSintoma: visual
+    nivelUsuario: técnico
+    especie: perro
+    esquema:
+      - id: 1
+        tipo: pregunta
+        pregunta: ¿Una articulación afectada o varias?
+        opciones:
+          - Una: 2
+          - Varias: 3
+      - id: 2
+        tipo: diagnostico
+        titulo: Trauma, luxación o artritis localizada
+        recomendaciones: "Radiografía y movilidad pasiva."
+        fin: true
+      - id: 3
+        tipo: diagnostico
+        titulo: Artritis inmune o infecciosa
+        recomendaciones: "Análisis del líquido sinovial, serología."
+        fin: true
+  - id: dolor
+    nombre: Dolor
+    pagina: 160
+    tipoSintoma: visual
+    nivelUsuario: familiar
+    especie: perro_gato
+    esquema:
+      - id: 1
+        tipo: pregunta
+        pregunta: ¿El animal presenta vocalización, temblores o cambios de postura?
+        opciones:
+          - afirmativo: 2
+          - negativo: 6
+      - id: 2
+        tipo: pregunta
+        pregunta: ¿El dolor parece localizado o generalizado?
+        opciones:
+          - Localizado: 3
+          - Generalizado: 4
+      - id: 3
+        tipo: diagnóstico
+        titulo: Dolor localizado
+        recomendaciones: Puede indicar trauma, cuerpo extraño, inflamación localizada o fractura. Observar zona afectada y restringir movimiento.
+        fin: true
+      - id: 4
+        tipo: pregunta
+        pregunta: ¿El dolor se acompaña de rigidez o intolerancia al movimiento?
+        opciones:
+          - afirmativo: 5
+          - negativo: 6
+      - id: 5
+        tipo: diagnóstico
+        titulo: Dolor osteomuscular generalizado
+        recomendaciones: Posible miopatía, poliartritis o dolor secundario a enfermedad sistémica. Requiere valoración veterinaria y pruebas complementarias.
+        fin: true
+      - id: 6
+        tipo: diagnóstico
+        titulo: Dolor inespecífico o leve
+        recomendaciones: Si no hay signos claros, но есть cambios поведения — мониторинг и консультация при сохранении симптомов.
+        fin: true
+
+  - id: edema_periferico
+    nombre: Edema periférico
+    pagina: 170
+    tipoSintoma: visual
+    nivelUsuario: técnico
+    especie: perro_gato
+    esquema:
+      - id: 1
+        tipo: pregunta
+        pregunta: ¿El edema es bilateral y afecta extremidades o región ventral?
+        opciones:
+          - afirmativo: 2
+          - negativo: 5
+      - id: 2
+        tipo: pregunta
+        pregunta: ¿El animal muestra signos de letargo, disnea o distensión abdominal?
+        opciones:
+          - afirmativo: 3
+          - negativo: 4
+      - id: 3
+        tipo: diagnóstico
+        titulo: Edema por insuficiencia cardíaca derecha
+        recomendaciones: Asociado a congestión venosa sistémica. Confirmar con ecografía y signos clínicos.
+        fin: true
+      - id: 4
+        tipo: diagnóstico
+        titulo: Edema por hipoalbuminemia
+        recomendaciones: Evaluar proteinuria, enfermedad hepática, enteropatía perdedora de proteínas.
+        fin: true
+      - id: 5
+        tipo: pregunta
+        pregunta: ¿El edema es unilateral, con aumento de volumen localizado?
+        opciones:
+          - afirmativo: 6
+          - negativo: 7
+      - id: 6
+        tipo: diagnóstico
+        titulo: Linfedema o trombosis venosa local
+        recomendaciones: Considerar obstrucción linfática, tumor, proceso inflamatorio o trombo.
+        fin: true
+      - id: 7
+        tipo: diagnóstico
+        titulo: Edema inespecífico
+        recomendaciones: Requiere evaluación clínica para caracterizar tipo y distribución del edema.
+        fin: true
+
+  - id: eritrocitosis
+    nombre: Eritrocitosis
+    pagina: 180
+    tipoSintoma: analitico
+    nivelUsuario: técnico
+    especie: perro_gato
+    esquema:
+      - id: 1
+        tipo: pregunta
+        pregunta: ¿Signos de deshidratación?
+        opciones:
+          - afirmativo: 2
+          - negativo: 3
+      - id: 2
+        tipo: diagnóstico
+        titulo: Eritrocitosis relativa por hemoconcentración
+        recomendaciones: Restaurar volumen con fluidoterapia, revisar causa subyacente.
+        fin: true
+      - id: 3
+        tipo: diagnóstico
+        titulo: Eritrocitosis verdadera (primaria o secundaria)
+        recomendaciones: Valorar EPO, gases, función renal, neoplasias o hipoxia.
+        fin: true
+
+  - id: estomatitis_gatos
+    nombre: "Estomatitis: gatos"
+    pagina: 180
+    tipoSintoma: visual
+    nivelUsuario: familiar
+    especie: gato
+    esquema:
+      - id: 1
+        tipo: pregunta
+        pregunta: ¿Hay inflamación de la mucosa caudal o úlceras en la lengua?
+        opciones:
+          - afirmativo: 2
+          - negativo: 10
+      - id: 2
+        tipo: diagnóstico
+        titulo: Sospecha de gingivoestomatitis crónica felina
+        recomendaciones: Examen físico, historial clínico, analítica, test FIV/FeLV.
+        fin: false
+      - id: 3
+        tipo: pregunta
+        pregunta: ¿Inflamación caudal de la mucosa oral?
+        opciones:
+          - afirmativo: 4
+          - negativo: 6
+      - id: 4
+        tipo: diagnóstico
+        titulo: Gingivoestomatitis crónica felina
+        recomendaciones: Evaluar estado periodontal con sondaje y radiografía intraoral.
+        fin: false
+      - id: 5
+        tipo: diagnóstico
+        titulo: Lesiones bilaterales
+        recomendaciones: Extracción dental completa, tratamiento de soporte.
+        fin: true
+      - id: 10
+        tipo: diagnóstico
+        titulo: Mucosa oral normal o signos inespecíficos
+        recomendaciones: Observar evolución, considerar causas digestivas o sistémicas.
+        fin: true
+
+  - id: estomatitis_perros
+    nombre: "Estomatitis: perros"
+    pagina: 185
+    tipoSintoma: visual
+    nivelUsuario: familiar
+    especie: perro
+    esquema:
+      - id: 1
+        tipo: pregunta
+        pregunta: ¿Presenta el paciente dolor oral o úlceras visibles?
+        opciones:
+          - afirmativo: 2
+          - negativo: 10
+      - id: 2
+        tipo: diagnóstico
+        titulo: Estomatitis en evaluación
+        recomendaciones: Realizar examen físico, anamnesis, bioquímica, análisis de orina.
+        fin: false
+      - id: 3
+        tipo: pregunta
+        pregunta: ¿Se observan úlceras en mucosa vestibular, sublingual o contacto con dientes?
+        opciones:
+          - afirmativo: 4
+          - negativo: 6
+      - id: 4
+        tipo: diagnóstico
+        titulo: Estomatitis ulcerosa crónica canina
+        recomendaciones: Extracción de dientes en contacto con lesiones, control del dolor.
+        fin: true
+      - id: 5
+        tipo: diagnóstico
+        titulo: Úlceras de contacto o por reabsorción dental
+        recomendaciones: Evaluar состояние periodontal (сондаж, рентген), экстракции.
+        fin: true
+      - id: 6
+        tipo: pregunta
+        pregunta: ¿Sospecha de enfermedad infecciosa o autoinmune?
+        opciones:
+          - afirmativo: 7
+          - negativo: 8
+      - id: 7
+        tipo: diagnóstico
+        titulo: Leishmaniosis o enfermedad autoinmunitaria
+        recomendaciones: IFI para Leishmania, biopsia, tratamiento específico.
+        fin: true
+      - id: 8
+        tipo: diagnóstico
+        titulo: Estomatitis eosinofílica o aguda (química, eléctrica, etc.)
+        recomendaciones: Identificar causa, tratamiento médico o quirúrgico.
+        fin: true
+      - id: 9
+        tipo: diagnóstico
+        titulo: Estomatitis por periodontitis
+        recomendaciones: Profilaxis dental, extracción de dientes afectados.
+        fin: true
+      - id: 10
+        tipo: diagnóstico
+        titulo: Mucosa oral normal o signos inespecíficos
+        recomendaciones: Observación o evaluación de otras causas (gástricas, sistémicas).
+        fin: true
+  - id: fiebre
+    nombre: Fiebre
+    pagina: 190
+    tipoSintoma: visual
+    nivelUsuario: familiar
+    especie: perro_gato
+    esquema:
+      - id: 1
+        tipo: pregunta
+        pregunta: ¿Temperatura corporal > 39,2 °C?
+        opciones:
+          - afirmativo: 2
+          - negativo: 10
+      - id: 2
+        tipo: pregunta
+        pregunta: ¿Hay causa evidente como golpe de calor, ejercicio, o medicamentos?
+        opciones:
+          - afirmativo: 3
+          - negativo: 4
+      - id: 3
+        tipo: diagnóstico
+        titulo: Hipertermia por causa no infecciosa
+        recomendaciones: Reposo, enfriamiento activo, reevaluar temperatura en 20 minutos.
+        fin: true
+      - id: 4
+        tipo: diagnóstico
+        titulo: Sospecha de fiebre infecciosa
+        recomendaciones: Hemograma, análisis de orina, pruebas de imagen, cultivos, ecografía y ecocardiografía.
+        fin: false
+      - id: 5
+        tipo: diagnóstico
+        titulo: Infección urinaria, bacteriana o por rickettsias
+        recomendaciones: Cultivo de orina y sangre, tratamiento antibiótico específico.
+        fin: true
+      - id: 6
+        tipo: diagnóstico
+        titulo: Neoplasia o absceso
+        recomendaciones: Tomografía, ecografía abdominal, biopsia si procede.
+        fin: true
+      - id: 7
+        tipo: diagnóstico
+        titulo: Enfermedad inmunomediada
+        recomendaciones: Pruebas inmunológicas, tratamiento inmunosupresor.
+        fin: true
+      - id: 8
+        tipo: diagnóstico
+        titulo: Infecciones fúngicas, PIF, hemoplasmosis, toxoplasmosis
+        recomendaciones: Pruebas específicas según sospecha, tratamiento dirigido.
+        fin: true
+      - id: 9
+        tipo: diagnóstico
+        titulo: Fiebre de origen desconocido
+        recomendaciones: Seguimiento clínico, pruebas avanzadas (TC, RM, análisis de LCR).
+        fin: true
+      - id: 10
+        tipo: diagnóstico
+        titulo: Temperatura normal
+        recomendaciones: No requiere intervención, continuar observación.
+        fin: true
+
+  - id: hematemesis
+    nombre: Hematemesis
+    pagina: 195
+    tipoSintoma: visual
+    nivelUsuario: familiar
+    especie: perro
+    esquema:
+      - id: 1
+        tipo: pregunta
+        pregunta: ¿Ha vomitado el animal y observas sangre en el vómito?
+        opciones:
+          - afirmativo: 2
+          - negativo: 10
+      - id: 2
+        tipo: pregunta
+        pregunta: ¿La cantidad de sangre es abundante o el vómito se repite varias veces?
+        opciones:
+          - afirmativo: 3
+          - negativo: 4
+      - id: 3
+        tipo: acción
+        acciones: Acudir de inmediato al veterinario para valoración urgente
+      - id: 4
+        tipo: pregunta
+        pregunta: ¿El animal ha recibido recientemente medicamentos como AINEs o corticoides?
+        opciones:
+          - afirmativo: 5
+          - negativo: 6
+      - id: 5
+        tipo: diagnóstico
+        diagnostico: Sospecha de úlcera gástrica inducida por medicamentos
+      - id: 6
+        tipo: pregunta
+        pregunta: ¿El animal ha ingerido basura, objetos extraños o huesos?
+        opciones:
+          - afirmativo: 7
+          - negativo: 8
+      - id: 7
+        tipo: diagnóstico
+        diagnostico: Posible irritación gástrica o cuerpo extraño
+      - id: 8
+        tipo: pregunta
+        pregunta: ¿Presenta encías pálidas, debilidad o letargo?
+        opciones:
+          - afirmativo: 9
+          - negativo: 11
+      - id: 9
+        tipo: diagnóstico
+        diagnostico: Sospecha de hemorragia digestiva con compromiso sistémico
+      - id: 10
+        tipo: nota
+        contenido: No se ha observado hematemesis; considerar otros signos o repetir observación
+      - id: 11
+        tipo: diagnóstico
+        diagnostico: Episodio leve o aislado; observar evolución y consultar si se repite
+
+  - id: hematuria
+    nombre: Hematuria
+    pagina: 200
+    tipoSintoma: visual
+    nivelUsuario: familiar
+    especie: perro_gato
+    esquema:
+      - id: 0
+        tipo: pregunta
+        pregunta: ¿Has notado orina de color rojo, rosado o marrón?
+        opciones:
+          - afirmativo: 1
+          - negativo: 10
+      - id: 1
+        tipo: pregunta
+        pregunta: ¿Se ha realizado examen microscópico del sedimento urinario?
+        opciones:
+          - afirmativo: 2
+          - negativo: 11
+      - id: 2
+        tipo: pregunta
+        pregunta: ¿Revela eritrocitos en el sedimento?
+        opciones:
+          - afirmativo: 3
+          - negativo: 15
+      - id: 3
+        tipo: pregunta
+        pregunta: ¿La orina no está concentrada (DEO <1,015) o tiene pH alcalino?
+        opciones:
+          - afirmativo: 4
+          - negativo: 6
+      - id: 4
+        tipo: diagnóstico
+        titulo: Lisis eritrocitaria
+        acciones: Reseña, anamnesis, hemograma, bioquímica, sedimento urinario
+        fin: true
+      - id: 5
+        tipo: diagnóstico
+        titulo: Hemoglobinuria o mioglobinuria
+        acciones: Evaluar CK, AST, causa muscular o hemólisis intravascular
+        fin: true
+      - id: 6
+        tipo: pregunta
+        pregunta: ¿Aumento del tamaño de próstata o riñón a la palpación o ecografía?
+        opciones:
+          - afirmativo: 7
+          - negativo: 8
+      - id: 7
+        tipo: diagnóstico
+        titulo: Hiperplasia prostática o neoplasia
+        acciones: Imagen (TC, ecografía), citología, histología
+        fin: true
+      - id: 8
+        tipo: pregunta
+        pregunta: ¿Signos de disuria o polaquiuria?
+        opciones:
+          - afirmativo: 9
+          - negativo: 12
+      - id: 9
+        tipo: diagnóstico
+        titulo: Infección urinaria o cistitis idiopática
+        acciones: Cultivo de orina, análisis, dieta húmeda, manejo conductual
+        fin: true
+      - id: 10
+        tipo: nota
+        contenido: No se observa sangre visible en la orina; revisar si hay otros signos o repetir observación
+      - id: 11
+        tipo: acción
+        acciones: Acudir a la clínica para confirmar presencia de sangre en orina mediante análisis microscópico
+        fin: true
+      - id: 12
+        tipo: pregunta
+        pregunta: ¿Imagen sugiere cálculos urinarios?
+        opciones:
+          - afirmativo: 13
+          - negativo: 14
+      - id: 13
+        tipo: diagnóstico
+        titulo: Cálculos urinarios
+        acciones: Imagen, cultivo, tratamiento médico o quirúrgico
+        fin: true
+      - id: 14
+        tipo: diagnóstico
+        titulo: Coagulopatía
+        acciones: TP, TTPA, perfil de coagulación, tratar causa subyacente
+        fin: true
+      - id: 15
+        tipo: diagnóstico
+        titulo: Reacción falsa positiva
+        acciones: Repetir tira reactiva, considerar hemoglobina o mioglobina
+        fin: true
+
+  - id: hemorragia
+    nombre: Hemorragia
+    pagina: 205
+    tipoSintoma: visual
+    nivelUsuario: familiar
+    especie: perro_gato
+    esquema:
+      - id: 1
+        tipo: pregunta
+        pregunta: ¿El animal presenta sangrado visible (nariz, encías, orina, vómito, heces)?
+        opciones:
+          - afirmativo: 2
+          - negativo: 10
+      - id: 2
+        tipo: pregunta
+        pregunta: ¿Hay sangrado persistente tras una herida o sangrado espontáneo sin lesión?
+        opciones:
+          - afirmativo: 3
+          - negativo: 4
+      - id: 3
+        tipo: diagnóstico
+        titulo: Sospecha de coagulopatía
+        acciones: TP, TTPA, hemograma, pruebas de coagulación, descartar intoxicación por rodenticidas
+        fin: true
+      - id: 4
+        tipo: pregunta
+        pregunta: ¿La sangre proviene del sistema digestivo (vómito, heces negras o con sangre)?
+        opciones:
+          - afirmativo: 5
+          - negativo: 6
+      - id: 5
+        tipo: diagnóstico
+        titulo: Hemorragia digestiva
+        acciones: Evaluar hematemesis, melenas, úlceras, cuerpos extraños, neoplasias
+        fin: true
+      - id: 6
+        tipo: pregunta
+        pregunta: ¿La sangre proviene de la orina?
+        opciones:
+          - afirmativo: 7
+          - negativo: 8
+      - id: 7
+        tipo: diagnóstico
+        titulo: Hematuria
+        acciones: Ver algoritmo específico de hematuria; considerar infección, trauma, coagulopatía
+        fin: true
+      - id: 8
+        tipo: pregunta
+        pregunta: ¿Hay signos de sangrado nasal (epistaxis) o sangrado oral espontáneo?
+        opciones:
+          - afirmativo: 9
+          - negativo: 11
+      - id: 9
+        tipo: diagnóstico
+        titulo: Epistaxis / sangrado oral
+        acciones: Explorar cavidad nasal y oral, presión arterial, evaluar coagulación
+        fin: true
+      - id: 10
+        tipo: nota
+        contenido: No se observa hemorragia visible actualmente; seguir observando ante nuevos signos
+      - id: 11
+        tipo: nota
+        contenido: Si la hemorragia es interna o intermitente, puede ser difícil de detectar sin evaluación clínica
+
+  - id: hipocalcemia
+    nombre: Hipocalcemia
+    pagina: 259
+    tipoSintoma: visual
+    nivelUsuario: familiar
+    especie: perro_gato
+    esquema:
+      - id: 1
+        tipo: pregunta
+        pregunta: ¿El animal presenta temblores, rigidez muscular o marcha inestable?
+        opciones:
+          - afirmativo: 2
+          - negativo: 7
+      - id: 2
+        tipo: pregunta
+        pregunta: ¿Se encuentra en período de lactancia o ha parido recientemente?
+        opciones:
+          - afirmativo: 3
+          - negativo: 4
+      - id: 3
+        tipo: diagnóstico
+        titulo: Eclampsia puerperal (hipocalcemia posparto)
+        acciones: Evaluar calcio iónico, estabilizar con gluconato cálcico IV
+        fin: true
+      - id: 4
+        tipo: pregunta
+        pregunta: ¿Se han administrado recientemente fármacos que alteran el metabolismo del calcio (diuréticos, corticoides)?
+        opciones:
+          - afirmativo: 5
+          - negativo: 6
+      - id: 5
+        tipo: diagnóstico
+        titulo: Hipocalcemia inducida por medicamentos
+        acciones: Analítica, suspender o ajustar tratamiento, suplementar calcio si es necesario
+        fin: true
+      - id: 6
+        tipo: diagnóstico
+        titulo: Hipocalcemia idiopática o por causas sistémicas
+        acciones: Evaluar función renal, PTH, magnesio, y enfermedades crónicas
+        fin: true
+      - id: 7
+        tipo: nota
+        contenido: No se observan signos compatibles con hipocalcemia en este momento; continuar observación si aparecen temblores o debilidad
+
+  - id: hipercalcemia
+    nombre: Hipercalcemia
+    pagina: 212
+    tipoSintoma: visual
+    nivelUsuario: familiar
+    especie: perro_gato
+    esquema:
+      - id: 0
+        tipo: pregunta
+        pregunta: ¿El animal presenta apatía, pérdida de apetito o aumento en el consumo de agua?
+        opciones:
+          - afirmativo: 1
+          - negativo: 10
+      - id: 1
+        tipo: pregunta
+        pregunta: ¿Se ha realizado análisis con calcio total?
+        opciones:
+          - afirmativo: 2
+          - negativo: 9
+      - id: 2
+        tipo: pregunta
+        pregunta: ¿Calcio total elevado según especie?
+        opciones:
+          - afirmativo: 3
+          - negativo: 8
+      - id: 3
+        tipo: acción
+        acciones: Confirmar con calcio iónico (iCa), revisar anamnesis, fármacos, suplementos
+        siguiente: 4
+      - id: 4
+        tipo: pregunta
+        pregunta: ¿iCa elevado?
+        opciones:
+          - afirmativo: 5
+          - negativo: 7
+      - id: 5
+        tipo: diagnóstico
+        titulo: Hipercalcemia verdadera
+        acciones: HC, bioquímica, orina, PTH, PTHrP, 25(OH)D
+        fin: false
+      - id: 6
+        tipo: diagnóstico
+        titulo: Neoplasia, hipoadrenocorticismo, hiperparatiroidismo, intoxicación por vitamina D
+        acciones: Imagen, biopsia, tratamiento específico, dieta, fluidoterapia
+        fin: true
+      - id: 7
+        tipo: diagnóstico
+        titulo: Hipercalcemia falsa (alcalosis, lipemia, hemoconcentración)
+        acciones: Reevaluar analítica, hidratar, repetir pruebas
+        fin: true
+      - id: 8
+        tipo: diagnóstico
+        titulo: Calcio normal
+        acciones: No se requiere intervención
+        fin: true
+      - id: 9
+        tipo: acción
+        acciones: Realizar análisis bioquímico para confirmar hipercalcemia
+        fin: true
+      - id: 10
+        tipo: nota
+        contenido: No se observan signos compatibles con hipercalcemia en este momento; seguir observando
+
+  - id: hiperglobulinemia
+    nombre: Hiperglobulinemia
+    pagina: 217
+    tipoSintoma: visual
+    nivelUsuario: familiar
+    especie: perro_gato
+    esquema:
+      - id: 0
+        tipo: pregunta
+        pregunta: ¿El animal presenta fatiga crónica, pérdida de peso o fiebre persistente?
+        opciones:
+          - afirmativo: 1
+          - negativo: 10
+      - id: 1
+        tipo: acción
+        acciones: HC, bioquímica, análisis de orina, electroforesis de suero
+        siguiente: 2
+      - id: 2
+        tipo: pregunta
+        pregunta: ¿La electroforesis muestra gammapatía policlonal o monoclonal?
+        opciones:
+          Policlonal: 3
+          Monoclonal: 5
+      - id: 3
+        tipo: pregunta
+        pregunta: ¿Se sospecha una causa infecciosa?
+        opciones:
+          - afirmativo: 4
+          - negativo: 6
+      - id: 4
+        tipo: diagnóstico
+        titulo: Enfermedad infecciosa (Leishmania, PIF, Ehrlichia, hongos)
+        acciones: Pruebas según exposición geográfica, serología, PCR
+        fin: true
+      - id: 5
+        tipo: diagnóstico
+        titulo: Gammapatía monoclonal (mieloma, linfoma)
+        acciones: Citología, hemograma, citometría de flujo, biopsia de médula ósea
+        fin: true
+      - id: 6
+        tipo: diagnóstico
+        titulo: Enfermedad inflamatoria crónica no infecciosa
+        acciones: Diagnóstico por exclusión, imagen, biopsia, tratamiento inmunosupresor
+        fin: true
+      - id: 10
+        tipo: nota
+        contenido: No se observan signos compatibles con hiperglobulinemia en este momento; continuar observación si aparecen síntomas crónicos o pérdida de peso
+
+  - id: hiperglucemia
+    nombre: Hiperglucemia
+    pagina: 222
+    tipoSintoma: visual
+    nivelUsuario: familiar
+    especie: perro_gato
+    esquema:
+      - id: 0
+        tipo: pregunta
+        pregunta: ¿El animal presenta aumento de sed, orina abundante, pérdida de peso o aliento con olor dulce (similar a frutas o acetona)?
+        opciones:
+          - afirmativo: 1
+          - negativo: 11
+      - id: 1
+        tipo: acción
+        acciones: En base a los síntomas observados, se recomienda acudir a la clínica para realizar un análisis de glucosa en sangre.
+        siguiente: 2
+      - id: 2
+        tipo: pregunta
+        pregunta: ¿Glucosa >117 mg/dl en perros o >130 mg/dl en gatos?
+        opciones:
+          - afirmativo: 3
+          - negativo: 10
+      - id: 3
+        tipo: diagnóstico
+        titulo: Confirmar con medición repetida y sin estrés
+        acciones: Repetir glucosa, medir fructosamina, revisar historia y medicación
+        fin: false
+      - id: 4
+        tipo: pregunta
+        pregunta: ¿Glucosa >198 mg/dl en perro o >270 mg/dl en gato?
+        opciones:
+          - afirmativo: 5
+          - negativo: 7
+      - id: 5
+        tipo: diagnóstico
+        titulo: Sospecha de diabetes mellitus
+        acciones: Medir cuerpos cetónicos, osmolaridad, iniciar fluidoterapia e insulina
+        fin: true
+      - id: 6
+        tipo: diagnóstico
+        titulo: Cetoacidosis diabética o síndrome hiperglucémico hiperosmolar
+        acciones: Confirmar cuerpos cetónicos, acidosis, ajustar manejo intensivo
+        fin: true
+      - id: 7
+        tipo: diagnóstico
+        titulo: Hiperglucemia por estrés o iatrogénica
+        acciones: Considerar corticoterapia, estrógenos, nutrición parenteral, reevaluar
+        fin: true
+      - id: 8
+        tipo: diagnóstico
+        titulo: Enfermedades endocrinas asociadas (HAC, hipersomatotropismo)
+        acciones: Pruebas específicas, IGF-1, ACTH, imagen
+        fin: true
+      - id: 9
+        tipo: diagnóstico
+        titulo: Pancreatitis
+        acciones: fPLI/cPLI, imagen, tratamiento sintomático
+        fin: true
+      - id: 10
+        tipo: diagnóstico
+        titulo: Hiperglucemia prediabética
+        acciones: Control de dieta, pérdida de peso, seguimiento
+        fin: true
+      - id: 11
+        tipo: nota
+        contenido: Si en el futuro notas sed excesiva, pérdida de peso o aliento dulce, consulta al veterinario y pide un análisis de glucosa.
+
+  - id: hiperlipidemia
+    nombre: Hiperlipidemia
+    pagina: 229
+    tipoSintoma: visual
+    nivelUsuario: familiar
+    especie: perro_gato
+    esquema:
+      - id: 0
+        tipo: pregunta
+        pregunta: ¿Ha notado letargo, vómitos, pelaje más grasoso o el olor corporal de su mascota de repente se ha vuelto más fuerte de lo habitual?
+        opciones:
+          - afirmativo: 1
+          - negativo: 11
+      - id: 1
+        tipo: acción
+        acciones: Se recomienda acudir a la clínica para realizar un perfil lipídico en sangre (colesterol, triglicéridos) tras al menos 12 h de ayuno.
+        siguiente: 2
+      - id: 2
+        tipo: pregunta
+        pregunta: ¿Animal en ayunas durante al menos 12 h?
+        opciones:
+          - afirmativo: 3
+          - negativo: 6
+      - id: 3
+        tipo: pregunta
+        pregunta: ¿Persisten triglicéridos o colesterol altos?
+        opciones:
+          - afirmativo: 4
+          - negativo: 10
+      - id: 4
+        tipo: diagnóstico
+        titulo: Sospecha de hiperlipidemia secundaria
+        acciones: Evaluar hipotiroidismo, diabetes, pancreatitis, HAC, medicamentos
+        fin: false
+        siguiente: 5
+      - id: 5
+        tipo: pregunta
+        pregunta: ¿Resultados clínicos y analíticos normales?
+        opciones:
+          - afirmativo: 7
+          - negativo: 8
+      - id: 6
+        tipo: diagnóstico
+        titulo: Hiperlipidemia posprandial
+        acciones: Repetir muestra tras ayuno de 15 h
+        fin: true
+      - id: 7
+        tipo: diagnóstico
+        titulo: Hiperlipidemia primaria (Schnauzer miniatura, genética)
+        acciones: Control dietético, fibra, ácidos grasos omega-3
+        fin: true
+      - id: 8
+        tipo: diagnóstico
+        titulo: Hiperlipidemia secundaria confirmada
+        acciones: Tratar enfermedad subyacente
+        fin: true
+      - id: 9
+        tipo: diagnóstico
+        titulo: Pruebas complementarias requeridas
+        acciones: Ultracentrifugación, electroforesis, quilomicrones, imagen
+        fin: true
+      - id: 10
+        tipo: diagnóstico
+        titulo: Perfil lipídico normal
+        acciones: Sin intervención necesaria
+        fin: true
+      - id: 11
+        tipo: nota
+        contenido: No se observan signos compatibles con hiperlipidemia en este momento; seguir observación si aparece letargo, vómitos o cambios en el pelaje o el olor
+
+  - id: hipernatremia
+    nombre: Hipernatremia
+    pagina: 233
+    tipoSintoma: visual
+    nivelUsuario: familiar
+    especie: perro_gato
+    esquema:
+      - id: 0
+        tipo: pregunta
+        pregunta: ¿Ha notado sed excesiva junto con debilidad, pérdida de equilibrio o desorientación?
+        opciones:
+          - afirmativo: 1
+          - negativo: 11
+
+      - id: 1
+        tipo: acción
+        acciones: Se recomienda acudir a la clínica para realizar un análisis de sodio en sangre y evaluar el estado de hidratación. Pida medición de Na+ y densidad urinaria.
+        siguiente: 2
+
+      - id: 2
+        tipo: diagnóstico
+        titulo: Confirmar hipernatremia verdadera
+        acciones: Medir Na+ con potenciometría directa, descartar pseudohipernatremia
+        fin: false
+        siguiente: 3
+
+      - id: 3
+        tipo: pregunta
+        pregunta: ¿Estado hipovolémico, normovolémico o hipervolémico?
+        opciones:
+          Hipovolémico: 4
+          Normovolémico: 6
+          Hipervolémico: 8
+
+      - id: 4
+        tipo: diagnóstico
+        titulo: Pérdidas extrarrenales o renales
+        acciones: Evaluar vómitos, diarrea, diuresis posobstructiva, insuficiencia renal, pruebas gastrointestinales
+        fin: true
+
+      - id: 5
+        tipo: diagnóstico
+        titulo: Pérdida de agua por piel o tercer espacio
+        acciones: Considerar pancreatitis, peritonitis, quemaduras
+        fin: true
+
+      - id: 6
+        tipo: diagnóstico
+        titulo: Diabetes insípida o hipodipsia primaria
+        acciones: Evaluar poliuria/polidipsia, pruebas de concentración urinaria, resonancia magnética
+        fin: true
+
+      - id: 7
+        tipo: diagnóstico
+        titulo: Golpe de calor o ingesta de sal
+        acciones: Evaluar enemas, ingesta de sal, bicarbonato, nutrición parenteral
+        fin: true
+
+      - id: 8
+        tipo: diagnóstico
+        titulo: Hipernatremia iatrogénica
+        acciones: Suspender soluciones hipertónicas, aplicar fluidoterapia progresiva
+        fin: true
+
+      - id: 9
+        tipo: diagnóstico
+        titulo: Hipercortisolismo o hiperaldosteronismo
+        acciones: Pruebas hormonales, imagen adrenal, tratamiento específico
+        fin: true
+
+      - id: 11
+        tipo: nota
+        contenido: No se observan signos compatibles con hipernatremia en este momento; seguir observación si aparece sed excesiva, debilidad o desorientación.
+
+  - id: hiperpotasemia
+    nombre: Hiperpotasemia
+    pagina: 238
+    tipoSintoma: visual
+    nivelUsuario: familiar
+    especie: perro_gato
+    esquema:
+      - id: 0
+        tipo: pregunta
+        pregunta: ¿Ha notado letargo, pulso débil o ritmo cardíaco irregular en su mascota?
+        opciones:
+          - afirmativo: 1
+          - negativo: 10
+
+      - id: 1
+        tipo: acción
+        acciones: Se recomienda acudir urgentemente a la clínica para evaluación de potasio sérico y ECG. Informe al veterinario de los síntomas observados.
+        siguiente: 2
+
+      - id: 2
+        tipo: diagnóstico
+        titulo: Confirmar hiperpotasemia
+        acciones: Medir K+ sérico con hemograma fresco. Descartar pseudohiperpotasemia (hemólisis, EDTA, trombocitosis)
+        fin: false
+        siguiente: 3
+
+      - id: 3
+        tipo: pregunta
+        pregunta: ¿Hay alteraciones graves en el ECG (ondas T picudas, QRS ancho, bradicardia)?
+        opciones:
+          - afirmativo: 4
+          - negativo: 6
+
+      - id: 4
+        tipo: diagnóstico
+        titulo: Hiperpotasemia cardiotóxica
+        acciones: Administrar gluconato cálcico 10% (0,5–1,5 ml/kg IV lento con ECG). Corregir acidosis e hiperK.
+        fin: false
+        siguiente: 5
+
+      - id: 5
+        tipo: diagnóstico
+        titulo: Tratamiento de urgencia
+        acciones: Suero salino + glucosa + insulina, bicarbonato IV, β2-agonistas si es necesario. Monitorización constante.
+        fin: true
+
+      - id: 6
+        tipo: pregunta
+        pregunta: ¿Existen antecedentes de enfermedad renal, trauma o sospecha de Addison?
+        opciones:
+          - afirmativo: 7
+          - negativo: 8
+
+      - id: 7
+        tipo: diagnóstico
+        titulo: Hiperpotasemia secundaria
+        acciones: "Diagnóstico diferencial: enfermedad de Addison (ACTH), uroperitoneo (ecografía), fallo renal (urea, creatinina)"
+        fin: true
+
+      - id: 8
+        tipo: diagnóstico
+        titulo: Causas iatrogénicas o medicamentosas
+        acciones: "Revisar historia clínica: espironolactona, IECAs, AINES, nutrición parenteral, transfusiones"
+        fin: true
+
+      - id: 10
+        tipo: nota
+        contenido: No se observan signos compatibles con hiperpotasemia. Continúe observando y consulte si aparecen debilidad, arritmias o colapso repentino.
+  - id: hipertension_arterial
+    nombre: Hipertensión arterial
+    pagina: 243
+    tipoSintoma: visual
+    nivelUsuario: familiar
+    especie: perro_gato
+    esquema:
+      - id: 0
+        tipo: pregunta
+        pregunta: ¿Ha notado que su mascota muestra confusión, visión alterada o cambios repentinos en el comportamiento?
+        opciones:
+          - afirmativo: 1
+          - negativo: 10
+
+      - id: 1
+        tipo: pregunta
+        pregunta: ¿Cuál de estos signos ha notado?
+        opciones:
+          - Alteraciones en la vista (pupilas dilatadas, ceguera súbita): 2
+          - Comportamiento extraño (vocalización, agresividad, miedo): 2
+          - Debilidad, tambaleo o desmayos: 2
+          - Convulsiones o movimientos involuntarios: 2
+          - No estoy seguro, solo parecía "raro": 2
+
+      - id: 2
+        tipo: acción
+        acciones: Se recomienda acudir a la clínica para medición de la presión arterial y revisión ocular y neurológica. Informe al veterinario de los signos observados.
+        siguiente: 3
+
+      - id: 3
+        tipo: diagnóstico
+        titulo: Sospecha de hipertensión arterial
+        acciones: Confirmar con doppler u oscilométrico. Evaluar signos oculares (hemorragias, desprendimiento de retina).
+        fin: false
+        siguiente: 4
+
+      - id: 4
+        tipo: pregunta
+        pregunta: ¿Presión sistólica ≥160 mmHg confirmada en 2–3 mediciones?
+        opciones:
+          - afirmativo: 5
+          - negativo: 10
+
+      - id: 5
+        tipo: diagnóstico
+        titulo: Hipertensión arterial sostenida
+        acciones: "Evaluar daño en órganos diana: retina, riñón, SNC, corazón"
+        fin: false
+        siguiente: 6
+
+      - id: 6
+        tipo: pregunta
+        pregunta: ¿Hay antecedentes de enfermedad renal, endocrina o neurológica?
+        opciones:
+          - afirmativo: 7
+          - negativo: 9
+
+      - id: 7
+        tipo: diagnóstico
+        titulo: Hipertensión secundaria
+        acciones: "Pruebas: T4, ACTH, análisis renal, imagen abdominal/renal, ecocardiografía"
+        fin: true
+
+      - id: 8
+        tipo: diagnóstico
+        titulo: Hipertensión con afectación ocular o neurológica
+        acciones: "Manejo urgente: amlodipino (gato), IECA (perro), reposo, hospitalización si convulsiona"
+        fin: true
+
+      - id: 9
+        tipo: diagnóstico
+        titulo: Hipertensión idiopática (poco frecuente)
+        acciones: Monitorización a largo plazo, tratamiento antihipertensivo, control cada 3 meses
+        fin: true
+
+      - id: 10
+        tipo: nota
+        contenido: No se observan signos compatibles con hipertensión arterial. Continúe observando y consulte si aparecen cambios en el comportamiento o en la vista.
+  - id: hipertension_pulmonar
+    nombre: Hipertensión pulmonar
+    pagina: 248
+    tipoSintoma: visual
+    nivelUsuario: familiar
+    especie: perro_gato
+    esquema:
+      - id: 0
+        tipo: pregunta
+        pregunta: ¿Ha notado que su mascota se cansa más rápido, respira con dificultad o presenta tos seca frecuente?
+        opciones:
+          - afirmativo: 1
+          - negativo: 10
+
+      - id: 1
+        tipo: acción
+        acciones: Se recomienda acudir a consulta veterinaria para evaluación respiratoria, auscultación torácica, radiografías y ecocardiografía Doppler si está disponible.
+        siguiente: 2
+
+      - id: 2
+        tipo: diagnóstico
+        titulo: Sospecha de hipertensión pulmonar
+        acciones: Confirmar con ecocardiografía Doppler (gradiente TR > 3 m/s, estimación PAP > 30 mmHg)
+        fin: false
+        siguiente: 3
+
+      - id: 3
+        tipo: pregunta
+        pregunta: ¿Se observan signos de enfermedad cardiaca izquierda (dilatación aurícula izquierda, soplo mitral)?
+        opciones:
+          - afirmativo: 4
+          - negativo: 6
+
+      - id: 4
+        tipo: diagnóstico
+        titulo: Hipertensión pulmonar postcapilar
+        acciones: "Causada por enfermedad cardíaca izquierda. Tratar insuficiencia cardíaca: diuréticos, IECA, pimobendan."
+        fin: true
+
+      - id: 5
+        tipo: diagnóstico
+        titulo: Disfunción sistólica o diastólica
+        acciones: Ecocardiografía completa. Ajustar tratamiento específico cardíaco.
+        fin: true
+
+      - id: 6
+        tipo: pregunta
+        pregunta: ¿Presencia de enfermedad respiratoria o parásitos pulmonares?
+        opciones:
+          - afirmativo: 7
+          - negativo: 8
+
+      - id: 7
+        tipo: diagnóstico
+        titulo: Hipertensión pulmonar precapilar
+        acciones: Evaluar Dirofilaria, broncopatía crónica, embolia pulmonar, fibrosis intersticial. Tratar causa primaria.
+        fin: true
+
+      - id: 8
+        tipo: diagnóstico
+        titulo: Hipertensión pulmonar idiopática
+        acciones: Considerar sildenafil, oxigenoterapia, dieta baja en sodio, control periódico.
+        fin: true
+
+      - id: 10
+        tipo: nota
+        contenido: No se observan signos compatibles con hipertensión pulmonar. Continúe observando si aparece tos seca, disnea o intolerancia al ejercicio.
+  - id: 45
+    nombre: Hipoalbuminemia
+    pagina: 254
+    tipoSintoma: analitico
+    nivelUsuario: técnico
+    especie: perro_gato
+    esquema:
+      - id: 0
+        tipo: pregunta
+        pregunta: ¿La hipoalbuminemia es leve (>2 g/dL)?
+        opciones:
+          - afirmativo: 1
+          - negativo: 2
+
+      - id: 1
+        tipo: diagnóstico
+        titulo: Hipoalbuminemia leve, probablemente no significativa
+        acciones:
+          - Valorar causas no patológicas (hidratación, variabilidad individual)
+          - Monitorizar evolución
+        fin: true
+
+      - id: 2
+        tipo: pregunta
+        pregunta: ¿Hay proteinuria?
+        opciones:
+          - afirmativo: 3
+          - negativo: 5
+
+      - id: 3
+        tipo: pregunta
+        pregunta: ¿UPC > 2?
+        opciones:
+          - afirmativo: 4
+          - negativo: 9
+
+      - id: 4
+        tipo: diagnóstico
+        titulo: Glomerulopatía
+        acciones:
+          - Ecografía renal
+          - Biopsia renal (si procede)
+        fin: true
+
+      - id: 5
+        tipo: pregunta
+        pregunta: ¿Hay signos digestivos?
+        opciones:
+          - afirmativo: 6
+          - negativo: 7
+
+      - id: 6
+        tipo: diagnóstico
+        titulo: Enteropatía perdedora de proteínas (PLE)
+        acciones:
+          - Ecografía abdominal
+          - Análisis de heces
+          - Dieta de exclusión
+        fin: true
+
+      - id: 7
+        tipo: pregunta
+        pregunta: ¿Hay ascitis con baja gravedad específica?
+        opciones:
+          - afirmativo: 8
+          - negativo: 10
+
+      - id: 8
+        tipo: diagnóstico
+        titulo: Hipoalbuminemia con derrame por disminución de presión oncótica
+        acciones:
+          - Analítica completa
+          - Valorar causas hepáticas, gastrointestinales o renales
+        fin: true
+
+      - id: 9
+        tipo: diagnóstico
+        titulo: Proteinuria tubular o mixta
+        acciones:
+          - Identificar causa subyacente
+        fin: true
+
+      - id: 10
+        tipo: pregunta
+        pregunta: ¿Hay hipoalbuminemia + insuficiencia hepática?
+        opciones:
+          - afirmativo: 11
+          - negativo: 12
+
+      - id: 11
+        tipo: diagnóstico
+        titulo: Hepatopatía (ej. cirrosis)
+        acciones:
+          - Enzimas hepáticas
+          - Ácidos biliares
+          - Ecografía hepática
+        fin: true
+
+      - id: 12
+        tipo: diagnóstico
+        titulo: Otras causas menos comunes (quemaduras, sepsis, etc.)
+        acciones:
+          - Historia clínica completa
+          - Repetir análisis si es necesario
+        fin: true
+  - id: 46
+    nombre: Hipocalcemia
+    pagina: 259
+    tipoSintoma: analitico
+    nivelUsuario: técnico
+    especie: perro_gato
+    esquema:
+      - id: 0
+        tipo: pregunta
+        pregunta: ¿La hipocalcemia es leve y asintomática?
+        opciones:
+          - afirmativo: 1
+          - negativo: 2
+
+      - id: 1
+        tipo: diagnóstico
+        titulo: Hipocalcemia leve, posiblemente transitoria o secundaria
+        acciones:
+          - Monitorizar niveles de calcio
+          - Investigar causas subyacentes si persiste
+        fin: true
+
+      - id: 2
+        tipo: pregunta
+        pregunta: ¿Hay signos neuromusculares (temblores, fasciculaciones, convulsiones)?
+        opciones:
+          - afirmativo: 3
+          - negativo: 4
+
+      - id: 3
+        tipo: diagnóstico
+        titulo: Hipocalcemia sintomática
+        acciones:
+          - Administrar calcio intravenoso
+          - Hospitalización y monitorización ECG
+        fin: true
+
+      - id: 4
+        tipo: pregunta
+        pregunta: ¿El paciente es un cachorro?
+        opciones:
+          - afirmativo: 5
+          - negativo: 6
+
+      - id: 5
+        tipo: diagnóstico
+        titulo: Hipocalcemia juvenil (hipoparatiroidismo congénito, malabsorción)
+        acciones:
+          - Evaluar niveles de PTH
+          - Evaluar función renal y digestiva
+        fin: true
+
+      - id: 6
+        tipo: pregunta
+        pregunta: ¿Hay signos gastrointestinales o pancreatitis?
+        opciones:
+          - afirmativo: 7
+          - negativo: 8
+
+      - id: 7
+        tipo: diagnóstico
+        titulo: Hipocalcemia secundaria a pancreatitis o enteropatía
+        acciones:
+          - Tratar enfermedad primaria
+          - Soporte electrolítico
+        fin: true
+
+      - id: 8
+        tipo: pregunta
+        pregunta: ¿Hay hipoproteinemia?
+        opciones:
+          - afirmativo: 9
+          - negativo: 10
+
+      - id: 9
+        tipo: diagnóstico
+        titulo: Hipocalcemia secundaria a hipoalbuminemia
+        acciones:
+          - Corregir la causa de la hipoalbuminemia
+        fin: true
+
+      - id: 10
+        tipo: pregunta
+        pregunta: ¿Calcio ionizado bajo?
+        opciones:
+          - afirmativo: 11
+          - negativo: 12
+
+      - id: 11
+        tipo: diagnóstico
+        titulo: Hipocalcemia verdadera (calcio ionizado bajo)
+        acciones:
+          - Evaluar PTH, vitamina D, función renal
+        fin: true
+
+      - id: 12
+        tipo: diagnóstico
+        titulo: Hipocalcemia espuria
+        acciones:
+          - Calcular calcio corregido por albúmina
+        fin: true
+  - id: 47
+    nombre: Hipoglucemia
+    pagina: 264
+    tipoSintoma: analitico
+    nivelUsuario: técnico
+    especie: perro_gato
+    esquema:
+      - id: 0
+        tipo: pregunta
+        pregunta: ¿Glucosa < 60 mg/dL confirmada?
+        opciones:
+          - afirmativo: 1
+          - negativo: 2
+
+      - id: 1
+        tipo: pregunta
+        pregunta: ¿El paciente es cachorro?
+        opciones:
+          - afirmativo: 3
+          - negativo: 4
+
+      - id: 2
+        tipo: diagnóstico
+        titulo: No hay hipoglucemia verdadera
+        acciones:
+          - Verificar muestra (preanalítica)
+          - Repetir medición si hay duda
+        fin: true
+
+      - id: 3
+        tipo: diagnóstico
+        titulo: Hipoglucemia neonatal o juvenil
+        acciones:
+          - Evaluar parasitosis, desnutrición, enfermedad hepática congénita
+          - Glucosa IV si es necesario
+        fin: true
+
+      - id: 4
+        tipo: pregunta
+        pregunta: ¿Hay signos neurológicos (convulsiones, ataxia, debilidad)?
+        opciones:
+          - afirmativo: 5
+          - negativo: 6
+
+      - id: 5
+        tipo: acción
+        acciones:
+          - Administrar glucosa IV de inmediato
+          - Monitorizar respuesta
+        siguiente: 6
+
+      - id: 6
+        tipo: pregunta
+        pregunta: ¿El paciente es diabético y en tratamiento con insulina?
+        opciones:
+          - afirmativo: 7
+          - negativo: 8
+
+      - id: 7
+        tipo: diagnóstico
+        titulo: Sobredosificación de insulina
+        acciones:
+          - Ajustar dosis
+          - Reevaluar protocolo de administración
+        fin: true
+
+      - id: 8
+        tipo: pregunta
+        pregunta: ¿Hay signos de sepsis, enfermedad hepática o neoplasia?
+        opciones:
+          - afirmativo: 9
+          - negativo: 10
+
+      - id: 9
+        tipo: diagnóstico
+        titulo: Hipoglucemia secundaria a enfermedad sistémica
+        acciones:
+          - Diagnóstico y tratamiento de la causa primaria
+        fin: true
+
+      - id: 10
+        tipo: pregunta
+        pregunta: ¿Insulinoma u otro tumor secreto de insulina sospechado?
+        opciones:
+          - afirmativo: 11
+          - negativo: 12
+
+      - id: 11
+        tipo: diagnóstico
+        titulo: Posible insulinoma
+        acciones:
+          - Determinar insulina sérica
+          - Diagnóstico por imagen (ecografía, TC)
+        fin: true
+
+      - id: 12
+        tipo: diagnóstico
+        titulo: Hipoglucemia idiopática o transitoria
+        acciones:
+          - Monitorización y repetición de pruebas
+        fin: true
+  - id: 48
+    nombre: Hiponatremia
+    pagina: 269
+    tipoSintoma: analitico
+    nivelUsuario: técnico
+    especie: perro_gato
+    esquema:
+      - id: 0
+        tipo: pregunta
+        pregunta: ¿Hiponatremia confirmada (<135 mEq/L)?
+        opciones:
+          - afirmativo: 1
+          - negativo: 11
+
+      - id: 1
+        tipo: pregunta
+        pregunta: ¿Hiperosmolaridad plasmática?
+        opciones:
+          - afirmativo: 2
+          - negativo: 3
+
+      - id: 2
+        tipo: diagnóstico
+        titulo: Hiponatremia dilucional (hiperglucemia, manitol, etc.)
+        acciones:
+          - Corregir causa subyacente (glucosa, solutos osmóticos)
+        fin: true
+
+      - id: 3
+        tipo: pregunta
+        pregunta: ¿Isostenuria (densidad urinaria 1.008–1.012)?
+        opciones:
+          - afirmativo: 4
+          - negativo: 5
+
+      - id: 4
+        tipo: diagnóstico
+        titulo: Sospecha de hipoadrenocorticismo o insuficiencia renal
+        acciones:
+          - Pruebas hormonales (ACTH, cortisol)
+          - Función renal (urea, creatinina)
+        fin: true
+
+      - id: 5
+        tipo: pregunta
+        pregunta: ¿Densidad urinaria > 1.030?
+        opciones:
+          - afirmativo: 6
+          - negativo: 7
+
+      - id: 6
+        tipo: diagnóstico
+        titulo: Pérdidas extrarrenales con hipovolemia (vómitos, diarrea)
+        acciones:
+          - Corregir deshidratación
+          - Fluidoterapia isotónica
+        fin: true
+
+      - id: 7
+        tipo: pregunta
+        pregunta: ¿Densidad urinaria < 1.020?
+        opciones:
+          - afirmativo: 8
+          - negativo: 9
+
+      - id: 8
+        tipo: diagnóstico
+        titulo: Pérdida renal de sodio (diuréticos, nefropatía)
+        acciones:
+          - Suspender fármacos
+          - Evaluar función renal
+        fin: true
+
+      - id: 9
+        tipo: diagnóstico
+        titulo: SIADH (síndrome de secreción inadecuada de ADH)
+        acciones:
+          - Evaluar causas neurológicas, neoplasias o pulmonares
+          - Restricción hídrica controlada
+        fin: true
+
+      - id: 10
+        tipo: diagnóstico
+        titulo: Hiponatremia de causa no determinada
+        acciones:
+          - Monitoreo
+          - Repetir pruebas y explorar causas raras
+        fin: true
+
+      - id: 11
+        tipo: diagnóstico
+        titulo: Sodio normal, no hay hiponatremia
+        acciones:
+          - Revisar preanalítica o hemólisis
+        fin: true
+  - id: 49
+    nombre: Hipopotasemia
+    pagina: 274
+    tipoSintoma: analitico
+    nivelUsuario: técnico
+    especie: perro_gato
+    esquema:
+      - id: 0
+        tipo: pregunta
+        pregunta: ¿Hipopotasemia confirmada (<3.5 mEq/L)?
+        opciones:
+          - afirmativo: 1
+          - negativo: 10
+
+      - id: 1
+        tipo: pregunta
+        pregunta: ¿El paciente está recibiendo tratamiento con diuréticos o insulina?
+        opciones:
+          - afirmativo: 2
+          - negativo: 3
+
+      - id: 2
+        tipo: diagnóstico
+        titulo: Hipopotasemia iatrogénica (fármacos)
+        acciones:
+          - Revisar pauta de insulina o diuréticos
+          - Considerar suplementos de potasio
+        fin: true
+
+      - id: 3
+        tipo: pregunta
+        pregunta: ¿Hay vómitos o diarrea?
+        opciones:
+          - afirmativo: 4
+          - negativo: 5
+
+      - id: 4
+        tipo: diagnóstico
+        titulo: Pérdida gastrointestinal de potasio
+        acciones:
+          - Tratar la causa primaria
+          - Reposición electrolítica
+        fin: true
+
+      - id: 5
+        tipo: pregunta
+        pregunta: ¿Hay poliuria o enfermedad renal?
+        opciones:
+          - afirmativo: 6
+          - negativo: 7
+
+      - id: 6
+        tipo: diagnóstico
+        titulo: Pérdida renal de potasio
+        acciones:
+          - Evaluar función renal
+          - Ajustar fluidoterapia
+        fin: true
+
+      - id: 7
+        tipo: pregunta
+        pregunta: ¿El paciente es diabético mal controlado?
+        opciones:
+          - afirmativo: 8
+          - negativo: 9
+
+      - id: 8
+        tipo: diagnóstico
+        titulo: Redistribución intracelular por hiperglucemia
+        acciones:
+          - Corregir glucemia
+          - Suplementar potasio si necesario
+        fin: true
+
+      - id: 9
+        tipo: diagnóstico
+        titulo: Otras causas (hiperaldosteronismo, Cushing, acidosis tubular)
+        acciones:
+          - Diagnóstico diferencial
+          - Pruebas endocrinas y bioquímicas avanzadas
+        fin: true
+
+      - id: 10
+        tipo: diagnóstico
+        titulo: Potasio normal, no hay hipopotasemia
+        acciones:
+          - Revisar valores de referencia
+          - Confirmar con nueva muestra si procede
+        fin: true
+
+  - id: icterica
+    nombre: Ictérica
+    pagina: 280
+    tipoSintoma: visual
+    nivelUsuario: familiar
+    especie: perro_gato
+    esquema:
+      - id: 0
+        tipo: pregunta
+        pregunta: ¿Mucosas oculares o gingivales amarillas?
+        opciones:
+          - afirmativo: 1
+          - negativo: 10
+
+      - id: 1
+        tipo: pregunta
+        pregunta: ¿Signos de anemia (palidez, letargo, taquicardia)?
+        opciones:
+          - afirmativo: 2
+          - negativo: 5
+
+      - id: 2
+        tipo: diagnóstico
+        titulo: Sospecha de ictericia prehepática (hemólisis)
+        acciones:
+          - Realizar HC, frotis sanguíneo
+          - Test de Coombs, evaluación de parásitos hemáticos
+        siguiente: 3
+
+      - id: 3
+        tipo: pregunta
+        pregunta: ¿Confirmación de anemia hemolítica inmunomediada?
+        opciones:
+          - afirmativo: 4
+          - negativo: 11
+
+      - id: 4
+        tipo: diagnóstico
+        titulo: Anemia hemolítica inmunomediada
+        acciones:
+          - Iniciar tratamiento con prednisolona
+          - Seguimiento hematológico
+        fin: true
+
+      - id: 5
+        tipo: diagnóstico
+        titulo: Sospecha de ictericia hepática o poshepática
+        acciones:
+          - Realizar bioquímica hepática
+          - Ecografía abdominal
+          - Biopsia si es necesario
+        fin: true
+
+      - id: 10
+        tipo: diagnóstico
+        titulo: Mucosas normales
+        acciones:
+          - Reevaluar si aparece coloración amarilla posteriormente
+        fin: true
+
+      - id: 11
+        tipo: diagnóstico
+        titulo: Hemólisis no inmunomediada (p.ej. infecciones, tóxicos)
+        acciones:
+          - Investigar causas infecciosas (Babesia, Leptospira, etc.)
+          - Tratamiento según etiología
+        fin: true
+  - id: incontinencia_retencion_urinaria
+    nombre: Incontinencia y retención urinaria
+    pagina: 285
+    tipoSintoma: clínico
+    nivelUsuario: técnico
+    especie: perro_gato
+    esquema:
+      - id: 0
+        tipo: pregunta
+        pregunta: ¿Incontinencia urinaria o retención de orina?
+        opciones:
+          Incontinencia: 1
+          Retención: 6
+
+      - id: 1
+        tipo: acción
+        acciones:
+          - Realizar anamnesis precisa
+          - Exploración física
+          - HC, perfil bioquímico, análisis y cultivo de orina
+        siguiente: 2
+
+      - id: 2
+        tipo: pregunta
+        pregunta: ¿Examen neurológico normal?
+        opciones:
+          - afirmativo: 3
+          - negativo: 4
+
+      - id: 3
+        tipo: diagnóstico
+        titulo: Incompetencia del esfínter uretral
+        acciones:
+          - Confirmar con ecografía abdominal o TC
+          - Considerar agentes simpaticomiméticos o estrógenos
+        fin: true
+
+      - id: 4
+        tipo: pregunta
+        pregunta: ¿Signos de disfunción toracolumbar + vejiga tensa?
+        opciones:
+          - afirmativo: 5
+          - negativo: 10
+
+      - id: 5
+        tipo: diagnóstico
+        titulo: Vejiga de motoneurona superior / Retención neurogénica
+        acciones:
+          - Radiografías, TC o RM de columna
+          - Manejo con analgésicos y control de vaciado
+        fin: true
+
+      - id: 6
+        tipo: acción
+        acciones:
+          - Anamnesis y exploración física
+          - HC, perfil bioquímico, análisis y cultivo de orina
+        siguiente: 7
+
+      - id: 7
+        tipo: pregunta
+        pregunta: ¿Piuria o bacteriuria?
+        opciones:
+          - afirmativo: 8
+          - negativo: 9
+
+      - id: 8
+        tipo: diagnóstico
+        titulo: Infección de las vías urinarias
+        acciones:
+          - Confirmar con ecografía abdominal
+          - Tratamiento antibiótico específico
+        fin: true
+
+      - id: 9
+        tipo: pregunta
+        pregunta: ¿Ecografía abdominal o TC normales?
+        opciones:
+          - afirmativo: 11
+          - negativo: 12
+
+      - id: 10
+        tipo: diagnóstico
+        titulo: Vejiga de motoneurona inferior / Incontinencia neurogénica
+        acciones:
+          - Vejiga flácida, vaciado fácil
+          - Radiografías normales
+          - Confirmar con TC o RM
+        fin: true
+
+      - id: 11
+        tipo: diagnóstico
+        titulo: Disfunción del músculo detrusor
+        acciones:
+          - Aumento de la contracción del detrusor
+          - Vaciado manual
+          - Evaluar esfínteres (interno/externo)
+        fin: true
+
+      - id: 12
+        tipo: diagnóstico
+        titulo: Causas obstructivas estructurales
+        acciones:
+          - Urolitos
+          - Anomalías anatómicas (uréter ectópico, hipoplasia uretral)
+          - Pólipos, neoplasias
+          - Enfermedad prostática
+          - Tratamiento específico según diagnóstico
+        fin: true
+
+  - id: melena
+    nombre: Melena
+    pagina: 315
+    tipoSintoma: visual
+    nivelUsuario: familiar
+    especie: perro_gato
+    esquema:
+      - id: 1
+        tipo: pregunta
+        pregunta: ¿Heces negras, alquitranadas, con olor metálico?
+        opciones:
+          - afirmativo: 2
+          - negativo: 10
+
+      - id: 2
+        tipo: diagnóstico
+        titulo: Sospecha de sangrado digestivo alto
+        acciones:
+          - Anamnesis completa
+          - Revisión de medicamentos
+          - Iniciar tratamiento con inhibidor de bomba de protones (IBP)
+          - Imagen digestiva si necesaria
+        siguiente: 3
+
+      - id: 3
+        tipo: pregunta
+        pregunta: ¿Hemorragia activa o recurrente?
+        opciones:
+          - afirmativo: 4
+          - negativo: 6
+
+      - id: 4
+        tipo: diagnóstico
+        titulo: Úlceras gástricas o duodenales
+        acciones:
+          - Endoscopia y biopsia
+          - Tratamiento con omeprazol
+          - Dieta digestiva
+        fin: true
+
+      - id: 5
+        tipo: diagnóstico
+        titulo: Neoplasias digestivas altas
+        acciones:
+          - Imagen diagnóstica (Rx, ecografía)
+          - Biopsia si viable
+          - Tratamiento oncológico
+        fin: true
+
+      - id: 6
+        tipo: diagnóstico
+        titulo: Infección o inflamación digestiva
+        acciones:
+          - Dieta de exclusión
+          - Antibióticos si es necesario
+          - Seguimiento clínico
+        fin: true
+
+      - id: 10
+        tipo: diagnóstico
+        titulo: Color fecal normal
+        acciones:
+          - No se requiere intervención
+        fin: true
+
+  - id: oliguria_anuria
+    nombre: Oliguria / Anuria
+    pagina: 320
+    tipoSintoma: visual
+    nivelUsuario: familiar
+    especie: perro_gato
+    esquema:
+      - id: 0
+        tipo: pregunta
+        pregunta: ¿Ha notado que su mascota no ha orinado en más de 12 horas o lo intenta sin éxito?
+        opciones:
+          - afirmativo: 10
+          - negativo: 99
+
+      - id: 10
+        tipo: acción
+        acciones:
+          - Confirmar ausencia de micción
+          - Evaluar signos de obstrucción o retención
+          - Iniciar diagnóstico técnico (eco, PA, análisis de orina)
+        siguiente: 11
+
+      - id: 11
+        tipo: pregunta
+        pregunta: ¿Estasis en el tracto urinario?
+        opciones:
+          - afirmativo: 12
+          - negativo: 16
+
+      - id: 12
+        tipo: diagnóstico
+        titulo: Obstrucción del tracto urinario
+        acciones:
+          - Identificar causa (urolitos, masa, coágulos)
+          - Tratar médicamente o quirúrgicamente
+        siguiente: 13
+
+      - id: 13
+        tipo: pregunta
+        pregunta: ¿Se produce orina tras resolución de la obstrucción?
+        opciones:
+          - afirmativo: 14
+          - negativo: 20
+
+      - id: 14
+        tipo: diagnóstico
+        titulo: Reversión de la LRA oligúrica
+        acciones:
+          - Control de diuresis y función renal
+        fin: true
+
+      - id: 16
+        tipo: pregunta
+        pregunta: ¿Signos de uroabdomen o ruptura del tracto?
+        opciones:
+          - afirmativo: 17
+          - negativo: 18
+
+      - id: 17
+        tipo: diagnóstico
+        titulo: Rotura del tracto urinario
+        acciones:
+          - Confirmar con imagen
+          - Tratar quirúrgicamente
+        fin: true
+
+      - id: 18
+        tipo: pregunta
+        pregunta: ¿El paciente está deshidratado?
+        opciones:
+          - afirmativo: 19
+          - negativo: 21
+
+      - id: 19
+        tipo: acción
+        acciones:
+          - Rehidratar durante 6 h para expansión de volumen
+        siguiente: 21
+
+      - id: 21
+        tipo: pregunta
+        pregunta: ¿Se produce orina después de la expansión?
+        opciones:
+          - afirmativo: 22
+          - negativo: 20
+
+      - id: 20
+        tipo: diagnóstico
+        titulo: LRA intrínseca
+        acciones:
+          - Vigilar diuresis
+          - Diuréticos si indicado
+        siguiente: 23
+
+      - id: 22
+        tipo: diagnóstico
+        titulo: LRA que responde al volumen
+        acciones:
+          - Continuar tratamiento y monitorización
+        fin: true
+
+      - id: 23
+        tipo: pregunta
+        pregunta: ¿Persiste la oliguria con azoemia?
+        opciones:
+          - afirmativo: 24
+          - negativo: 25
+
+      - id: 24
+        tipo: diagnóstico
+        titulo: Requiere terapia de sustitución renal
+        acciones:
+          - Hemodiálisis o diálisis peritoneal
+        fin: true
+
+      - id: 25
+        tipo: diagnóstico
+        titulo: LRA controlada
+        acciones:
+          - Seguimiento y soporte
+        fin: true
+
+      - id: 99
+        tipo: diagnóstico
+        titulo: Eliminación aparentemente normal
+        acciones:
+          - Continúe observando la frecuencia y el volumen de la micción
+          - Si nota esfuerzo sin resultado, sangre o signos de dolor, acuda a consulta veterinaria
+          - Puede tomar nota de los horarios o grabar un vídeo si los signos reaparecen
+        fin: true
+
+  - id: paraplejia_tetraplejia
+    nombre: Paraplejia / Tetraplejia
+    pagina: 325
+    tipoSintoma: visual
+    nivelUsuario: familiar
+    especie: perro
+    esquema:
+      - id: 0
+        tipo: pregunta
+        pregunta: ¿Ha notado que su perro no puede mover una o más extremidades?
+        opciones:
+          - afirmativo: 1
+          - negativo: 99
+
+      - id: 1
+        tipo: pregunta
+        pregunta: ¿Afecta solo a las patas traseras?
+        opciones:
+          - afirmativo: 2
+          - negativo: 10
+
+      - id: 2
+        tipo: diagnóstico
+        titulo: Sospecha de paraplejia
+        acciones:
+          - Evaluar reflejos espinales y dolor profundo
+          - Iniciar exploración neurológica y pruebas de imagen
+        siguiente: 3
+
+      - id: 3
+        tipo: pregunta
+        pregunta: ¿Hay reflejos normales o aumentados en extremidades posteriores?
+        opciones:
+          - afirmativo: 4
+          - negativo: 5
+
+      - id: 4
+        tipo: diagnóstico
+        titulo: Lesión T3–L3 (paraplejia con tono espinal)
+        acciones:
+          - TC o RM para detectar hernia discal, trauma o neoplasia
+          - Considerar cirugía si compresión espinal
+        fin: true
+
+      - id: 5
+        tipo: diagnóstico
+        titulo: Lesión L4–S3 (paraplejia flácida)
+        acciones:
+          - RM o mielografía para descartar compresión o inflamación
+          - Considerar fisioterapia, tratamiento médico
+        fin: true
+
+      - id: 10
+        tipo: diagnóstico
+        titulo: Sospecha de tetraplejia
+        acciones:
+          - Evaluar segmentos cervicales C1–C5 o C6–T2
+          - Revisar reflejos espinales en todas las extremidades
+        siguiente: 11
+
+      - id: 11
+        tipo: diagnóstico
+        titulo: Lesión cervical o sistema neuromuscular
+        acciones:
+          - RM de columna cervical, pruebas LCR, electromiografía
+          - Diagnóstico diferencial: mielitis, hernia, miopatía, neoplasia
+        fin: true
+
+      - id: 99
+        tipo: diagnóstico
+        titulo: Marcha aparentemente normal
+        acciones:
+          - Vigile si hay cambios en la forma de caminar, tropiezos o rigidez
+          - Si vuelve a notar debilidad o falta de coordinación, acuda a consulta veterinaria
+          - Puede grabar un vídeo para su veterinario si los síntomas son intermitentes
+        fin: true
+
+  - id: intolerancia_ejercicio_perros
+    nombre: Intolerancia al ejercicio (perros)
+    pagina: 290
+    tipoSintoma: visual
+    nivelUsuario: familiar
+    especie: perro
+    esquema:
+      - id: 0
+        tipo: pregunta
+        pregunta: ¿Has notado que tu perro se cansa más rápido o rechaza ejercicio habitual?
+        opciones:
+          - afirmativo: 1
+          - negativo: 20
+
+      - id: 1
+        tipo: pregunta
+        pregunta: ¿Hay jadeo excesivo, postura baja o fatiga con calor?
+        opciones:
+          - afirmativo: 2
+          - negativo: 3
+
+      - id: 2
+        tipo: diagnóstico
+        titulo: Posible fatiga por calor, desentrenamiento u obesidad
+        acciones:
+          - Controlar peso
+          - Evitar ejercicio en horas calurosas
+          - Introducir rutina de ejercicio progresiva
+        fin: true
+
+      - id: 3
+        tipo: acción
+        acciones:
+          - Evaluar frecuencia cardíaca en reposo
+          - Observar mucosas (pálidas, congestivas)
+          - Observar patrón respiratorio
+        siguiente: 4
+
+      - id: 4
+        tipo: pregunta
+        pregunta: ¿Alguna anormalidad visible en respiración o mucosas?
+        opciones:
+          - afirmativo: 5
+          - negativo: 6
+
+      - id: 5
+        tipo: acción
+        acciones:
+          - Se recomienda acudir al veterinario para examen físico completo
+          - Preparar resumen de síntomas y duración
+        siguiente: 10
+
+      - id: 6
+        tipo: diagnóstico
+        titulo: Tolerancia baja pero sin signos de alarma
+        acciones:
+          - Observar evolución
+          - Reevaluar si empeora
+        fin: true
+
+      ### 🔽 Transición a técnico-lогика
+
+      - id: 10
+        tipo: pregunta
+        pregunta: ¿Hay dificultad respiratoria incluso en reposo?
+        opciones:
+          - afirmativo: 11
+          - negativo: 12
+
+      - id: 11
+        tipo: diagnóstico
+        titulo: Trastorno cardiorrespiratorio
+        acciones:
+          - Rayos X, ecocardiografía, ECG
+          - Evaluar colapso traqueal, EPOC, DCM
+        fin: true
+
+      - id: 12
+        tipo: pregunta
+        pregunta: ¿Hay debilidad neuromuscular o marcha anormal?
+        opciones:
+          - afirmativo: 13
+          - negativo: 14
+
+      - id: 13
+        tipo: diagnóstico
+        titulo: Sospecha de trastorno neuromuscular
+        acciones:
+          - Examen neurológico
+          - CK, pruebas de conducción, biopsia muscular
+        fin: true
+
+      - id: 14
+        tipo: diagnóstico
+        titulo: Intolerancia inespecífica al ejercicio
+        acciones:
+          - Continuar evaluación clínica
+          - Pruebas metabólicas y hormonales si procede
+        fin: true
+
+      - id: 20
+        tipo: diagnóstico
+        titulo: Sin signos de intolerancia
+        acciones:
+          - Monitorizar como parte de rutina preventiva
+        fin: true
+  - id: leucocitosis
+    nombre: Leucocitosis
+    pagina: 295
+    tipoSintoma: analitico
+    nivelUsuario: técnico
+    especie: perro_gato
+    esquema:
+      - id: 0
+        tipo: acción
+        acciones:
+          - Confirmar leucocitosis en hemograma
+          - Evaluar frotis de sangre
+        siguiente: 1
+
+      - id: 1
+        tipo: pregunta
+        pregunta: ¿Qué tipo de leucocitos está elevado?
+        opciones:
+          Neutrófilos: 2
+          Linfocitos: 10
+          Eosinófilos: 20
+          Monocitos: 30
+          Basófilos: 31
+
+      ### NEUTROFILIA
+      - id: 2
+        tipo: pregunta
+        pregunta: ¿Desplazamiento a la izquierda o toxicidad?
+        opciones:
+          - afirmativo: 3
+          - negativo: 4
+
+      - id: 3
+        tipo: diagnóstico
+        titulo: Infección bacteriana, necrosis, neoplasia
+        acciones:
+          - Diagnóstico por imagen, cultivos, citología
+        fin: true
+
+      - id: 4
+        tipo: pregunta
+        pregunta: ¿Uso reciente de glucocorticoides o estrógenos?
+        opciones:
+          - afirmativo: 5
+          - negativo: 6
+
+      - id: 5
+        tipo: diagnóstico
+        titulo: Leucocitosis inducida por fármacos
+        acciones:
+          - Reevaluar dosis y necesidad
+        fin: true
+
+      - id: 6
+        tipo: pregunta
+        pregunta: ¿Hay signos de estrés, dolor o exposición térmica?
+        opciones:
+          - afirmativo: 7
+          - negativo: 8
+
+      - id: 7
+        tipo: diagnóstico
+        titulo: Leucocitosis por estrés o respuesta fisiológica
+        acciones:
+          - Reevaluar en condiciones basales
+        fin: true
+
+      - id: 8
+        tipo: diagnóstico
+        titulo: Neoplasia o inflamación crónica
+        acciones:
+          - Imagen, citología, histología, estudios específicos
+        fin: true
+
+      ### LINFOCITOSIS
+      - id: 10
+        tipo: pregunta
+        pregunta: ¿Linfocitosis leve, transitoria o en gatitos?
+        opciones:
+          - afirmativo: 11
+          - negativo: 12
+
+      - id: 11
+        tipo: diagnóstico
+        titulo: Respuesta fisiológica o catecolaminérgica
+        acciones:
+          - Reevaluar tras retiro de estímulos
+        fin: true
+
+      - id: 12
+        tipo: pregunta
+        pregunta: ¿Compatibilidad con hipoadrenocorticismo?
+        opciones:
+          - afirmativo: 13
+          - negativo: 14
+
+      - id: 13
+        tipo: diagnóstico
+        titulo: Hipoadrenocorticismo
+        acciones:
+          - Prueba de estimulación con ACTH
+        fin: true
+
+      - id: 14
+        tipo: diagnóstico
+        titulo: Neoplasia linfoide (leucemia, linfoma)
+        acciones:
+          - Citometría de flujo, PARR, biopsia
+        fin: true
+
+      ### EOSINOFILIA
+      - id: 20
+        tipo: pregunta
+        pregunta: ¿Signos respiratorios, dérmicos o GI?
+        opciones:
+          - afirmativo: 21
+          - negativo: 25
+
+      - id: 21
+        tipo: diagnóstico
+        titulo: Hipersensibilidad o dermatitis atópica
+        acciones:
+          - Nueva dieta, evaluación alérgenos
+        fin: true
+
+      - id: 25
+        tipo: diagnóstico
+        titulo: Parasitosis, neoplasia eosinofílica, hipoadrenocorticismo
+        acciones:
+          - Coproparasitario, imagen, pruebas endocrinas
+        fin: true
+
+      ### MONOCITOSIS
+      - id: 30
+        tipo: diagnóstico
+        titulo: Inflamación crónica o necrosis
+        acciones:
+          - Diagnóstico por imagen
+          - Considerar enfermedad granulomatosa o inmunomediada
+        fin: true
+
+      ### BASOFILIA
+      - id: 31
+        tipo: diagnóstico
+        titulo: Alergias severas, neoplasia o trastornos inmunitarios
+        acciones:
+          - Evaluar junto a eosinofilia y otros hallazgos
+        fin: true
+  - id: leucopenia
+    nombre: Leucopenia
+    pagina: 299
+    tipoSintoma: analitico
+    nivelUsuario: técnico
+    especie: perro_gato
+    esquema:
+      - id: 0
+        tipo: acción
+        acciones:
+          - Confirmar leucopenia en hemograma
+          - Evaluar fórmula leucocitaria (frotis)
+        siguiente: 1
+
+      - id: 1
+        tipo: pregunta
+        pregunta: ¿Neutropenia (< 3,000/μL)?
+        opciones:
+          - afirmativo: 2
+          - negativo: 10
+
+      ### NEUTROPENIA
+      - id: 2
+        tipo: pregunta
+        pregunta: ¿Hay fiebre o signos de infección?
+        opciones:
+          - afirmativo: 3
+          - negativo: 4
+
+      - id: 3
+        tipo: diagnóstico
+        titulo: Infección aguda con neutropenia severa
+        acciones:
+          - Hospitalización
+          - Cultivos y antibióticos de amplio espectro
+        fin: true
+
+      - id: 4
+        tipo: pregunta
+        pregunta: ¿Tratamiento previo con quimioterapia o fármacos mielotóxicos?
+        opciones:
+          - afirmativo: 5
+          - negativo: 6
+
+      - id: 5
+        tipo: diagnóstico
+        titulo: Neutropenia secundaria a tratamiento mielosupresor
+        acciones:
+          - Suspender fármaco
+          - Monitorización estrecha
+        fin: true
+
+      - id: 6
+        tipo: pregunta
+        pregunta: ¿Signos de enfermedad viral sistémica?
+        opciones:
+          - afirmativo: 7
+          - negativo: 8
+
+      - id: 7
+        tipo: diagnóstico
+        titulo: Neutropenia por infección viral (parvovirus, FeLV, etc.)
+        acciones:
+          - Pruebas virales
+          - Soporte y aislamiento si necesario
+        fin: true
+
+      - id: 8
+        tipo: diagnóstico
+        titulo: Fallo medular, enfermedad inmunomediada o idiopática
+        acciones:
+          - Biopsia de médula ósea
+          - Evaluación inmunitaria
+        fin: true
+
+      ### NO NEUTROPENIA — OTRAS FORMAS DE LEUCOPENIA
+      - id: 10
+        tipo: pregunta
+        pregunta: ¿Hay linfopenia aislada?
+        opciones:
+          - afirmativo: 11
+          - negativo: 13
+
+      - id: 11
+        tipo: diagnóstico
+        titulo: Linfopenia por estrés, corticoterapia o Cushing
+        acciones:
+          - Verificar historial médico
+          - Pruebas hormonales si procede
+        fin: true
+
+      - id: 13
+        tipo: pregunta
+        pregunta: ¿Pancitopenia (anemia, trombocitopenia, leucopenia)?
+        opciones:
+          - afirmativo: 14
+          - negativo: 15
+
+      - id: 14
+        tipo: diagnóstico
+        titulo: Aplasia medular o mielofibrosis
+        acciones:
+          - Biopsia de médula ósea
+          - Descartar infecciones crónicas o fármacos
+        fin: true
+
+      - id: 15
+        tipo: diagnóstico
+        titulo: Leucopenia leve sin causa aparente
+        acciones:
+          - Monitorización periódica
+          - Repetir hemograma en 2–4 semanas
+        fin: true
+  - id: linfadenomegalia_generalizada
+    nombre: Linfadenomegalia generalizada
+    pagina: 305
+    tipoSintoma: clínico
+    nivelUsuario: técnico
+    especie: perro_gato
+    esquema:
+      - id: 0
+        tipo: acción
+        acciones:
+          - Confirmar aumento de tamaño en >2 ganglios linfáticos no contiguos
+        siguiente: 1
+
+      - id: 1
+        tipo: pregunta
+        pregunta: ¿Inicio agudo?
+        opciones:
+          - afirmativo: 2
+          - negativo: 3
+
+      - id: 2
+        tipo: acción
+        acciones:
+          - Anamnesis: viajes, exposición a infecciones
+          - HC, bioquímica, electroforesis, análisis de orina
+        siguiente: 4
+
+      - id: 3
+        tipo: acción
+        acciones:
+          - Revisar edad, vacunación reciente, medicación
+          - Pruebas de FIV y FeLV en gatos
+        siguiente: 30
+
+      - id: 4
+        tipo: acción
+        acciones:
+          - AAF de ganglios periféricos
+        siguiente: 5
+
+      - id: 5
+        tipo: pregunta
+        pregunta: ¿Citología concluyente?
+        opciones:
+          - afirmativo: 6
+          - negativo: 20
+
+      - id: 6
+        tipo: pregunta
+        pregunta: ¿Qué tipo de célula predomina?
+        opciones:
+          Neutrófilos: 7
+          Macrófagos: 8
+          Neutrófilos y macrófagos: 9
+          Eosinófilos: 10
+          Células plasmáticas: 11
+          Linfocitos homogéneos: 12
+          Células no residentes: 13
+
+      - id: 7
+        tipo: diagnóstico
+        titulo: Proceso supurativo
+        acciones:
+          - Cultivo y antibiograma
+          - Antibiótico específico
+        fin: true
+
+      - id: 8
+        tipo: diagnóstico
+        titulo: Proceso granulomatoso
+        acciones:
+          - Cultivo y antibiograma
+          - Antibiótico o antifúngico
+        fin: true
+
+      - id: 9
+        tipo: diagnóstico
+        titulo: Proceso piogranulomatoso
+        acciones:
+          - Prueba para Leishmania (perros) o PIF (gatos)
+          - Tratamiento dirigido
+        fin: true
+
+      - id: 10
+        tipo: diagnóstico
+        titulo: Proceso alérgico o parasitario, mastocitosis
+        acciones:
+          - Pruebas específicas, citología, inmunosupresores si procede
+        fin: true
+
+      - id: 11
+        tipo: diagnóstico
+        titulo: Hiperplasia reactiva
+        acciones:
+          - Prueba serológica o PCR para enfermedades vectoriales
+          - Tratamiento específico
+        fin: true
+
+      - id: 12
+        tipo: diagnóstico
+        titulo: Trastorno linfoproliferativo
+        acciones:
+          - Estudio PARR o citometría de flujo
+          - Estadificación y quimioterapia
+        fin: true
+
+      - id: 13
+        tipo: diagnóstico
+        titulo: Cáncer metastásico
+        acciones:
+          - Estadificación
+          - Tratamiento tumoral específico
+        fin: true
+
+      - id: 20
+        tipo: diagnóstico
+        titulo: Citología no concluyente
+        acciones:
+          - Linfadenectomía para histología
+        fin: true
+
+      - id: 30
+        tipo: diagnóstico
+        titulo: Linfadenomegalia benigna (gatos jóvenes)
+        acciones:
+          - Regresión espontánea habitual
+          - Sin tratamiento necesario
+        fin: true
+  - id: masa_adrenal
+    nombre: Masa adrenal detectada en el diagnóstico por imagen
+    pagina: 309
+    tipoSintoma: analitico
+    nivelUsuario: técnico
+    especie: perro_gato
+    esquema:
+      - id: 0
+        tipo: acción
+        acciones:
+          - Confirmar presencia de masa suprarrenal en diagnóstico por imagen
+          - Medir presión arterial (PA)
+        siguiente: 1
+
+      - id: 1
+        tipo: pregunta
+        pregunta: ¿Sospecha clínica de hipersecreción hormonal?
+        opciones:
+          - afirmativo: 2
+          - negativo: 9
+
+      - id: 2
+        tipo: acción
+        acciones:
+          - Realizar pruebas endocrinas dirigidas según sospecha clínica
+        siguiente: 3
+
+      - id: 3
+        tipo: pregunta
+        pregunta: ¿Resultado positivo en alguna de las pruebas endocrinas?
+        opciones:
+          Cortisol (ACTH, test supresión): 5
+          Metanefrinas (plasma/orina): 6
+          Aldosterona/renina: 7
+          Esteroides sexuales (ACTH endógena): 8
+          Negativas todas: 4
+
+      - id: 4
+        tipo: diagnóstico
+        titulo: Masa hormonalmente silenciosa
+        acciones:
+          - Considerar biopsia con aguja fina guiada por ecografía
+          - Evaluar comportamiento y tamaño tumoral
+        siguiente: 10
+
+      - id: 5
+        tipo: diagnóstico
+        titulo: Masa secretora de cortisol (Cushing adrenal)
+        acciones:
+          - Diagnóstico por imagen ampliado
+          - Considerar trilostano, mitotano o cirugía
+        siguiente: 11
+
+      - id: 6
+        tipo: diagnóstico
+        titulo: Feocromocitoma
+        acciones:
+          - Confirmar por imagen
+          - Evaluar cirugía o tratamiento médico
+        siguiente: 11
+
+      - id: 7
+        tipo: diagnóstico
+        titulo: Masa secretora de aldosterona (Conn)
+        acciones:
+          - Considerar espironolactona y suplemento oral de potasio
+        siguiente: 11
+
+      - id: 8
+        tipo: diagnóstico
+        titulo: Masa secretora de esteroides sexuales
+        acciones:
+          - Sin tratamiento específico posible
+        siguiente: 11
+
+      - id: 9
+        tipo: diagnóstico
+        titulo: Masa no funcional (mielolipoma, quiste, hematoma)
+        acciones:
+          - No tratamiento o resección quirúrgica según caso
+        fin: true
+
+      - id: 10
+        tipo: acción
+        acciones:
+          - Biopsia con aguja fina
+          - Clasificación: origen cortical o medular
+        siguiente: 11
+
+      - id: 11
+        tipo: pregunta
+        pregunta: ¿Hay metástasis o bilateralidad?
+        opciones:
+          Bilateral sin metástasis: 12
+          Unilateral sin metástasis: 13
+          Inoperable o con metástasis: 14
+
+      - id: 12
+        tipo: diagnóstico
+        titulo: Masa adrenal bilateral
+        acciones:
+          - Adrenalectomía bilateral
+          - Suplementación vital con glucocorticoides y mineralocorticoides
+        fin: true
+
+      - id: 13
+        tipo: diagnóstico
+        titulo: Masa adrenal unilateral
+        acciones:
+          - Adrenalectomía simple
+        fin: true
+
+      - id: 14
+        tipo: diagnóstico
+        titulo: Masa inoperable o metastásica
+        acciones:
+          - Tratamiento médico paliativo
+          - Seguimiento clínico e imagenológico
+        fin: true
+
+  - id: perdida_peso
+    nombre: Pérdida de peso
+    pagina: 330
+    tipoSintoma: visual
+    nivelUsuario: familiar
+    especie: perro_gato
+    esquema:
+      - id: 1
+        tipo: pregunta
+        pregunta: ¿Hay pérdida de peso a pesar de apetito normal o aumentado?
+        opciones:
+          - afirmativo: 2
+          - negativo: 99
+
+      - id: 2
+        tipo: acción
+        acciones:
+          - Confirmar pérdida real
+          - Revisar historial dietético y peso corporal
+        siguiente: 3
+
+      - id: 3
+        tipo: pregunta
+        pregunta: ¿Hay signos de disfagia o regurgitación?
+        opciones:
+          - afirmativo: 4
+          - negativo: 5
+
+      - id: 4
+        tipo: diagnóstico
+        titulo: Disfagia o regurgitación
+        recomendaciones:
+          - Examen oral y neurológico
+          - Fluoroscopia, endoscopia
+          - Considerar alteraciones esofágicas
+        fin: true
+
+      - id: 5
+        tipo: pregunta
+        pregunta: ¿Hay signos digestivos o sistémicos?
+        opciones:
+          - afirmativo: 6
+          - negativo: 9
+
+      - id: 6
+        tipo: acción
+        acciones:
+          - Desparasitación
+          - Hemograma, bioquímica
+          - TLI, folato, cobalamina
+          - Evaluar función hepática y renal
+        siguiente: 7
+
+      - id: 7
+        tipo: pregunta
+        pregunta: ¿Hay sospecha de enfermedad endocrina?
+        opciones:
+          - afirmativo: 8
+          - negativo: 9
+
+      - id: 8
+        tipo: diagnóstico
+        titulo: Sospecha de enfermedad endocrina
+        recomendaciones:
+          - Considerar hipertiroidismo (gato), hipoadrenocorticismo (perro)
+          - Realizar T4 total, cortisol basal, test con ACTH
+        fin: true
+
+      - id: 9
+        tipo: diagnóstico
+        titulo: Enfermedad intestinal crónica
+        recomendaciones:
+          - Dieta de exclusión
+          - Biopsia intestinal
+          - Inmunosupresores si necesario
+        fin: true
+
+      - id: 99
+        tipo: diagnóstico
+        titulo: Peso aparentemente estable
+        acciones:
+          - Monitorización continua del peso y apetito
+          - Si observa pérdida progresiva, acuda a consulta veterinaria
+          - Puede pesar a su mascota semanalmente y registrar los valores
+        fin: true
+  - id: perdida_consciencia
+    nombre: Pérdida transitoria de la consciencia
+    pagina: 335
+    tipoSintoma: visual
+    nivelUsuario: familiar
+    especie: perro_gato
+    esquema:
+      - id: 0
+        tipo: pregunta
+        pregunta: ¿Ha perdido el conocimiento su mascota de forma breve y repentina, recuperándose sola?
+        opciones:
+          - afirmativo: 1
+          - negativo: 2
+
+      - id: 1
+        tipo: pregunta
+        pregunta: ¿El episodio fue de corta duración con recuperación completa espontánea?
+        opciones:
+          - afirmativo: 3
+          - negativo: 5
+
+      - id: 2
+        tipo: diagnóstico
+        titulo: No se confirma pérdida de consciencia
+        acciones:
+          - Vigile si hay nuevos episodios o comportamientos inusuales
+          - Registre duración, comportamiento y condiciones previas si ocurre de nuevo
+          - Consulte si se repite o empeora
+        fin: true
+
+      - id: 3
+        tipo: pregunta
+        pregunta: ¿Observó colapso, jadeo, soplo, respiración anormal o debilidad repentina?
+        opciones:
+          - afirmativo: 4
+          - negativo: 6
+
+      - id: 4
+        tipo: diagnóstico
+        titulo: Sospecha de síncope cardíaco
+        acciones:
+          - Se recomienda evaluación cardíaca: auscultación, ECG, ecocardiografía
+          - Registrar episodios y acudir a consulta prioritaria
+        fin: true
+
+      - id: 5
+        tipo: diagnóstico
+        titulo: Posible episodio neurológico (crisis epiléptica u otras causas)
+        acciones:
+          - Se recomienda consulta neurológica
+          - Considerar pruebas: bioquímica, imagen abdominal o cerebral
+        fin: true
+
+      - id: 6
+        tipo: diagnóstico
+        titulo: Posible síncope reflejo
+        acciones:
+          - Observar si ocurre tras emoción, estrés, alimentación o esfuerzo
+          - Educar al propietario, seguimiento sintomático
+          - Considerar evaluación cardíaca si episodios se repiten
+        fin: true
+
+  - id: petequias
+    nombre: Petequias
+    pagina: 340
+    tipoSintoma: visual
+    nivelUsuario: familiar
+    especie: perro_gato
+    esquema:
+      - id: 1
+        tipo: pregunta
+        pregunta: ¿Se observan puntos rojos o morados en piel o mucosas?
+        opciones:
+          - afirmativo: 2
+          - negativo: 6
+      - id: 2
+        tipo: diagnostico
+        titulo: Sospecha de trastorno hemostático
+        acciones: Revisión de medicamentos, antecedentes de sangrado, evaluación de mucosas
+        fin: false
+      - id: 3
+        tipo: diagnostico
+        titulo: Trombocitopenia o disfunción plaquetaria
+        acciones: Hemograma, frotis sanguíneo, PCR para enfermedades vectoriales
+        fin: true
+      - id: 4
+        tipo: diagnostico
+        titulo: Vasculitis, septicemia o enfermedades inmunomediadas
+        acciones: Bioquímica, coagulación, pruebas infecciosas, tratamiento inmunosupresor si indicado
+        fin: true
+      - id: 5
+        tipo: diagnostico
+        titulo: Coagulopatía secundaria
+        acciones: TTP, TP, pruebas hepáticas, vitamina K si sospecha de intoxicación
+        fin: true
+      - id: 6
+        tipo: diagnostico
+        titulo: Ausencia de petequias visibles
+        acciones: Observar evolución, revisar zonas de piel fina, reevaluar en 24-48 h
+        fin: true
+  - id: pigmenturia
+    nombre: Pigmenturia
+    pagina: 346
+    tipoSintoma: visual
+    nivelUsuario: familiar
+    especie: perro_gato
+    esquema:
+      - id: 1
+        tipo: pregunta
+        pregunta: ¿Color anormal en la orina (rojo, marrón, negro)?
+        opciones:
+          - afirmativo: 2
+          - negativo: 8
+      - id: 2
+        tipo: diagnostico
+        titulo: Confirmar si es sangre, hemoglobina o mioglobina
+        acciones: Examen físico, tira reactiva, centrifugación de orina
+        fin: false
+      - id: 3
+        tipo: pregunta
+        pregunta: ¿Se observan eritrocitos al microscopio?
+        opciones:
+          - afirmativo: 4
+          - negativo: 5
+      - id: 4
+        tipo: diagnostico
+        titulo: Hematuria
+        acciones: Evaluar cistitis, litiasis, neoplasias, cultivo de orina, ecografía
+        fin: true
+      - id: 5
+        tipo: diagnostico
+        titulo: Hemoglobinuria o mioglobinuria
+        acciones: CK, AST, hematocrito, valorar destrucción muscular o hemólisis
+        fin: true
+      - id: 6
+        tipo: diagnostico
+        titulo: Pigmentación por fármacos o dieta
+        acciones: Historia de administración, pigmentos, vitamina B12, alimentación
+        fin: true
+      - id: 7
+        tipo: diagnostico
+        titulo: Pigmenturia transitoria no patológica
+        acciones: Reevaluar tras hidratación y descanso
+        fin: true
+      - id: 8
+        tipo: diagnostico
+        titulo: Orina de color normal
+        acciones: No requiere intervención
+        fin: true
+  - id: polaquiuria
+    nombre: Polaquiuria
+    pagina: 351
+    tipoSintoma: visual
+    nivelUsuario: familiar
+    especie: perro_gato
+    esquema:
+      - id: 1
+        tipo: pregunta
+        pregunta: ¿Orina frecuente en pequeñas cantidades?
+        opciones:
+          - afirmativo: 2
+          - negativo: 10
+      - id: 2
+        tipo: pregunta
+        pregunta: ¿Hay disuria, esfuerzo o vocalización?
+        opciones:
+          - afirmativo: 3
+          - negativo: 6
+      - id: 3
+        tipo: diagnostico
+        titulo: Cistitis bacteriana o idiopática
+        acciones: Cultivo de orina, ecografía, dieta húmeda, analgesia
+        fin: true
+      - id: 4
+        tipo: diagnostico
+        titulo: Urolitos o neoplasia vesical
+        acciones: Imagen abdominal, citología urinaria, posible cistoscopia
+        fin: true
+      - id: 5
+        tipo: diagnostico
+        titulo: Obstrucción parcial
+        acciones: Evaluar flujo urinario, sondaje, estabilización si necesario
+        fin: true
+      - id: 6
+        tipo: diagnostico
+        titulo: Marcaje por comportamiento
+        acciones: Esterilización, modificación conductual, feromonoterapia
+        fin: true
+      - id: 7
+        tipo: diagnostico
+        titulo: Inflamación o estímulo urinario inespecífico
+        acciones: Observar 48 h, dieta húmeda, evitar estrés, consultar si persiste
+        fin: true
+      - id: 10
+        tipo: diagnostico
+        titulo: Micción normal
+        acciones: Observar si cambia el patrón
+        fin: true
+  - id: polifagia
+    nombre: Polifagia
+    pagina: 356
+    tipoSintoma: visual
+    nivelUsuario: familiar
+    especie: perro_gato
+    esquema:
+      - id: 1
+        tipo: pregunta
+        pregunta: ¿Apetito excesivo con aumento o pérdida de peso?
+        opciones:
+          - afirmativo: 2
+          - negativo: 9
+      - id: 2
+        tipo: diagnostico
+        titulo: Confirmar si hay pérdida o ganancia de peso
+        acciones: Historia clínica, control de peso, tipo de dieta
+        fin: false
+      - id: 3
+        tipo: diagnostico
+        titulo: Diabetes mellitus
+        acciones: Glucosa, fructosamina, análisis de orina
+        fin: true
+      - id: 4
+        tipo: diagnostico
+        titulo: Síndrome de Cushing (HAC)
+        acciones: Cortisol basal, test de estimulación con ACTH, imagen abdominal
+        fin: true
+      - id: 5
+        tipo: diagnostico
+        titulo: Hipertiroidismo (gato)
+        acciones: T4 total, palpación de tiroides, evaluación cardíaca
+        fin: true
+      - id: 6
+        tipo: diagnostico
+        titulo: Insuficiencia pancreática exocrina
+        acciones: TLI sérico, heces, respuesta a dieta con enzimas
+        fin: true
+      - id: 7
+        tipo: diagnostico
+        titulo: Hiperfagia conductual o ambiental
+        acciones: Evaluar ansiedad, enriquecimiento ambiental, raciones fraccionadas
+        fin: true
+      - id: 8
+        tipo: diagnostico
+        titulo: Sobrealimentación iatrogénica o dieta hipercalórica
+        acciones: Ajuste de dieta, revisión de calorías y snacks
+        fin: true
+      - id: 9
+        tipo: diagnostico
+        titulo: Apetito normal
+        acciones: Educación al tutor, control de raciones
+        fin: true
+
+  - id: prurito_gatos
+    nombre: Prurito en gatos
+    pagina: 375
+    tipoSintoma: visual
+    nivelUsuario: familiar
+    especie: gato
+    esquema:
+      - id: 1
+        tipo: pregunta
+        pregunta: ¿Rascado, lamido excesivo o alopecia visible?
+        opciones:
+          - afirmativo: 2
+          - negativo: 99
+
+      - id: 2
+        tipo: pregunta
+        pregunta: ¿Dónde se localizan las lesiones o pérdida de pelo?
+        opciones:
+          Cabeza y cuello: 3
+          Abdomen, ingles o parte posterior: 4
+          Zonas múltiples o variables: 5
+          Lomo o base de la cola: 6
+
+      - id: 3
+        tipo: diagnostico
+        titulo: Posible dermatitis alérgica o síndrome orofacial
+        acciones: Evaluar alergia alimentaria, examinar boca, considerar hipersensibilidad localizada
+        fin: true
+
+      - id: 4
+        tipo: diagnostico
+        titulo: Hipersensibilidad alimentaria o dermatitis atópica
+        acciones: Dieta de exclusión durante 8 semanas, pruebas de alergia si no mejora
+        fin: true
+
+      - id: 5
+        tipo: diagnostico
+        titulo: Dermatitis psicógena o atópica
+        acciones: Observar comportamiento, reducir estrés, enriquecer entorno, evaluar dieta
+        fin: true
+
+      - id: 6
+        tipo: diagnostico
+        titulo: DAPP — dermatitis alérgica a picadura de pulga
+        acciones: Tratamiento antiparasitario riguroso, control ambiental, corticoides si necesario
+        fin: true
+
+      - id: 99
+        tipo: diagnostico
+        titulo: No se observa prurito
+        acciones: Monitorización, reevaluar si aparecen signos
+        fin: true
+
+  - id: prurito_perros
+    nombre: Prurito en perros
+    pagina: 380
+    tipoSintoma: visual
+    nivelUsuario: familiar
+    especie: perro
+    esquema:
+      - id: 1
+        tipo: pregunta
+        pregunta: ¿Rascado, lamido excesivo o lesiones visibles en la piel?
+        opciones:
+          - afirmativo: 2
+          - negativo: 99
+
+      - id: 2
+        tipo: pregunta
+        pregunta: ¿Dónde se observan las lesiones o el prurito?
+        opciones:
+          Zona lumbar o base de la cola: 3
+          Axilas, ingles o cara interna de muslos: 4
+          Cara, patas o pabellones auriculares: 5
+          Distribución variable o generalizada: 6
+
+      - id: 3
+        tipo: diagnostico
+        titulo: Sospecha de DAPP (dermatitis alérgica a picadura de pulga)
+        acciones: Tratamiento antiparasitario mensual, limpieza del entorno, prednisona si necesario
+        fin: true
+
+      - id: 4
+        tipo: diagnostico
+        titulo: Posible dermatitis por contacto o irritante
+        acciones: Eliminar posibles alérgenos, baños suaves, evitar productos químicos
+        fin: true
+
+      - id: 5
+        tipo: diagnostico
+        titulo: Posible dermatitis atópica o alimentaria
+        acciones: Dieta de exclusión, pruebas de alergia, control ambiental
+        fin: true
+
+      - id: 6
+        tipo: diagnostico
+        titulo: Infección secundaria o patrón atípico
+        acciones: Citología, tratamiento antimicrobiano, observación del patrón y recaídas
+        fin: true
+
+      - id: 99
+        tipo: diagnostico
+        titulo: Piel sin signos de prurito visible
+        acciones: Reevaluar si aparecen signos, mantener vigilancia
+        fin: true
+
+  - id: regurgitacion
+    nombre: Regurgitación
+    pagina: 385
+    tipoSintoma: visual
+    nivelUsuario: familiar
+    especie: perro_gato
+    esquema:
+      - id: 1
+        tipo: pregunta
+        pregunta: ¿Expulsión de alimento sin esfuerzo, justo después de comer?
+        opciones:
+          - afirmativo: 2
+          - negativo: 20
+
+      - id: 2
+        tipo: diagnostico
+        titulo: Sospecha de regurgitación
+        acciones: Realizar radiografías cervicales y torácicas
+        fin: false
+
+      - id: 3
+        tipo: pregunta
+        pregunta: ¿Qué muestran las radiografías?
+        opciones:
+          - Dilatación esofágica generalizada: 4
+          - Dilatación esofágica focal: 10
+          - Estructura radiopaca o masa: 14
+
+      - id: 4
+        tipo: pregunta
+        pregunta: ¿Endoscopia sugiere megaesófago u otras causas?
+        opciones:
+          - Megaesófago: 5
+          - Esofagitis: 6
+          - Disfunción del EEI: 7
+
+      - id: 5
+        tipo: diagnostico
+        titulo: Megaesófago
+        acciones: Diagnóstico por imagen, alimentación elevada, tratamiento de base
+        fin: true
+
+      - id: 6
+        tipo: diagnostico
+        titulo: Esofagitis
+        acciones: Tratamiento médico, dieta blanda
+        fin: true
+
+      - id: 7
+        tipo: diagnostico
+        titulo: Reflujo gastroesofágico funcional
+        acciones: Procinéticos, fraccionar comidas, evitar decúbito
+        fin: true
+
+      - id: 10
+        tipo: pregunta
+        pregunta: ¿Hallazgos compatibles con hernia o acalasia?
+        opciones:
+          - Hernia de hiato: 11
+          - Acalasia del EEI: 12
+          - No concluyente: 13
+
+      - id: 11
+        tipo: diagnostico
+        titulo: Hernia de hiato
+        acciones: Tratamiento médico o quirúrgico según severidad
+        fin: true
+
+      - id: 12
+        tipo: diagnostico
+        titulo: Acalasia del EEI
+        acciones: Toxina botulínica, dilatación, cirugía si refractaria
+        fin: true
+
+      - id: 13
+        tipo: diagnostico
+        titulo: Dismotilidad esofágica inespecífica
+        acciones: Manejo sintomático, reevaluación posterior
+        fin: true
+
+      - id: 14
+        tipo: pregunta
+        pregunta: ¿La estructura afecta dentro o fuera del esófago?
+        opciones:
+          - Intraesofágica: 15
+          - Extraesofágica: 16
+
+      - id: 15
+        tipo: diagnostico
+        titulo: Masa o cuerpo extraño intraesofágico
+        acciones: Endoscopia, biopsia o extracción quirúrgica
+        fin: true
+
+      - id: 16
+        tipo: diagnostico
+        titulo: Compresión extraluminal (masa o anillo vascular)
+        acciones: TC torácica, valoración quirúrgica
+        fin: true
+
+      - id: 20
+        tipo: diagnostico
+        titulo: No hay regurgitación evidente
+        acciones: Monitorizar, reevaluar si aparecen síntomas
+        fin: true
+  - id: retraso_crecimiento
+    nombre: Retraso del crecimiento
+    pagina: 390
+    tipoSintoma: visual
+    nivelUsuario: familiar
+    especie: perro_gato
+    esquema:
+      - id: 1
+        tipo: pregunta
+        pregunta: ¿Tu animal parece más pequeño o crece más lento que otros de su edad?
+        opciones:
+          - afirmativo: 2
+          - negativo: 20
+
+      - id: 2
+        tipo: pregunta
+        pregunta: ¿Recientemente ha tenido cambios en la dieta o come menos de lo normal?
+        opciones:
+          - afirmativo: 3
+          - negativo: 4
+
+      - id: 3
+        tipo: diagnostico
+        titulo: Posible causa dietética
+        acciones: Revisar ración y tipo de alimentación, valorar dieta completa
+        fin: true
+
+      - id: 4
+        tipo: pregunta
+        pregunta: ¿Hay otros signos como diarrea, vómito, apatía o debilidad?
+        opciones:
+          - afirmativo: 5
+          - negativo: 10
+
+      - id: 5
+        tipo: diagnostico
+        titulo: Puede haber enfermedad subyacente
+        acciones: Visita al veterinario, análisis básicos (sangre, heces, orina)
+        fin: false
+
+      - id: 6
+        tipo: pregunta
+        pregunta: ¿Se observan parásitos en las heces o ha habido riesgo?
+        opciones:
+          - afirmativo: 7
+          - negativo: 8
+
+      - id: 7
+        tipo: diagnostico
+        titulo: Parasitosis intestinal
+        acciones: Desparasitación y seguimiento
+        fin: true
+
+      - id: 8
+        tipo: diagnostico
+        titulo: Trastornos digestivos o malabsorción
+        acciones: Evaluar digestibilidad, posible tratamiento dietético
+        fin: true
+
+      - id: 10
+        tipo: diagnostico
+        titulo: Posible causa endocrina o genética
+        acciones: Evaluación clínica, posible estudio hormonal (TSH, IGF-1)
+        fin: true
+
+      - id: 20
+        tipo: diagnostico
+        titulo: Crecimiento aparentemente normal
+        acciones: Continuar observación, controles periódicos
+        fin: true
+
+  - id: secrecion_nasal
+    nombre: Secreción nasal
+    pagina: 395
+    tipoSintoma: clínico
+    nivelUsuario: familiar
+    especie: perro_gato
+    esquema:
+      - id: 1
+        tipo: pregunta
+        pregunta: ¿Hay secreción nasal visible (serosa, mucosa, purulenta o con sangre)?
+        opciones:
+          - afirmativo: 2
+          - negativo: 10
+
+      - id: 2
+        tipo: pregunta
+        pregunta: ¿Es reciente (menos de 10 días) y sin otros signos graves?
+        opciones:
+          - afirmativo: 3
+          - negativo: 4
+
+      - id: 3
+        tipo: diagnostico
+        titulo: Infección aguda de vías respiratorias altas
+        acciones: Tratamiento sintomático, antibióticos o antivirales si necesario
+        fin: true
+
+      - id: 4
+        tipo: pregunta
+        pregunta: ¿Hay estornudos frecuentes, mal olor o secreción unilateral?
+        opciones:
+          - afirmativo: 5
+          - negativo: 6
+
+      - id: 5
+        tipo: diagnostico
+        titulo: Cuerpo extraño nasal
+        acciones: Rinoscopia, extracción si posible, lavado nasal
+        fin: true
+
+      - id: 6
+        tipo: pregunta
+        pregunta: ¿La secreción es crónica o recidivante?
+        opciones:
+          - afirmativo: 7
+          - negativo: 8
+
+      - id: 7
+        tipo: pregunta
+        pregunta: ¿Hay signos asociados (estornudos, dolor facial, cambios en apetito)?
+        opciones:
+          - afirmativo: 9
+          - negativo: 11
+
+      - id: 8
+        tipo: diagnostico
+        titulo: Monitorización
+        acciones: Evaluar evolución, consultar si empeora
+        fin: true
+
+      - id: 9
+        tipo: diagnostico
+        titulo: Rinitis crónica o fúngica
+        acciones: Evaluación veterinaria, tratamiento antifúngico o antiinflamatorio
+        fin: true
+
+      - id: 10
+        tipo: diagnostico
+        titulo: No hay secreción nasal visible
+        acciones: No requiere intervención inmediata, observar evolución
+        fin: true
+
+      - id: 11
+        tipo: diagnostico
+        titulo: Otras causas (tumores, fistulas, parásitos)
+        acciones: Evaluación por imagen o rinoscopia, tratamiento según origen
+        fin: true
+
+  - id: secrecion_vulvar
+    nombre: Secreción vulvar
+    pagina: 400
+    tipoSintoma: visual
+    nivelUsuario: familiar
+    especie: perro
+    esquema:
+      - id: 1
+        tipo: pregunta
+        pregunta: ¿Se observa secreción anormal por la vulva (purulenta, hemática, mucosa)?
+        opciones:
+          - afirmativo: 2
+          - negativo: 9
+
+      - id: 2
+        tipo: pregunta
+        pregunta: ¿La hembra está esterilizada?
+        opciones:
+          - afirmativo: 3
+          - negativo: 4
+
+      - id: 3
+        tipo: pregunta
+        pregunta: ¿La secreción apareció después de la esterilización?
+        opciones:
+          - afirmativo: 3a
+          - negativo: 3b
+
+      - id: 3a
+        tipo: diagnostico
+        titulo: Vaginitis posesterilización o incontinencia
+        acciones: E
+
+  - id: shock
+    nombre: Shock
+    pagina: 405
+    tipoSintoma: clínico
+    nivelUsuario: familiar
+    especie: perro_gato
+    esquema:
+      - id: 1
+        tipo: pregunta
+        pregunta: ¿El animal presenta debilidad extrema, colapso, respiración agitada o está tumbado y no reacciona?
+        opciones:
+          - afirmativo: 2
+          - negativo: 7
+
+      - id: 2
+        tipo: diagnostico
+        titulo: Sospecha de shock
+        acciones: Urgencia. Comprobar encías y tiempo de relleno capilar si es posible
+        fin: false
+
+      - id: 3
+        tipo: pregunta
+        pregunta: ¿Las encías están pálidas, azuladas o tardan más de 2 segundos en recuperar el color al presionar?
+        opciones:
+          - afirmativo: 4
+          - negativo: 5
+
+      - id: 4
+        tipo: diagnostico
+        titulo: Signos de hipoperfusión severa
+        acciones: Transportar inmediatamente. Mantener caliente, no dar comida ni medicación
+        fin: true
+
+      - id: 5
+        tipo: diagnostico
+        titulo: Signos compatibles con shock compensado
+        acciones: "Llevar al veterinario. Registrar síntomas: color de mucosas, frecuencia respiratoria, temperatura"
+        fin: true
+
+      - id: 7
+        tipo: diagnostico
+        titulo: No hay signos evidentes de shock
+        acciones: Observar. Si aparece debilidad súbita o respiración agitada, acudir al veterinario
+        fin: true
+
+  - id: sialorrea
+    nombre: Sialorrea
+    pagina: 410
+    tipoSintoma: visual
+    nivelUsuario: familiar
+    especie: perro_gato
+    esquema:
+      - id: 1
+        tipo: pregunta
+        pregunta: ¿Hay salivación excesiva visible (babeo constante o intermitente)?
+        opciones:
+          - afirmativo: 2
+          - negativo: 10
+
+      - id: 2
+        tipo: pregunta
+        pregunta: ¿Se observa algo anormal en la boca o encías?
+        opciones:
+          - Úlceras, enrojecimiento o inflamación: 3
+          - Cuerpo extraño visible: 4
+          - Diente roto o encías inflamadas: 5
+          - Nada visible: 6
+
+      - id: 3
+        tipo: diagnostico
+        titulo: Estomatitis, gingivitis o úlceras
+        acciones: Higiene oral, antiinflamatorios, dieta blanda, control veterinario
+        fin: true
+
+      - id: 4
+        tipo: diagnostico
+        titulo: Cuerpo extraño oral o faríngeo
+        acciones: Retiro manual o con sedación. Rinoscopia si necesario
+        fin: true
+
+      - id: 5
+        tipo: diagnostico
+        titulo: Enfermedad dental o fractura dental
+        acciones: Evaluación veterinaria, limpieza profesional o extracción
+        fin: true
+
+      - id: 6
+        tipo: pregunta
+        pregunta: ¿Ha estado en contacto con productos tóxicos o tiene otros síntomas (náuseas, convulsiones)?
+        opciones:
+          - Sí, posibles tóxicos: 7
+          - Sí, signos digestivos o sistémicos: 8
+          - Sí, signos neurológicos o contacto con animales callejeros: 9
+          - negativo: 10
+
+      - id: 7
+        tipo: diagnostico
+        titulo: Posible intoxicación (productos irritantes o sabor amargo)
+        acciones: Lavar boca con suero, hospitalización si empeora
+        fin: true
+
+      - id: 8
+        tipo: diagnostico
+        titulo: Náuseas o enfermedad sistémica
+        acciones: Revisar digestión, temperatura, bioquímica básica
+        fin: true
+
+      - id: 9
+        tipo: diagnostico
+        titulo: Posible causa neurológica (rabia, parálisis facial)
+        acciones: Evaluación neurológica, control de vacunación, aislamiento si necesario
+        fin: true
+
+      - id: 10
+        tipo: diagnostico
+        titulo: No hay sialorrea evidente
+        acciones: Observar evolución, vigilar cambios en la boca o apetito
+        fin: true
+  - id: soplo_cardiaco
+    nombre: Soplo cardíaco
+    pagina: 415
+    tipoSintoma: clínico
+    nivelUsuario: familiar
+    especie: perro_gato
+    esquema:
+      - id: 1
+        tipo: pregunta
+        pregunta: ¿El animal presenta tos crónica, fatiga rápida o episodios de desmayo?
+        opciones:
+          - afirmativo: 2
+          - negativo: 5
+
+      - id: 2
+        tipo: diagnostico
+        titulo: Posibles signos de disfunción cardíaca
+        acciones: Acudir al veterinario para auscultación y posible ecocardiografía. Vigilar frecuencia respiratoria en reposo
+        fin: true
+
+      - id: 5
+        tipo: pregunta
+        pregunta: ¿Tu veterinario ha mencionado un soplo cardíaco?
+        opciones:
+          - afirmativo: 6
+          - negativo: 10
+
+      - id: 6
+        tipo: pregunta
+        pregunta: ¿El soplo fue detectado en una revisión rutinaria sin otros síntomas?
+        opciones:
+          - afirmativo: 7
+          - negativo: 2
+
+      - id: 7
+        tipo: diagnostico
+        titulo: Posible soplo funcional o benigno
+        acciones: Seguir controles periódicos, repetir auscultación en 3–6 meses si no hay síntomas
+        fin: true
+
+      - id: 10
+        tipo: diagnostico
+        titulo: No hay signos visibles ni antecedentes de soplo
+        acciones: No requiere acción inmediata. Observar si aparecen fatiga, tos, síncopes o intolerancia al ejercicio
+        fin: true
+
+  - id: tenesmo
+    nombre: Tenesmo / Estreñimiento
+    pagina: 420
+    tipoSintoma: visual
+    nivelUsuario: familiar
+    especie: perro_gato
+    esquema:
+      - id: 1
+        tipo: pregunta
+        pregunta: ¿El animal hace esfuerzo para defecar pero elimina poca o ninguna materia fecal?
+        opciones:
+          - afirmativo: 2
+          - negativo: 10
+
+      - id: 2
+        tipo: pregunta
+        pregunta: ¿Se observa sangre, mucosidad o signos de dolor durante el intento?
+        opciones:
+          - Sí, con sangre o mucosidad: 3
+          - Sí, con dolor anal o vocalización: 5
+          - Sí, sin heces visibles: 4
+          - No se observa nada anormal: 6
+
+      - id: 3
+        tipo: diagnostico
+        titulo: Colitis o proctitis
+        acciones: Dieta rica en fibra, antiparasitarios, antiinflamatorios según evaluación veterinaria
+        fin: true
+
+      - id: 4
+        tipo: diagnostico
+        titulo: Posible estenosis rectal o cuerpo extraño
+        acciones: Tacto rectal y posible imagen (Rx, ecografía)
+        fin: true
+
+      - id: 5
+        tipo: diagnostico
+        titulo: Absceso anal, fístulas o inflamación perianal
+        acciones: Inspección visual, compresas, antibióticos, posible cirugía
+        fin: true
+
+      - id: 6
+        tipo: diagnostico
+        titulo: Posible causa interna (próstata, vejiga o masa abdominal)
+        acciones: Palpación abdominal, ecografía, análisis de orina
+        fin: true
+
+      - id: 10
+        tipo: diagnostico
+        titulo: No hay tenesmo evidente
+        acciones: Observar. Si aparecen signos (esfuerzo sin heces), consultar
+        fin: true
+
+  - id: tos
+    nombre: Tos
+    pagina: 425
+    tipoSintoma: clínico
+    nivelUsuario: familiar
+    especie: perro_gato
+    esquema:
+      - id: 1
+        tipo: pregunta
+        pregunta: ¿Tos frecuente o persistente observada en casa?
+        opciones:
+          - afirmativo: 2
+          - negativo: 10
+
+      - id: 2
+        tipo: diagnostico
+        titulo: Observación de la tos
+        acciones: Describe el tipo de tos (seca, húmeda, nocturna, con esfuerzo). Si puedes, graba un vídeo corto para mostrárselo al veterinario
+        fin: false
+
+      - id: 3
+        tipo: diagnostico
+        titulo: Enfermedad traqueal (colapso, traqueítis)
+        acciones: Radiografía de cuello/pecho, prueba de tos, tratamiento sintomático si procede
+        fin: true
+
+      - id: 4
+        tipo: diagnostico
+        titulo: Enfermedad bronquial o pulmonar
+        acciones: Radiografía torácica, auscultación, posible tratamiento con antibióticos o broncodilatadores
+        fin: true
+
+      - id: 5
+        tipo: diagnostico
+        titulo: Tos cardíaca (insuficiencia cardíaca izquierda)
+        acciones: Ecocardiografía, radiografía, control con diuréticos si indicado
+        fin: true
+
+      - id: 6
+        tipo: diagnostico
+        titulo: Parásitos pulmonares (angiostrongylus, filarias)
+        acciones: Pruebas específicas y desparasitación
+        fin: true
+
+      - id: 7
+        tipo: diagnostico
+        titulo: Posible masa torácica (neoplasia)
+        acciones: Imagen avanzada y confirmación por biopsia si procede
+        fin: true
+
+      - id: 10
+        tipo: diagnostico
+        titulo: No hay tos observable
+        acciones: Monitorización y control ambiental (polvo, humo, sprays)
+        fin: true
+
+  - id: trastornos_equilibrio
+    nombre: Trastornos del equilibrio
+    pagina: 431
+    tipoSintoma: visual
+    nivelUsuario: familiar
+    especie: perro_gato
+    esquema:
+      - id: 1
+        tipo: pregunta
+        pregunta: ¿Hay pérdida de equilibrio, inclinación de la cabeza o movimientos circulares?
+        opciones:
+          - afirmativo: 2
+          - negativo: 10
+
+      - id: 2
+        tipo: diagnostico
+        titulo: Observación de signos vestibulares
+        acciones: >
+          Observa si hay inclinación de la cabeza, nistagmo (movimientos rápidos de los ojos) o marcha en círculos.
+          Puedes grabar un vídeo corto para mostrárselo al veterinario. Esto ayuda mucho en la evaluación.
+        fin: false
+
+      - id: 3
+        tipo: diagnostico
+        titulo: Síndrome vestibular periférico
+        acciones: Otoscopia, radiografía de bulla timpánica, tratamiento según la causa (otitis, pólipos)
+        fin: true
+
+      - id: 4
+        tipo: diagnostico
+        titulo: Síndrome vestibular central
+        acciones: Evaluación neurológica completa, pruebas de imagen (RM), análisis del LCR si indicado
+        fin: true
+
+      - id: 5
+        tipo: diagnostico
+        titulo: Otitis media/interna
+        acciones: Sacudidas de cabeza, inclinación persistente, tratamiento con antibióticos específicos
+        fin: true
+
+      - id: 6
+        tipo: diagnostico
+        titulo: Síndrome vestibular idiopático geriátrico
+        acciones: Cuidados de soporte, sedación suave si hay náuseas, recuperación espontánea habitual en 7–14 días
+        fin: true
+
+      - id: 10
+        tipo: diagnostico
+        titulo: No hay signos de trastorno del equilibrio
+        acciones: Observación en casa; si aparecen signos, grabar vídeo y contactar con veterinario
+        fin: true
+  - id: acidosis
+    nombre: Acidosis
+    pagina: 436
+    tipoSintoma: clínico
+    nivelUsuario: familiar
+    especie: perro_gato
+    esquema:
+      - id: 1
+        tipo: pregunta
+        pregunta: ¿Tu animal presenta respiración acelerada, debilidad o desorientación?
+        opciones:
+          - afirmativo: 2
+          - negativo: 10
+
+      - id: 2
+        tipo: pregunta
+        pregunta: ¿También observas vómitos, diarrea o temblores?
+        opciones:
+          - afirmativo: 3
+          - negativo: 4
+
+      - id: 3
+        tipo: diagnostico
+        titulo: Sospecha de alteración metabólica con pérdida de líquidos
+        acciones: >
+          Acidosis puede estar relacionada con vómitos o diarrea persistentes.
+          Se recomienda acudir a la clínica para hidratación intravenosa, análisis de sangre y control de electrolitos.
+        fin: true
+
+      - id: 4
+        tipo: diagnostico
+        titulo: Posible acidosis respiratoria o estado de shock
+        acciones: >
+          Si hay respiración rápida y mucosas azuladas o muy pálidas, puede haber un problema grave de oxigenación.
+          Acudir de urgencia. Puede necesitar oxígeno y tratamiento inmediato.
+        fin: true
+
+      - id: 10
+        tipo: diagnostico
+        titulo: No hay signos compatibles con acidosis aguda
+        acciones: Seguir observando en casa. Si aparecen signos, grabar vídeo y contactar con clínica.
+        fin: true
+  - id: alcalemia
+    nombre: Alcalemia
+    pagina: 441
+    tipoSintoma: clínico
+    nivelUsuario: familiar
+    especie: perro_gato
+    esquema:
+      - id: 1
+        tipo: pregunta
+        pregunta: ¿Tu animal respira rápido sin haber hecho ejercicio o sin calor ambiental?
+        opciones:
+          - afirmativo: 2
+          - negativo: 5
+
+      - id: 2
+        tipo: pregunta
+        pregunta: ¿Se acompaña de vómitos, debilidad o falta de apetito?
+        opciones:
+          - afirmativo: 3
+          - negativo: 4
+
+      - id: 3
+        tipo: diagnostico
+        titulo: Sospecha de alcalosis metabólica por pérdida gástrica o uso de diuréticos
+        acciones: >
+          Puede estar relacionada con vómitos persistentes, pérdida de líquidos o tratamiento diurético.
+          Requiere evaluación veterinaria y corrección electrolítica.
+        fin: true
+
+      - id: 4
+        tipo: diagnostico
+        titulo: Hiperrespiración sin causa evidente
+        acciones: >
+          Puede estar relacionada con dolor, ansiedad o enfermedades pulmonares.
+          Se recomienda consulta clínica para descartar causas neurológicas o respiratorias.
+        fin: true
+
+      - id: 5
+        tipo: diagnostico
+        titulo: No hay signos compatibles con alcalemia
+        acciones: Observar evolución. Si aparece respiración rápida, grabar vídeo y acudir a clínica.
+        fin: true
+  - id: trastornos_magnesio
+    nombre: Trastornos del magnesio
+    pagina: 446
+    tipoSintoma: analitico
+    nivelUsuario: familiar
+    especie: perro_gato
+    esquema:
+      - id: 1
+        tipo: pregunta
+        pregunta: ¿El veterinario indicó hipomagnesemia o hipermagnesemia en el análisis?
+        opciones:
+          - Hipomagnesemia: 2
+          - Hipermagnesemia: 5
+          - No lo sé: 10
+
+      - id: 2
+        tipo: pregunta
+        pregunta: ¿Presenta temblores, arritmias o debilidad persistente?
+        opciones:
+          - afirmativo: 3
+          - negativo: 4
+
+      - id: 3
+        tipo: diagnostico
+        titulo: Hipomagnesemia sintomática
+        acciones: >
+          Consultar al veterinario sobre la necesidad de suplemento de magnesio IV
+          (sulfato o cloruro), especialmente si hay hipopotasemia refractaria.
+        fin: true
+
+      - id: 4
+        tipo: diagnostico
+        titulo: Hipomagnesemia leve o secundaria
+        acciones: >
+          Puede deberse a pérdida gastrointestinal, renal o uso de fármacos.
+          Seguir tratamiento recomendado por el veterinario.
+        fin: true
+
+      - id: 5
+        tipo: pregunta
+        pregunta: ¿Hay signos como debilidad, pulso lento o respiración lenta?
+        opciones:
+          - afirmativo: 6
+          - negativo: 7
+
+      - id: 6
+        tipo: diagnostico
+        titulo: Hipermagnesemia con síntomas clínicos
+        acciones: >
+          Requiere estabilización en clínica: gluconato de calcio IV, diuréticos,
+          control electrolítico y suspensión de suplementos si los hay.
+        fin: true
+
+      - id: 7
+        tipo: diagnostico
+        titulo: Hipermagnesemia leve
+        acciones: >
+          Puede deberse a enfermedad renal o suplementos. Reevaluar tratamiento y controlar evolución.
+        fin: true
+
+      - id: 10
+        tipo: diagnostico
+        titulo: No se puede interpretar sin información del análisis
+        acciones: Pedir al veterinario que especifique si es hipo o hipermagnesemia y seguir orientación.
+        fin: true
+  - id: trombocitopenia
+    nombre: Trombocitopenia
+    pagina: 451
+    tipoSintoma: analitico
+    nivelUsuario: familiar
+    especie: perro_gato
+    esquema:
+      - id: 1
+        tipo: pregunta
+        pregunta: ¿El veterinario ha detectado un recuento bajo de plaquetas (<150.000/μl)?
+        opciones:
+          - afirmativo: 2
+          - negativo: 10
+
+      - id: 2
+        tipo: pregunta
+        pregunta: ¿El animal tiene sangrados visibles (hematomas, encías, orina, heces)?
+        opciones:
+          - afirmativo: 3
+          - negativo: 4
+
+      - id: 3
+        tipo: diagnostico
+        titulo: Trombocitopenia sintomática
+        acciones: >
+          Necesita tratamiento urgente. Posibles causas: inmunomediada, infecciones, neoplasias.
+          Seguir las indicaciones clínicas del veterinario.
+        fin: true
+
+      - id: 4
+        tipo: pregunta
+        pregunta: ¿Es una raza predispuesta? (Cavalier, Galgo, Akita)
+        opciones:
+          - afirmativo: 5
+          - negativo: 6
+
+      - id: 5
+        tipo: diagnostico
+        titulo: Trombocitopenia leve asociada a raza
+        acciones: Puede ser fisiológica. Confirmar con el veterinario y controlar en el tiempo.
+        fin: true
+
+      - id: 6
+        tipo: diagnostico
+        titulo: Trombocitopenia leve o incidental
+        acciones: >
+          Puede requerir estudios adicionales si persiste. Seguir las recomendaciones clínicas
+          y evitar fármacos que interfieran con la coagulación.
+        fin: true
+
+      - id: 10
+        tipo: diagnostico
+        titulo: No hay trombocitopenia reportada
+        acciones: Sin indicios actuales. Reevaluar si el veterinario indica nuevo análisis.
+        fin: true
+
+  - id: vomitos
+    nombre: Vómitos
+    pagina: 457
+    tipoSintoma: visual
+    nivelUsuario: familiar
+    especie: perro_gato
+    esquema:
+      - id: 1
+        tipo: pregunta
+        pregunta: ¿Tu animal ha vomitado recientemente (alimento, bilis o espuma)?
+        opciones:
+          - afirmativo: 2
+          - negativo: 10
+
+      - id: 2
+        tipo: pregunta
+        pregunta: ¿El vómito fue único y el animal se encuentra animado?
+        opciones:
+          - afirmativo: 3
+          - negativo: 4
+
+      - id: 3
+        tipo: diagnostico
+        titulo: Vómito leve o puntual
+        acciones: Ayuno corto (6–12 h), dieta blanda 24–48 h, agua en pequeñas cantidades
+        fin: true
+
+      - id: 4
+        tipo: pregunta
+        pregunta: ¿Ha vomitado varias veces o muestra signos como apatía o dolor abdominal?
+        opciones:
+          - afirmativo: 5
+          - negativo: 6
+
+      - id: 5
+        tipo: diagnostico
+        titulo: Posible cuadro gastrointestinal agudo
+        acciones: Acudir al veterinario; posible análisis, radiografía, medicación antiemética
+        fin: true
+
+      - id: 6
+        tipo: pregunta
+        pregunta: ¿Pudo haber ingerido algo inadecuado (plantas, medicamentos, basura)?
+        opciones:
+          - afirmativo: 7
+          - negativo: 8
+
+      - id: 7
+        tipo: diagnostico
+        titulo: Ingesta tóxica o irritante
+        acciones: Contactar con veterinario urgentemente; no inducir vómito sin consejo previo
+        fin: true
+
+      - id: 8
+        tipo: diagnostico
+        titulo: Indigestión o cambio alimentario
+        acciones: Observar evolución; dieta baja en grasa, sin premios ni restos durante 48 h
+        fin: true
+
+      - id: 10
+        tipo: diagnostico
+        titulo: No hay vómitos observados
+        acciones: Control en casa; consultar si aparece náusea, babeo o mal estado general
+        fin: true
+
+  - id: pu_pd
+    nombre: Poliuria / Polidipsia
+    pagina: 361
+    tipoSintoma: visual
+    nivelUsuario: familiar
+    especie: perro_gato
+    esquema:
+      - id: 1
+        tipo: pregunta
+        pregunta: ¿El animal bebe y orina más de lo habitual?
+        opciones:
+          - afirmativo: 2
+          - negativo: 10
+      - id: 2
+        tipo: diagnostico
+        titulo: Confirmar si PU/PD es real
+        acciones: Medir consumo de agua (>100 ml/kg/día) y densidad urinaria (<1.020)
+        fin: false
+      - id: 3
+        tipo: diagnostico
+        titulo: Diabetes mellitus
+        acciones: Glucosa en sangre y orina, signos de adelgazamiento, tratamiento con insulina
+        fin: true
+      - id: 4
+        tipo: diagnostico
+        titulo: Hipercortisolismo (Cushing)
+        acciones: Pruebas endocrinas (ACTH, supresión dexametasona), alopecia, abdomen péndulo
+        fin: true
+      - id: 5
+        tipo: diagnostico
+        titulo: Insuficiencia renal crónica
+        acciones: Urea/creatinina elevadas, isostenuria persistente, ecografía renal
+        fin: true
+      - id: 6
+        tipo: diagnostico
+        titulo: Piometra
+        acciones: Hembras no esterilizadas, fiebre, secreción vulvar, ecografía
+        fin: true
+      - id: 7
+        tipo: diagnostico
+        titulo: Hipertiroidismo (gatos)
+        acciones: T4 total elevada, pérdida de peso, hiperactividad
+        fin: true
+      - id: 8
+        tipo: diagnostico
+        titulo: Hepatopatías
+        acciones: Enzimas hepáticas elevadas, ecografía, signos inespecíficos
+        fin: true
+      - id: 9
+        tipo: diagnostico
+        titulo: Causas medicamentosas (diuréticos, corticoides)
+        acciones: Revisar tratamientos actuales y efectos secundarios
+        fin: true
+      - id: 10
+        tipo: diagnostico
+        titulo: No hay signos claros de PU/PD
+        acciones: Observar evolución y repetir mediciones
+        fin: true
+
+  - id: proteinuria
+    nombre: Proteinuria
+    pagina: 370
+    tipoSintoma: visual
+    nivelUsuario: familiar
+    especie: perro_gato
+    esquema:
+      - id: 0
+        tipo: pregunta
+        pregunta: ¿La orina tiene aspecto anormal (espuma persistente, olor fuerte, color turbio)?
+        opciones:
+          - afirmativo: 1
+          - negativo: 10
+
+      - id: 1
+        tipo: diagnostico
+        titulo: Sospecha de proteinuria
+        acciones: Recolectar muestra de orina para análisis (tira reactiva, UPC)
+        siguiente: 2
+
+      - id: 2
+        tipo: pregunta
+        pregunta: ¿El cociente proteína/creatinina (UPC) es mayor de 2?
+        opciones:
+          - afirmativo: 3
+          - negativo: 5
+
+      - id: 3
+        tipo: pregunta
+        pregunta: ¿El animal presenta signos sistémicos (apatía, fiebre, pérdida de apetito)?
+        opciones:
+          - afirmativo: 4
+          - negativo: 8
+
+      - id: 4
+        tipo: diagnostico
+        titulo: Sospecha de glomerulonefritis inmunomediada
+        acciones: Considerar serología o PCR (Leishmania, Ehrlichia, Anaplasma, PIF, FeLV, FIV). Confirmar con biopsia si es posible
+        fin: true
+
+      - id: 5
+        tipo: diagnostico
+        titulo: Proteinuria tubular
+        acciones: UPC bajo, posible daño renal crónico o tóxico. Valorar intoxicaciones, medicamentos, infecciones
+        fin: true
+
+      - id: 6
+        tipo: diagnostico
+        titulo: Proteinuria prerrenal o multifactorial
+        acciones: "Evaluar patologías sistémicas: mieloma múltiple, pancreatitis, hipercortisolismo (perro), hipertiroidismo (gato)"
+        fin: true
+
+      - id: 7
+        tipo: diagnostico
+        titulo: Enfermedades infecciosas
+        acciones: PCR o serología para Ehrlichia, Anaplasma, Leptospira, Bartonella, Leishmania, PIF o retrovirus felinos (FeLV, FIV)
+        fin: true
+
+      - id: 8
+        tipo: diagnostico
+        titulo: Proteinuria glomerular sin signos sistémicos
+        acciones: Monitorizar, repetir UPC, considerar análisis complementarios si persiste >2 semanas
+        fin: true
+
+      - id: 9
+        tipo: diagnostico
+        titulo: Tratamiento general de proteinuria
+        acciones: Dieta renal, IECA (enalapril/benazepril), ácidos grasos omega-3, control de presión arterial
+        fin: true
+
+      - id: 10
+        tipo: diagnostico
+        titulo: No hay signos de proteinuria observables
+        acciones: Monitorizar cada 6–12 meses. Repetir análisis si cambian síntomas
+        fin: true
+
+  - id: prostatomegalia
+    nombre: Prostatomegalia
+    pagina: 365
+    tipoSintoma: visual
+    nivelUsuario: familiar
+    especie: perro
+    esquema:
+      - id: 1
+        tipo: pregunta
+        pregunta: "¿Ha notado alguno de estos signos en su perro macho?: dificultad al orinar, esfuerzo al defecar, sangre en el prepucio, cambios en la postura al sentarse o al caminar, inquietud o lamido frecuente de la zona genital"
+        opciones:
+          - afirmativo: 2
+          - negativo: 9
+
+      - id: 2
+        tipo: diagnostico
+        titulo: Sospecha de crecimiento prostático
+        acciones: Visita andrológica, ecografía prostática
+        fin: false
+      - id: 3
+        tipo: diagnostico
+        titulo: Quistes prostáticos o cavidades visibles
+        acciones: Evaluar ecografía, contenido, posible presencia de orina o síntomas sépticos
+        fin: false
+      - id: 4
+        tipo: diagnostico
+        titulo: Prostatitis bacteriana o abscesos
+        acciones: Prueba bacteriológica, antibiograma, tratamiento con ATB
+        fin: true
+      - id: 5
+        tipo: diagnostico
+        titulo: Hiperplasia prostática benigna (HPB)
+        acciones: Castración o tratamiento hormonal, seguimiento
+        fin: true
+      - id: 6
+        tipo: diagnostico
+        titulo: Neoplasia prostática
+        acciones: Biopsia, tratamiento paliativo u oncológico
+        fin: true
+      - id: 7
+        tipo: diagnostico
+        titulo: Metaplasia escamosa
+        acciones: Asociada a tratamientos hormonales, castración indicada
+        fin: true
+      - id: 8
+        tipo: diagnostico
+        titulo: Recidiva tras tratamiento
+        acciones: Repetir cultivo, evaluar opción quirúrgica o terapia complementaria
+        fin: true
+      - id: 9
+        tipo: diagnostico
+        titulo: No hay signos de prostatomegalia visibles
+        acciones: Monitorización y revisión periódica
+        fin: true
+
+  - id: matriz_tipo_sintoma
+    nombre: "Matriz Mamascota: tipoSintoma"
+    pagina: null
+    tipoSintoma: referencia
+    nivelUsuario: todos
+    especie: perro_gato
+    esquema:
+      - id: 1
+        tipo: tabla
+        titulo: "Diferencias entre tipoSintoma: visual vs conductual"
+        contenido:
+          - sintoma: letargo, inactividad
+            tipoSintoma: conductual
+          - sintoma: temblor, jadeo, cojera
+            tipoSintoma: visual
+          - sintoma: agresión o miedo
+            tipoSintoma: conductual
+          - sintoma: úlceras, sangrado visible
+            tipoSintoma: visual
+          - sintoma: evita contacto o se esconde
+            tipoSintoma: conductual
+          - sintoma: hinchazón, enrojecimiento
+            tipoSintoma: visual
+          - sintoma: cambios en apetito o sed
+            tipoSintoma: conductual
+
+      - id: 2
+        tipo: nota
+        titulo: Criterio clave
+        recomendaciones: >
+          Si se puede ver o tocar, es 'visual'. Si sólo se deduce por comportamiento, es 'conductual'.
+  - id: modulo_trc
+    nombre: Cómo comprobar el tiempo de relleno capilar (TRC)
+    tipoSintoma: táctil
+    nivelUsuario: familiar
+    especie: perro_gato
+    esquema:
+      - id: 1
+        tipo: explicacion
+        titulo: ¿Qué es el TRC?
+        contenido: >
+          El tiempo de relleno capilar (TRC) es una forma rápida y útil de evaluar la circulación sanguínea en tu animal.
+
+      - id: 2
+        tipo: explicacion
+        titulo: ¿Cómo se hace?
+        contenido: >
+          1. Levanta el labio del animal para exponer las encías.
+
+          2. Presiona suavemente una zona rosada con un dedo limpio durante unos 2 segundos.
+
+          3. Suelta y observa cuánto tarda en volver a su color rosado.
+
+      - id: 3
+        tipo: explicacion
+        titulo: ¿Qué significa el resultado?
+        contenido: >
+          - Menos de 2 segundos: TRC normal.
+
+          - Más de 2 segundos: posible shock o problema de circulación.
+
+          - Encías blancas, azuladas o grises: emergencia veterinaria.
+
+      - id: 4
+        tipo: recomendacion
+        recomendaciones: >
+          Si el TRC es lento o las encías se ven anormales, acude inmediatamente al centro veterinario. No des comida ni medicación sin indicación profesional.
+        fin: true

@@ -1,0 +1,9 @@
+{
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "typescript.disableAutomaticTypeAcquisition": true,
+  "typescript.tsserver.experimental.enableProjectDiagnostics": false,
+  "typescript.tsserver.watchOptions": {
+    "watchFile": "useFsEvents"
+  },
+  "typescript.validate.enable": true
+}
