@@ -1,0 +1,1874 @@
+fuente: Manual clínico de geriatría canina y felina, 2ª edición
+algoritmos:
+  - id: dolor_articular_geriatrico
+    nombre: Dolor crónico articular en pacientes geriátricos
+    pagina: 133
+    tipoSintoma: conductual
+    nivelUsuario: familiar
+    especie: perro_gato
+    esquema:
+      - id: 1
+        tipo: pregunta
+        pregunta: ¿Tu animal tiene rigidez al levantarse o tras descansar?
+        opciones:
+          - afirmativo: 2
+          - negativo: 9
+
+      - id: 2
+        tipo: pregunta
+        pregunta: ¿Evita subir escaleras o saltar donde antes podía?
+        opciones:
+          - afirmativo: 3
+          - negativo: 4
+
+      - id: 3
+        tipo: acción
+        accion: Se recomienda visita clínica para evaluación locomotora. El veterinario puede realizar exploración ortopédica básica.
+        siguiente: 5
+
+      - id: 4
+        tipo: nota
+        nota: Aunque los signos son sutiles, pueden indicar cambios articulares tempranos. Observación diaria sugerida.
+        fin: true
+
+      - id: 5
+        tipo: pregunta
+        pregunta: ¿Se ha realizado alguna radiografía?
+        opciones:
+          - afirmativo: 6
+          - negativo: 7
+
+      - id: 6
+        tipo: diagnóstico
+        titulo: Artrosis confirmada radiológicamente
+        recomendaciones: Se recomienda tratamiento multimodal (analgésicos, condroprotectores, control del peso y ejercicio moderado).
+        fin: true
+
+      - id: 7
+        tipo: acción
+        accion: Realizar radiografías articulares para confirmar cambios degenerativos.
+        siguiente: 8
+
+      - id: 8
+        tipo: nota
+        nota: El diagnóstico de artrosis se basa en signos clínicos y hallazgos de imagen. Confirmar para iniciar tratamiento adecuado.
+        fin: true
+
+      - id: 9
+        tipo: nota
+        nota: No hay signos claros de dolor articular. Continuar observación y seguimiento en próximos chequeos geriátricos.
+        fin: true
+
+  - id: dolor_neuropatico_geriatrico
+    nombre: Dolor neuropático en pacientes geriátricos
+    pagina: 135
+    tipoSintoma: conductual
+    nivelUsuario: familiar
+    especie: perro
+    esquema:
+      - id: 1
+        tipo: pregunta
+        pregunta: ¿Tu perro muestra signos de incomodidad al tocar ciertas zonas (espalda, cuello, extremidades)?
+        opciones:
+          - afirmativo: 2
+          - negativo: 9
+
+      - id: 2
+        tipo: pregunta
+        pregunta: ¿También presenta cambios en la postura o forma de caminar?
+        opciones:
+          - afirmativo: 3
+          - negativo: 4
+
+      - id: 3
+        tipo: acción
+        accion: Llevar al animal a consulta para exploración neurológica básica y ortopédica comparada.
+        siguiente: 5
+
+      - id: 4
+        tipo: nota
+        nota: La hipersensibilidad localizada puede tener origen neurológico o musculoesquelético. Se recomienda revisión clínica.
+        fin: true
+
+      - id: 5
+        tipo: pregunta
+        pregunta: ¿Durante la exploración hubo signos como dolor a la presión vertebral, ataxia o reflejos alterados?
+        opciones:
+          - afirmativo: 6
+          - negativo: 7
+
+      - id: 6
+        tipo: diagnóstico
+        titulo: Sospecha de dolor neuropático
+        recomendaciones: Realizar estudio neurológico completo y pruebas de imagen (radiografías columna, mielografía, RMN si es posible).
+        fin: true
+
+      - id: 7
+        tipo: nota
+        nota: Si no hay signos neurológicos claros, considerar dolor referenciado o mecánico. Evaluar otras causas.
+        fin: true
+
+      - id: 8
+        tipo: nota
+        nota: El dolor puede no ser neuropático. Continuar observando y registrar evolución de signos.
+        fin: true
+
+      - id: 9
+        tipo: nota
+        nota: No hay signos de dolor neuropático evidente. Mantener monitoreo y registrar cualquier cambio postural o conductual.
+        fin: true
+
+  - id: dolor_no_especifico_geriatrico
+    nombre: Dolor inespecífico o cambios conductuales relacionados con incomodidad
+    pagina: 136
+    tipoSintoma: conductual
+    nivelUsuario: familiar
+    especie: perro_gato
+    esquema:
+      - id: 1
+        tipo: pregunta
+        pregunta: ¿Has notado que tu animal está más irritable o se aísla más?
+        opciones:
+          - afirmativo: 2
+          - negativo: 9
+
+      - id: 2
+        tipo: pregunta
+        pregunta: ¿También ha cambiado su rutina de sueño o muestra apatía?
+        opciones:
+          - afirmativo: 3
+          - negativo: 4
+
+      - id: 3
+        tipo: acción
+        accion: Se recomienda valoración clínica geriátrica completa para descartar dolor crónico, deterioro cognitivo o neoplasias.
+        siguiente: 5
+
+      - id: 4
+        tipo: nota
+        nota: Los cambios de conducta pueden indicar malestar leve o estrés. Continúa observando y registra la evolución.
+        fin: true
+
+      - id: 5
+        tipo: pregunta
+        pregunta: ¿Durante la evaluación se detectó dolor a la palpación, cambios neurológicos o hallazgos abdominales?
+        opciones:
+          - afirmativo: 6
+          - negativo: 8
+
+      - id: 6
+        tipo: diagnostico
+        titulo: Origen físico del dolor identificado
+        recomendaciones: Iniciar protocolo de manejo del dolor. Considerar estudios complementarios (RX, ecografía, analítica).
+        fin: true
+
+      - id: 7
+        tipo: nota
+        nota: Si se sospecha disfunción cognitiva, realizar cribado cognitivo (como escala CCDR) y considerar terapia ambiental.
+        fin: true
+
+      - id: 8
+        tipo: pregunta
+        pregunta: ¿Hay sospecha de deterioro cognitivo (desorientación, vocalización, cambio de ritmos)?
+        opciones:
+          - afirmativo: 7
+          - negativo: 10
+
+      - id: 9
+        tipo: nota
+        nota: No se identifican signos de incomodidad. Mantener rutina estable y seguimiento regular.
+        fin: true
+
+      - id: 10
+        tipo: nota
+        nota: Si los signos persisten o empeoran, revalorar en próximas consultas. Posible evolución de patología subclínica.
+        fin: true
+
+  - id: apetito_disminuido_geriatrico
+    nombre: Cambio de apetito en pacientes geriátricos
+    pagina: 145
+    tipoSintoma: conductual
+    nivelUsuario: familiar
+    especie: perro_gato
+    esquema:
+      - id: 1
+        tipo: pregunta
+        pregunta: ¿Tu animal come menos de lo habitual o ha perdido interés por la comida?
+        opciones:
+          - afirmativo: 2
+          - negativo: 9
+
+      - id: 2
+        tipo: pregunta
+        pregunta: ¿Rechaza incluso sus alimentos favoritos o snacks?
+        opciones:
+          - afirmativo: 3
+          - negativo: 4
+
+      - id: 3
+        tipo: accion
+        accion: Llevar al animal a consulta. La pérdida de apetito en geriatría puede ser signo temprano de enfermedad sistémica.
+        siguiente: 5
+
+      - id: 4
+        tipo: nota
+        nota: Cambios leves pueden ser transitorios. Continúa observando si hay evolución en los próximos días.
+        fin: true
+
+      - id: 5
+        tipo: pregunta
+        pregunta: ¿Se detectan signos clínicos adicionales como pérdida de peso, vómitos o alteraciones en heces?
+        opciones:
+          - afirmativo: 6
+          - negativo: 7
+
+      - id: 6
+        tipo: diagnostico
+        titulo: Anorexia con signos asociados
+        recomendaciones: Realizar análisis sanguíneos, revisión digestiva completa y pruebas de imagen si se sospecha enfermedad orgánica.
+        fin: true
+
+      - id: 7
+        tipo: pregunta
+        pregunta: ¿Se identificó dolor al palpar abdomen o zona oral?
+        opciones:
+          - afirmativo: 8
+          - negativo: 10
+
+      - id: 8
+        tipo: diagnostico
+        titulo: Posible origen doloroso del rechazo alimentario
+        recomendaciones: Evaluar odontología, digestivo alto o presencia de neoplasias. Iniciar control de dolor.
+        fin: true
+
+      - id: 9
+        tipo: nota
+        nota: Si el apetito es normal, no se detectan anomalías digestivas en este momento. Continuar seguimiento.
+        fin: true
+
+      - id: 10
+        tipo: nota
+        nota: Si la anorexia persiste sin signos asociados, realizar seguimiento clínico en 5–7 días. Posible inicio de patología oculta.
+        fin: true
+  - id: vomitos_geriatrico
+    nombre: Vómitos en pacientes geriátricos
+    pagina: 147
+    tipoSintoma: clínico
+    nivelUsuario: familiar
+    especie: perro_gato
+    esquema:
+      - id: 1
+        tipo: pregunta
+        pregunta: ¿Tu animal ha vomitado en más de una ocasión en los últimos días?
+        opciones:
+          - afirmativo: 2
+          - negativo: 9
+
+      - id: 2
+        tipo: pregunta
+        pregunta: ¿El vómito contiene alimento sin digerir o es líquido/espumoso?
+        opciones:
+          - afirmativo: 3
+          - negativo: 4
+
+      - id: 3
+        tipo: nota
+        nota: El tipo de vómito puede orientar hacia origen gástrico o biliar. Se recomienda visita clínica para evaluación digestiva.
+        fin: true
+
+      - id: 4
+        tipo: pregunta
+        pregunta: ¿Se acompaña de apatía, pérdida de peso o falta de apetito?
+        opciones:
+          - afirmativo: 5
+          - negativo: 6
+
+      - id: 5
+        tipo: diagnostico
+        titulo: Vómitos persistentes con signos sistémicos
+        recomendaciones: Realizar análisis sanguíneos (hepático, renal), pruebas de imagen abdominal y descartar neoplasias.
+        fin: true
+
+      - id: 6
+        tipo: pregunta
+        pregunta: ¿El vómito ocurre justo después de comer?
+        opciones:
+          - afirmativo: 7
+          - negativo: 8
+
+      - id: 7
+        tipo: nota
+        nota: Puede indicar intolerancia alimentaria o trastorno de motilidad. Revisión dietética y pruebas digestivas recomendadas.
+        fin: true
+
+      - id: 8
+        tipo: nota
+        nota: Vómitos ocasionales sin otros signos pueden ser leves. Observar evolución. Si persisten más de 3 días, acudir a consulta.
+        fin: true
+
+      - id: 9
+        tipo: nota
+        nota: No se han registrado vómitos. Mantener vigilancia si aparecen nuevos síntomas.
+        fin: true
+  - id: diarrea_geriatrico
+    nombre: Diarrea en pacientes geriátricos
+    pagina: 149
+    tipoSintoma: clínico
+    nivelUsuario: familiar
+    especie: perro_gato
+    esquema:
+      - id: 1
+        tipo: pregunta
+        pregunta: ¿Tu animal presenta heces blandas o líquidas desde hace más de un día?
+        opciones:
+          - afirmativo: 2
+          - negativo: 9
+
+      - id: 2
+        tipo: pregunta
+        pregunta: ¿Las heces tienen sangre, moco o un olor especialmente fuerte?
+        opciones:
+          - afirmativo: 3
+          - negativo: 4
+
+      - id: 3
+        tipo: diagnostico
+        titulo: Diarrea con signos de inflamación intestinal
+        recomendaciones: Realizar coprología, análisis hematológico y ecografía abdominal. Valorar presencia de enteropatía crónica o tumoral.
+        fin: true
+
+      - id: 4
+        tipo: pregunta
+        pregunta: ¿Se ha realizado recientemente un cambio en la dieta o medicación?
+        opciones:
+          - afirmativo: 5
+          - negativo: 6
+
+      - id: 5
+        tipo: nota
+        nota: La diarrea puede deberse a sensibilidad digestiva. Revertir el cambio si es posible y consultar si persiste.
+        fin: true
+
+      - id: 6
+        tipo: pregunta
+        pregunta: ¿Se acompaña de pérdida de peso, vómitos o apatía?
+        opciones:
+          - afirmativo: 7
+          - negativo: 8
+
+      - id: 7
+        tipo: diagnostico
+        titulo: Diarrea crónica con signos sistémicos
+        recomendaciones: Revisión completa, con pruebas hepáticas, renales y análisis de absorción intestinal.
+        fin: true
+
+      - id: 8
+        tipo: nota
+        nota: Puede tratarse de diarrea transitoria. Si dura más de 3 días, consultar con el veterinario.
+        fin: true
+
+      - id: 9
+        tipo: nota
+        nota: No hay signos actuales de diarrea. Seguir observando si cambian las deposiciones.
+        fin: true
+  - id: estrenimiento_geriatrico
+    nombre: Estreñimiento en pacientes geriátricos
+    pagina: 151
+    tipoSintoma: clínico
+    nivelUsuario: familiar
+    especie: perro_gato
+    esquema:
+      - id: 1
+        tipo: pregunta
+        pregunta: ¿Tu animal ha tenido dificultad o ausencia de defecación en los últimos días?
+        opciones:
+          - afirmativo: 2
+          - negativo: 9
+
+      - id: 2
+        tipo: pregunta
+        pregunta: ¿Se esfuerza al intentar defecar pero no logra evacuar?
+        opciones:
+          - afirmativo: 3
+          - negativo: 4
+
+      - id: 3
+        tipo: accion
+        accion: Acudir a consulta veterinaria para exploración abdominal y evaluación neurológica si hay sospecha de compresión.
+        siguiente: 5
+
+      - id: 4
+        tipo: nota
+        nota: Si hay menos frecuencia pero sin esfuerzo visible, puede tratarse de tránsito lento. Observar evolución.
+        fin: true
+
+      - id: 5
+        tipo: pregunta
+        pregunta: ¿Se identificó masa abdominal, dolor o heces impactadas al tacto?
+        opciones:
+          - afirmativo: 6
+          - negativo: 7
+
+      - id: 6
+        tipo: diagnostico
+        titulo: Estreñimiento mecánico o doloroso
+        recomendaciones: Realizar radiografía abdominal, revisión de columna lumbosacra y valorar megacolon en gatos mayores.
+        fin: true
+
+      - id: 7
+        tipo: pregunta
+        pregunta: ¿Se ha modificado recientemente la dieta o hay medicación que pueda causar estreñimiento?
+        opciones:
+          - afirmativo: 8
+          - negativo: 10
+
+      - id: 8
+        tipo: nota
+        nota: Ajustar dieta y revisar medicación (opiáceos, AINEs, diuréticos). Aumentar hidratación si es posible.
+        fin: true
+
+      - id: 9
+        tipo: nota
+        nota: No se detectan signos actuales de estreñimiento. Continuar con dieta equilibrada y rutina de actividad.
+        fin: true
+
+      - id: 10
+        tipo: nota
+        nota: Si el estreñimiento persiste sin causa clara, se recomienda estudio completo para descartar causas estructurales o neurológicas.
+        fin: true
+
+  - id: perdida_peso_geriatrico
+    nombre: Pérdida de peso en pacientes geriátricos
+    pagina: 153
+    tipoSintoma: visual
+    nivelUsuario: familiar
+    especie: perro_gato
+    esquema:
+      - id: 1
+        tipo: pregunta
+        pregunta: ¿Has notado que tu animal está más delgado aunque mantiene buen apetito?
+        opciones:
+          - afirmativo: 2
+          - negativo: 4
+
+      - id: 2
+        tipo: pregunta
+        pregunta: ¿También presenta heces blandas, vómitos o aumento en la ingesta de agua?
+        opciones:
+          - afirmativo: 3
+          - negativo: 5
+
+      - id: 3
+        tipo: diagnostico
+        titulo: Sospecha de malabsorción o patología endocrina
+        recomendaciones: Realizar análisis sanguíneos completos, perfil endocrino (tiroides, diabetes) y revisión digestiva.
+        fin: true
+
+      - id: 4
+        tipo: pregunta
+        pregunta: ¿Ha disminuido el apetito junto con la pérdida de peso?
+        opciones:
+          - afirmativo: 6
+          - negativo: 7
+
+      - id: 5
+        tipo: nota
+        nota: Puede haber desbalance nutricional o mala digestión. Evaluar dieta, desparasitación y función hepática.
+        fin: true
+
+      - id: 6
+        tipo: diagnostico
+        titulo: Anorexia con pérdida de peso
+        recomendaciones: Investigar origen orgánico (renal, hepático, tumoral) con pruebas de imagen y laboratorio.
+        fin: true
+
+      - id: 7
+        tipo: nota
+        nota: La pérdida de peso sin cambios claros requiere seguimiento. Consultar si persiste o se asocian nuevos síntomas.
+        fin: true
+
+  - id: incontinencia_urinaria_geriatrica
+    nombre: Incontinencia urinaria en pacientes geriátricos
+    pagina: 159
+    tipoSintoma: clínico
+    nivelUsuario: familiar
+    especie: perro_gato
+    esquema:
+      - id: 1
+        tipo: pregunta
+        pregunta: ¿Has notado que tu animal deja orina sin darse cuenta, especialmente durante el descanso?
+        opciones:
+          - afirmativo: 2
+          - negativo: 10
+
+      - id: 2
+        tipo: pregunta
+        pregunta: ¿La orina es clara y sin mal olor, y el animal no muestra molestias?
+        opciones:
+          - afirmativo: 3
+          - negativo: 4
+
+      - id: 3
+        tipo: accion
+        accion: Consultar al veterinario para descartar incontinencia hormonodependiente o disfunción del esfínter uretral.
+        siguiente: 5
+
+      - id: 4
+        tipo: diagnostico
+        titulo: Posible infección urinaria asociada a incontinencia
+        recomendaciones: Realizar análisis de orina, cultivo y ecografía vesical. Evaluar presencia de cistitis o urolitos.
+        fin: true
+
+      - id: 5
+        tipo: pregunta
+        pregunta: ¿Se descartaron infecciones y hay historia de esterilización?
+        opciones:
+          - afirmativo: 6
+          - negativo: 7
+
+      - id: 6
+        tipo: nota
+        nota: Puede tratarse de incontinencia por déficit hormonal. El tratamiento dependerá de edad, sexo y condición general.
+        fin: true
+
+      - id: 7
+        tipo: pregunta
+        pregunta: ¿Se observaron signos neurológicos como debilidad o incoordinación?
+        opciones:
+          - afirmativo: 8
+          - negativo: 9
+
+      - id: 8
+        tipo: diagnostico
+        titulo: Incontinencia de origen neurológico
+        recomendaciones: Indicar estudio neurológico, radiografías columna lumbosacra, y pruebas de reflejos vesicales.
+        fin: true
+
+      - id: 9
+        tipo: nota
+        nota: Si no se identificó causa clara, se recomienda monitoreo y repetir evaluación en 2–3 semanas.
+        fin: true
+
+      - id: 10
+        tipo: nota
+        nota: No hay signos evidentes de incontinencia. Mantener observación de hábitos urinarios y rutina de higiene.
+        fin: true
+
+  - id: retencion_urinaria_geriatrica
+    nombre: Retención urinaria en pacientes geriátricos
+    pagina: 161
+    tipoSintoma: clínico
+    nivelUsuario: familiar
+    especie: perro_gato
+    esquema:
+      - id: 1
+        tipo: pregunta
+        pregunta: ¿Tu animal ha intentado orinar sin éxito o lo hace en pequeñas cantidades?
+        opciones:
+          - afirmativo: 2
+          - negativo: 9
+
+      - id: 2
+        tipo: pregunta
+        pregunta: ¿Se muestra inquieto, con el abdomen tenso o se lame la zona genital?
+        opciones:
+          - afirmativo: 3
+          - negativo: 4
+
+      - id: 3
+        tipo: accion
+        accion: Acudir de inmediato a consulta. La retención urinaria puede indicar obstrucción o dolor severo.
+        siguiente: 5
+
+      - id: 4
+        tipo: nota
+        nota: Si hay dificultad pero sin molestias visibles, aún puede haber problemas de vaciado. Se recomienda revisión.
+        fin: true
+
+      - id: 5
+        tipo: pregunta
+        pregunta: ¿Se identificó vejiga distendida sin salida de orina?
+        opciones:
+          - afirmativo: 6
+          - negativo: 7
+
+      - id: 6
+        tipo: diagnostico
+        titulo: Obstrucción parcial o disfunción del detrusor
+        recomendaciones: Realizar sondaje, ecografía vesical, valorar próstata (machos), y revisar columna lumbosacra.
+        fin: true
+
+      - id: 7
+        tipo: pregunta
+        pregunta: ¿Hay signos neurológicos o historial de caídas recientes?
+        opciones:
+          - afirmativo: 8
+          - negativo: 10
+
+      - id: 8
+        tipo: diagnostico
+        titulo: Retención urinaria de origen neurológico
+        recomendaciones: Estudio neurológico completo, evaluación motora y reflejos perineales. Considerar daño medular.
+        fin: true
+
+      - id: 9
+        tipo: nota
+        nota: No hay signos actuales de retención. Continuar observando frecuencia y postura al orinar.
+        fin: true
+
+      - id: 10
+        tipo: nota
+        nota: Si el patrón persiste sin causa evidente, realizar seguimiento y controles periódicos de vaciado vesical.
+        fin: true
+
+  - id: pu_pd_geriatrico
+    nombre: Poliuria y polidipsia en pacientes geriátricos
+    pagina: 163
+    tipoSintoma: clínico
+    nivelUsuario: familiar
+    especie: perro_gato
+    esquema:
+      - id: 1
+        tipo: pregunta
+        pregunta: ¿Tu animal bebe más agua de lo habitual y orina en mayor cantidad?
+        opciones:
+          - afirmativo: 2
+          - negativo: 11
+
+      - id: 2
+        tipo: pregunta
+        pregunta: ¿Este patrón se ha mantenido por más de 3 días?
+        opciones:
+          - afirmativo: 3
+          - negativo: 10
+
+      - id: 3
+        tipo: pregunta
+        pregunta: ¿Ha perdido peso o apetito en paralelo?
+        opciones:
+          - afirmativo: 4
+          - negativo: 5
+
+      - id: 4
+        tipo: diagnostico
+        titulo: PU/PD con signos sistémicos
+        recomendaciones: Realizar analítica completa (urea, creatinina, glucosa, ALT, cortisol), y ecografía abdominal.
+        fin: true
+
+      - id: 5
+        tipo: pregunta
+        pregunta: ¿Está recibiendo tratamiento con corticoides, diuréticos o fenobarbital?
+        opciones:
+          - afirmativo: 6
+          - negativo: 7
+
+      - id: 6
+        tipo: nota
+        nota: La PU/PD puede ser efecto secundario farmacológico. Ajustar tratamiento solo bajo supervisión veterinaria.
+        fin: true
+
+      - id: 7
+        tipo: pregunta
+        pregunta: ¿Hay signos asociados como abdomen distendido, piel fina o letargo?
+        opciones:
+          - afirmativo: 8
+          - negativo: 9
+
+      - id: 8
+        tipo: diagnostico
+        titulo: Sospecha de endocrinopatía (Cushing u otra)
+        recomendaciones: Valorar pruebas hormonales (cortisol basal, pruebas de estimulación o supresión), e imagen abdominal.
+        fin: true
+
+      - id: 9
+        tipo: nota
+        nota: Puede tratarse de insuficiencia renal incipiente o hepatopatía. Se recomienda control periódico y análisis básico.
+        fin: true
+
+      - id: 10
+        tipo: nota
+        nota: Un aumento aislado puede deberse a calor, estrés o dieta. Si se mantiene, repetir revisión en 48–72 h.
+        fin: true
+
+      - id: 11
+        tipo: nota
+        nota: No se detecta PU/PD actual. Observar si aparecen cambios en rutina de bebida u orina.
+        fin: true
+
+  - id: tos_cronica_geriatrica
+    nombre: Tos crónica o nocturna en pacientes geriátricos
+    pagina: 171
+    tipoSintoma: auditivo
+    nivelUsuario: familiar
+    especie: perro_gato
+    esquema:
+      - id: 1
+        tipo: pregunta
+        pregunta: ¿Tu animal tose especialmente por la noche o al levantarse?
+        opciones:
+          - afirmativo: 2
+          - negativo: 8
+
+      - id: 2
+        tipo: pregunta
+        pregunta: ¿La tos es seca y se presenta tras ejercicio o excitación?
+        opciones:
+          - afirmativo: 3
+          - negativo: 4
+
+      - id: 3
+        tipo: accion
+        accion: Acudir a consulta para descartar cardiomegalia, colapso traqueal o tos por presión bronquial.
+        siguiente: 5
+
+      - id: 4
+        tipo: nota
+        nota: La tos húmeda o con flemas puede tener origen respiratorio. Evaluar ambiente, exposición a irritantes o infecciones.
+        fin: true
+
+      - id: 5
+        tipo: pregunta
+        pregunta: ¿Se detectó agrandamiento cardíaco o ruidos valvulares en la auscultación?
+        opciones:
+          - afirmativo: 6
+          - negativo: 7
+
+      - id: 6
+        tipo: diagnostico
+        titulo: Tos de origen cardíaco por compresión bronquial
+        recomendaciones: Indicar radiografía torácica, ecocardiografía y tratamiento para insuficiencia cardíaca si procede.
+        fin: true
+
+      - id: 7
+        tipo: nota
+        nota: Si no hay hallazgos claros, continuar observación y repetir estudio si la tos persiste o se intensifica.
+        fin: true
+
+      - id: 8
+        tipo: nota
+        nota: No se identifican signos actuales de tos crónica. Mantener vigilancia ante aparición de síntomas.
+        fin: true
+
+  - id: sincope_intolerancia_ejercicio
+    nombre: Síncope o intolerancia al ejercicio en pacientes geriátricos
+    pagina: 173
+    tipoSintoma: conductual
+    nivelUsuario: familiar
+    especie: perro_gato
+    esquema:
+      - id: 1
+        tipo: pregunta
+        pregunta: ¿Tu animal se detiene con frecuencia al caminar o parece fatigado rápidamente?
+        opciones:
+          - afirmativo: 2
+          - negativo: 12
+
+      - id: 2
+        tipo: pregunta
+        pregunta: ¿Ha llegado a desplomarse o perder la consciencia por unos segundos?
+        opciones:
+          - afirmativo: 3
+          - negativo: 5
+
+      - id: 3
+        tipo: accion
+        accion: Acudir a consulta con urgencia. Es necesario diferenciar entre síncope, crisis neurológica y colapso periférico.
+        siguiente: 4
+
+      - id: 4
+        tipo: pregunta
+        nivelUsuario: técnico
+        pregunta: ¿Se detectan bradicardia, soplos, arritmias o pulsos débiles?
+        opciones:
+          - afirmativo: 6
+          - negativo: 7
+
+      - id: 5
+        tipo: pregunta
+        pregunta: ¿Evita subir escaleras, trotar o jugar como antes?
+        opciones:
+          - afirmativo: 8
+          - negativo: 13
+
+      - id: 6
+        tipo: diagnostico
+        nivelUsuario: técnico
+        titulo: Sospecha de cardiopatía con síncope (bradiarritmia, estenosis, insuficiencia)
+        recomendaciones: Realizar ECG, ecocardiografía y análisis de presión arterial. Considerar Holter y tratamiento farmacológico o marcapasos.
+        fin: true
+
+      - id: 7
+        tipo: pregunta
+        nivelUsuario: técnico
+        pregunta: ¿El colapso ocurre con signos neurológicos (temblores, desorientación, posturas anómalas)?
+        opciones:
+          - afirmativo: 9
+          - negativo: 11
+
+      - id: 8
+        tipo: diagnostico
+        nivelUsuario: técnico
+        titulo: Intolerancia progresiva al ejercicio
+        recomendaciones: Explorar función músculo-esquelética y cardiovascular. Considerar fatiga por sarcopenia, dolor crónico o debilidad secundaria.
+        fin: true
+
+      - id: 9
+        tipo: diagnostico
+        nivelUsuario: experto
+        titulo: Crisis neurológica o síncope de origen central
+        recomendaciones: Valorar imagen cerebral (TAC/RM), LCR, análisis tóxicos/metabólicos. Diferenciar con epilepsia atípica o colapso episódico.
+        fin: true
+
+      - id: 10
+        tipo: nota
+        nota: La causa puede requerir estudios avanzados. Documentar eventos con video si es posible.
+        fin: true
+
+      - id: 11
+        tipo: nota
+        nota: La ausencia de hallazgos no excluye síncope funcional. Repetir exploración o realizar pruebas de provocación (p. ej. prueba de esfuerzo).
+        fin: true
+
+      - id: 12
+        tipo: nota
+        nota: No hay signos actuales de fatiga o síncope. Continuar observación y chequeo geriátrico periódico.
+        fin: true
+
+      - id: 13
+        tipo: nota
+        nota: Puede tratarse de un bajo nivel de actividad sin base patológica. Valorar entorno, motivación y dolor subclínico.
+        fin: true
+
+  - id: ataxia_geriatrica
+    nombre: Ataxia en pacientes geriátricos
+    pagina: 157
+    tipoSintoma: conductual
+    nivelUsuario: familiar
+    especie: perro_gato
+    esquema:
+      - id: 1
+        tipo: pregunta
+        pregunta: ¿Has notado que tu animal camina de forma inestable o pierde el equilibrio?
+        opciones:
+          - afirmativo: 2
+          - negativo: 12
+
+      - id: 2
+        tipo: pregunta
+        pregunta: ¿La inestabilidad apareció de forma brusca?
+        opciones:
+          - afirmativo: 3
+          - negativo: 6
+
+      - id: 3
+        tipo: accion
+        accion: Acudir a consulta inmediata. La ataxia aguda requiere evaluación neurológica y vestibular urgente.
+        siguiente: 4
+
+      - id: 4
+        tipo: pregunta
+        nivelUsuario: técnico
+        pregunta: ¿Se detecta inclinación de cabeza, nistagmo o caída hacia un lado?
+        opciones:
+          - afirmativo: 5
+          - negativo: 7
+
+      - id: 5
+        tipo: diagnostico
+        nivelUsuario: técnico
+        titulo: Síndrome vestibular (central o periférico)
+        recomendaciones: Evaluar signos centrales (propriocepción, estado mental). Realizar TAC/RM, LCR si hay sospecha central. Tratar causa subyacente.
+        fin: true
+
+      - id: 6
+        tipo: pregunta
+        pregunta: ¿La inestabilidad afecta principalmente a las patas traseras?
+        opciones:
+          - afirmativo: 8
+          - negativo: 9
+
+      - id: 7
+        tipo: pregunta
+        nivelUsuario: técnico
+        pregunta: ¿Presenta marcha espástica, hipermetría o temblores intencionales?
+        opciones:
+          - afirmativo: 10
+          - negativo: 11
+
+      - id: 8
+        tipo: diagnostico
+        nivelUsuario: técnico
+        titulo: Ataxia propioceptiva por lesión medular toracolumbar
+        recomendaciones: Realizar evaluación neurológica completa, pruebas de imagen espinal (RM, mielografía), y descartar neoplasias o degeneraciones.
+        fin: true
+
+      - id: 9
+        tipo: nota
+        nota: Si la marcha es errática sin patrón definido, puede ser multifactorial. Evaluar función motora, dolor, vista y equilibrio.
+        fin: true
+
+      - id: 10
+        tipo: diagnostico
+        nivelUsuario: experto
+        titulo: Ataxia cerebelosa
+        recomendaciones: Realizar RM cerebral, pruebas de reflejos y coordinación. Considerar tumores, degeneración cerebelosa o hipoplasia.
+        fin: true
+
+      - id: 11
+        tipo: nota
+        nota: No hay patrón claro de ataxia definida. Requiere evaluación clínica por especialista para tipificación.
+        fin: true
+
+      - id: 12
+        tipo: nota
+        nota: No se observan signos de incoordinación. Seguir observando y registrar cualquier cambio en la marcha o equilibrio.
+        fin: true
+
+  - id: perdida_vision_geriatrica
+    nombre: Pérdida de visión en pacientes geriátricos
+    pagina: 160
+    tipoSintoma: visual
+    nivelUsuario: familiar
+    especie: perro_gato
+    esquema:
+      - id: 1
+        tipo: pregunta
+        pregunta: ¿Tu animal choca con objetos, evita zonas oscuras o se muestra inseguro al moverse?
+        opciones:
+          - afirmativo: 2
+          - negativo: 14
+
+      - id: 2
+        tipo: pregunta
+        pregunta: ¿La pérdida de visión ocurrió de forma repentina?
+        opciones:
+          - afirmativo: 3
+          - negativo: 6
+
+      - id: 3
+        tipo: accion
+        accion: Acudir a consulta urgente. Se requiere exploración oftalmológica y neurológica básica.
+        siguiente: 4
+
+      - id: 4
+        tipo: pregunta
+        nivelUsuario: técnico
+        pregunta: ¿Se observa desprendimiento de retina o signos de hipertensión ocular?
+        opciones:
+          - afirmativo: 5
+          - negativo: 7
+
+      - id: 5
+        tipo: diagnostico
+        nivelUsuario: técnico
+        titulo: Sospecha de ceguera secundaria a hipertensión o patología retiniana
+        recomendaciones: Tratar causa subyacente (hipertensión, enfermedad renal, hipertiroidismo). Monitorear presión ocular y fondo de ojo.
+        fin: true
+
+      - id: 6
+        tipo: pregunta
+        pregunta: ¿Observas opacidad en los ojos o aspecto anormal en pupilas?
+        opciones:
+          - afirmativo: 8
+          - negativo: 9
+
+      - id: 7
+        tipo: pregunta
+        nivelUsuario: técnico
+        pregunta: ¿Reflejos pupilares están presentes, pero no hay percepción visual?
+        opciones:
+          - afirmativo: 10
+          - negativo: 11
+
+      - id: 8
+        tipo: diagnostico
+        nivelUsuario: técnico
+        titulo: Sospecha de afección ocular crónica (cataratas, uveítis, glaucoma)
+        recomendaciones: Confirmar mediante presión intraocular, lámpara de hendidura y fondo de ojo. Valorar cirugía si aplica.
+        fin: true
+
+      - id: 9
+        tipo: nota
+        nota: La ausencia de cambios visibles no descarta daño interno. Continuar con evaluación especializada.
+        siguiente: 7
+
+      - id: 10
+        tipo: diagnostico
+        nivelUsuario: experto
+        titulo: Sospecha de ceguera cortical o neurológica
+        recomendaciones: Realizar pruebas de imagen cerebral (TAC/RM), potenciales evocados visuales, análisis de LCR.
+        fin: true
+
+      - id: 11
+        tipo: diagnostico
+        nivelUsuario: técnico
+        titulo: Sospecha de amaurosis completa por lesión ocular avanzada
+        recomendaciones: Confirmar mediante oftalmoscopia directa e indirecta. Valorar pronóstico visual y manejo paliativo.
+        fin: true
+
+      - id: 14
+        tipo: nota
+        nota: No hay signos actuales de pérdida de visión. Recomendar control geriátrico anual y observación continua.
+        fin: true
+
+  - id: desorientacion_geriatrica
+    nombre: Desorientación en animales geriátricos
+    pagina: 297
+    tipoSintoma: conductual
+    nivelUsuario: familiar
+    especie: perro_gato
+    esquema:
+      - id: 1
+        tipo: pregunta
+        pregunta: ¿Tu animal parece perderse en casa, no reconoce lugares o actúa confundido?
+        opciones:
+          - afirmativo: 2
+          - negativo: 6
+
+      - id: 2
+        tipo: pregunta
+        pregunta: ¿Has notado que repite acciones sin sentido o se queda inmóvil mirando un punto?
+        opciones:
+          - afirmativo: 3
+          - negativo: 4
+
+      - id: 3
+        tipo: pregunta
+        pregunta: ¿Reconoce a los miembros del hogar o reacciona de forma extraña ante personas conocidas?
+        opciones:
+          - afirmativo: 4
+          - negativo: 5
+
+      - id: 4
+        tipo: nota
+        nota: Podría tratarse de un inicio de deterioro cognitivo asociado a la edad.
+        recomendaciones:
+          - Observa si hay otros cambios: sueño, alimentación, comportamiento nocturno.
+          - Lleva un diario breve de estos episodios para compartir con el veterinario.
+        fin: Fin del algoritmo.
+
+      - id: 5
+        tipo: accion
+        nivelUsuario: técnico
+        accion: Se recomienda evaluación clínica para confirmar deterioro cognitivo.
+        recomendaciones:
+          - El veterinario puede aplicar escalas de disfunción cognitiva (CCDS).
+          - También es importante descartar causas neurológicas u orgánicas.
+        fin: Fin del algoritmo.
+
+      - id: 6
+        tipo: pregunta
+        pregunta: ¿Tu animal olvida rutinas o parece desorientado al realizar acciones habituales (comer, salir, dormir)?
+        opciones:
+          - afirmativo: 3
+          - negativo: 7
+
+      - id: 7
+        tipo: pregunta
+        pregunta: ¿Presenta cambios de ánimo, ansiedad nocturna o comportamiento alterado?
+        opciones:
+          - afirmativo: 8
+          - negativo: 9
+
+      - id: 8
+        tipo: nota
+        nota: Estos signos podrían estar relacionados con ansiedad o cambios emocionales por envejecimiento.
+        recomendaciones:
+          - Revisa el algoritmo “cambios_animo_geriatrico”.
+          - Asegura un ambiente estable, con rutinas y enriquecimiento sensorial.
+        fin: Fin del algoritmo.
+
+      - id: 9
+        tipo: nota
+        nota: Por el momento, no se observan signos relevantes de desorientación.
+        fin: Fin del algoritmo.
+
+
+  - id: temblores_geriatrico
+    nombre: Temblores en pacientes geriátricos
+    pagina: 165
+    tipoSintoma: conductual
+    nivelUsuario: familiar
+    especie: perro_gato
+    esquema:
+      - id: 1
+        tipo: pregunta
+        pregunta: ¿Has notado que tu animal presenta temblores en reposo o al moverse?
+        opciones:
+          - afirmativo: 2
+          - negativo: 13
+
+      - id: 2
+        tipo: pregunta
+        pregunta: ¿Los temblores ocurren principalmente durante el movimiento?
+        opciones:
+          - afirmativo: 3
+          - negativo: 5
+
+      - id: 3
+        tipo: pregunta
+        pregunta: ¿Se acompañan de rigidez, dificultad para iniciar la marcha o movimientos torpes?
+        opciones:
+          - afirmativo: ataxia_geriatrica
+          - negativo: 4
+
+      - id: 4
+        tipo: nota
+        nota: Puede tratarse de temblores fisiológicos o relacionados con fatiga muscular. Monitorizar evolución.
+        fin: true
+
+      - id: 5
+        tipo: pregunta
+        pregunta: ¿El animal muestra signos de dolor, tensión muscular o incomodidad postural?
+        opciones:
+          - afirmativo: dolor_no_especifico_geriatrico
+          - negativo: 6
+
+      - id: 6
+        tipo: accion
+        accion: Acudir a consulta para evaluación neurológica y general.
+        siguiente: 7
+
+      - id: 7
+        tipo: pregunta
+        nivelUsuario: técnico
+        pregunta: ¿Se detectan temblores localizados en una extremidad o hemi-cuerpo?
+        opciones:
+          - afirmativo: 8
+          - negativo: 9
+
+      - id: 8
+        tipo: diagnostico
+        nivelUsuario: técnico
+        titulo: Temblores localizados
+        recomendaciones: Evaluar causa neurológica periférica o dolor específico. Realizar pruebas de imagen (RX, TC) y análisis muscular si procede.
+        fin: true
+
+      - id: 9
+        tipo: pregunta
+        nivelUsuario: técnico
+        pregunta: ¿Los temblores son generalizados y no responden a estímulos?
+        opciones:
+          - afirmativo: 10
+          - negativo: 11
+
+      - id: 10
+        tipo: diagnostico
+        nivelUsuario: experto
+        titulo: Temblores generalizados de origen central o metabólico
+        recomendaciones: Realizar analítica completa, pruebas hepáticas y renales, tóxicos, y neuroimagen si es posible. Considerar encefalopatía hepática o degenerativa.
+        fin: true
+
+      - id: 11
+        tipo: nota
+        nota: Los temblores podrían ser idiopáticos o asociados a edad. Monitorear frecuencia, duración y evolución.
+        fin: true
+
+      - id: 13
+        tipo: nota
+        nota: No se han observado temblores actualmente. Recomendar observación rutinaria y control geriátrico regular.
+        fin: true
+
+  - id: cambios_animo_geriatrico
+    nombre: Cambios de ánimo, irritabilidad o conducta anómala en pacientes geriátricos
+    pagina: 143
+    tipoSintoma: conductual
+    nivelUsuario: familiar
+    especie: perro_gato
+    esquema:
+      - id: 1
+        tipo: pregunta
+        pregunta: ¿Tu animal ha cambiado su forma de relacionarse contigo o con otros miembros del hogar?
+        opciones:
+          - afirmativo: 2
+          - negativo: 20
+
+      - id: 2
+        tipo: pregunta
+        pregunta: ¿Se ha vuelto más irritable, intolerante al contacto o reacciona con agresividad leve?
+        opciones:
+          - afirmativo: 3
+          - negativo: 6
+
+      - id: 3
+        tipo: nota
+        nota: Estos cambios pueden indicar dolor crónico, hipersensibilidad táctil, pérdida de tolerancia o frustración.
+        siguiente: 4
+
+      - id: 4
+        tipo: accion
+        accion: Acudir a consulta para evaluar dolor, estado neurológico y función sensorial.
+        siguiente: 5
+
+      - id: 5
+        tipo: pregunta
+        nivelUsuario: técnico
+        pregunta: ¿Se detecta alodinia, rigidez, contractura o rechazo focal al contacto?
+        opciones:
+          - afirmativo: dolor_no_especifico_geriatrico
+          - negativo: 7
+
+      - id: 6
+        tipo: pregunta
+        pregunta: ¿Se muestra más apático o desconectado del entorno?
+        opciones:
+          - afirmativo: 8
+          - negativo: 10
+
+      - id: 7
+        tipo: pregunta
+        nivelUsuario: técnico
+        pregunta: ¿Hay signos de desorientación o pérdida de percepción sensorial?
+        opciones:
+          - afirmativo: desorientacion_geriatrica
+          - negativo: 11
+
+      - id: 8
+        tipo: nota
+        nota: La apatía geriátrica puede deberse a deterioro cognitivo, dolor, disfunción hormonal o fatiga crónica.
+        siguiente: 9
+
+      - id: 9
+        tipo: pregunta
+        nivelUsuario: técnico
+        pregunta: ¿Existen alteraciones hormonales o signos sistémicos concurrentes?
+        opciones:
+          - afirmativo: hipotiroidismo_geriatrico
+          - negativo: 7
+
+      - id: 10
+        tipo: pregunta
+        pregunta: ¿Ha comenzado a marcar con orina o a orinar fuera del arenero o zona habitual?
+        opciones:
+          - afirmativo: 12
+          - negativo: 13
+
+      - id: 11
+        tipo: diagnostico
+        nivelUsuario: experto
+        titulo: Cambios conductuales sin causa orgánica clara
+        recomendaciones: Evaluar función cognitiva, estado emocional, posible disfunción sensorial o alteración relacional. Aplicar escalas y seguimiento longitudinal.
+        fin: true
+
+      - id: 12
+        tipo: nota
+        nota: El marcaje o cambio en micciones puede ser signo de estrés, desorientación o pérdida de referencia territorial.
+        siguiente: 14
+
+      - id: 13
+        tipo: pregunta
+        pregunta: ¿Presenta vocalización excesiva, repetición de gestos o deambulación nocturna?
+        opciones:
+          - afirmativo: desorientacion_geriatrica
+          - negativo: 11
+
+      - id: 14
+        tipo: pregunta
+        nivelUsuario: técnico
+        pregunta: ¿Se han descartado causas urinarias o endocrinas?
+        opciones:
+          - afirmativo: 15
+          - negativo: poliuria_polidipsia_geriatrica
+
+      - id: 15
+        tipo: diagnostico
+        nivelUsuario: técnico
+        titulo: Marcaje o micción inapropiada de origen conductual o cognitivo
+        recomendaciones: Revisión del entorno, reducción del estrés, enriquecimiento ambiental, feromonoterapia y ajuste del arenero. Si hay confusión espacial, evaluar deterioro cognitivo.
+        fin: true
+
+      - id: 20
+        tipo: nota
+        nota: No se detectan cambios de ánimo o conducta actuales. Mantener seguimiento preventivo y entorno estable.
+        fin: true
+
+  - id: ansiedad_nocturna_geriatrica
+    nombre: Ansiedad nocturna o vocalización anómala en pacientes geriátricos
+    pagina: 148
+    tipoSintoma: conductual
+    nivelUsuario: familiar
+    especie: perro_gato
+    esquema:
+      - id: 1
+        tipo: pregunta
+        pregunta: ¿Tu animal vocaliza por la noche, deambula sin motivo o parece alterado mientras todos duermen?
+        opciones:
+          - afirmativo: 2
+          - negativo: 12
+
+      - id: 2
+        tipo: pregunta
+        pregunta: ¿Estos episodios ocurren todos o casi todos los días?
+        opciones:
+          - afirmativo: 3
+          - negativo: 4
+
+      - id: 3
+        tipo: nota
+        nota: La ansiedad nocturna persistente puede indicar dolor, disfunción cognitiva o alteraciones sensoriales.
+        siguiente: 5
+
+      - id: 4
+        tipo: nota
+        nota: Episodios esporádicos pueden deberse a estímulos puntuales, cambios de rutina o frustración momentánea. Observar evolución.
+        fin: true
+
+      - id: 5
+        tipo: accion
+        accion: Acudir a consulta para exploración física y neurológica completa, con enfoque en dolor, percepción y ritmos circadianos.
+        siguiente: 6
+
+      - id: 6
+        tipo: pregunta
+        nivelUsuario: técnico
+        pregunta: ¿Se detectan signos de dolor, rigidez o molestias articulares al moverse o al acostarse?
+        opciones:
+          - afirmativo: dolor_no_especifico_geriatrico
+          - negativo: 7
+
+      - id: 7
+        tipo: pregunta
+        nivelUsuario: técnico
+        pregunta: ¿El animal presenta signos de pérdida de visión, audición o desorientación?
+        opciones:
+          - afirmativo: desorientacion_geriatrica
+          - negativo: 8
+
+      - id: 8
+        tipo: pregunta
+        nivelUsuario: técnico
+        pregunta: ¿Se han descartado causas urinarias, hormonales o metabólicas?
+        opciones:
+          - afirmativo: 9
+          - negativo: poliuria_polidipsia_geriatrica
+
+      - id: 9
+        tipo: diagnostico
+        nivelUsuario: experto
+        titulo: Ansiedad nocturna de origen geriátrico primario
+        recomendaciones: Valorar disfunción cognitiva, ciclo sueño-vigilia alterado, síndrome crepuscular. Usar rutina estable, feromonoterapia, melatonina o tratamiento específico si procede.
+        fin: true
+
+      - id: 12
+        tipo: nota
+        nota: No se observan signos de ansiedad nocturna. Mantener entorno predecible y condiciones de descanso óptimas.
+        fin: true
+
+  - id: alteraciones_comportamiento_alimentario
+    nombre: Cambios de comportamiento alimentario en pacientes geriátricos
+    pagina: 152
+    tipoSintoma: conductual
+    nivelUsuario: familiar
+    especie: perro_gato
+    esquema:
+      - id: 1
+        tipo: pregunta
+        pregunta: ¿Has notado cambios en la forma de comer de tu animal (más ansiedad, rechazo o hábitos extraños)?
+        opciones:
+          - afirmativo: 2
+          - negativo: 14
+
+      - id: 2
+        tipo: pregunta
+        pregunta: ¿Busca comida con más insistencia o come de forma ansiosa?
+        opciones:
+          - afirmativo: 3
+          - negativo: 5
+
+      - id: 3
+        tipo: pregunta
+        pregunta: ¿Se ha descartado diabetes, hipertiroidismo o malabsorción?
+        opciones:
+          - afirmativo: 4
+          - negativo: poliuria_polidipsia_geriatrica
+
+      - id: 4
+        tipo: diagnostico
+        nivelUsuario: técnico
+        titulo: Ansiedad alimentaria geriátrica sin causa metabólica
+        recomendaciones: Valorar disfunción cognitiva leve, ajustar horarios y cantidad, usar comederos interactivos o alimentación fraccionada.
+        fin: true
+
+      - id: 5
+        tipo: pregunta
+        pregunta: ¿Ha comenzado a rechazar ciertos alimentos o comer con desconfianza?
+        opciones:
+          - afirmativo: 6
+          - negativo: 9
+
+      - id: 6
+        tipo: pregunta
+        pregunta: ¿Hace gestos anómalos al masticar, babea o escupe el alimento?
+        opciones:
+          - afirmativo: 7
+          - negativo: 8
+
+      - id: 7
+        tipo: diagnostico
+        nivelUsuario: técnico
+        titulo: Dolor oral o dificultad masticatoria
+        recomendaciones: Explorar cavidad oral, dientes, encías y lengua. Realizar limpieza o extracciones si procede. Considerar alimentación blanda.
+        fin: true
+
+      - id: 8
+        tipo: diagnostico
+        nivelUsuario: técnico
+        titulo: Rechazo selectivo sin lesión evidente
+        recomendaciones: Valorar deterioro cognitivo, pérdida olfativa o experiencias negativas previas. Introducir cambios graduales y revisar texturas.
+        fin: true
+
+      - id: 9
+        tipo: pregunta
+        pregunta: ¿Ingiera objetos no alimentarios (tierra, telas, plástico)?
+        opciones:
+          - afirmativo: 10
+          - negativo: 13
+
+      - id: 10
+        tipo: pregunta
+        pregunta: ¿Lo hace de forma repetitiva o sin estímulos ambientales claros?
+        opciones:
+          - afirmativo: 11
+          - negativo: 12
+
+      - id: 11
+        tipo: diagnostico
+        nivelUsuario: experto
+        titulo: Pica de origen cognitivo o neurológico
+        recomendaciones: Explorar causas cognitivas, gastrointestinales o carenciales. Supervisar, limitar acceso, introducir estimulación sensorial.
+        fin: true
+
+      - id: 12
+        tipo: nota
+        nota: La ingesta de objetos puede ser por aburrimiento, ansiedad o demanda de atención. Modificar entorno y rutina.
+        fin: true
+
+      - id: 13
+        tipo: nota
+        nota: Cambios sutiles en el patrón alimentario pueden preceder deterioros sistémicos. Revisión geriátrica completa recomendada.
+        fin: true
+
+      - id: 14
+        tipo: nota
+        nota: No se detectan cambios actuales en el comportamiento alimentario. Mantener dieta estable y monitorear apetito.
+        fin: true
+
+  - id: alteraciones_higiene_geriatrica
+    nombre: Alteraciones en la higiene, pelaje o piel en animales geriátricos
+    pagina: 298
+    tipoSintoma: visual
+    nivelUsuario: familiar
+    especie: perro_gato
+    esquema:
+      - id: 1
+        tipo: pregunta
+        pregunta: ¿Has notado que tu animal está más sucio, con el pelo apelmazado o zonas mal cuidadas?
+        opciones:
+          - afirmativo: 2
+          - negativo: 3
+
+      - id: 2
+        tipo: pregunta
+        pregunta: ¿Estas zonas coinciden con zonas de difícil acceso (lomo, caderas, cara interna de muslos)?
+        opciones:
+          - afirmativo: 4
+          - negativo: 5
+
+      - id: 3
+        tipo: pregunta
+        pregunta: ¿Has notado olor corporal inusual, secreción de la piel o heridas visibles?
+        opciones:
+          - afirmativo: 6
+          - negativo: 9
+
+      - id: 4
+        tipo: nota
+        nota: Podría tratarse de dificultad para acicalarse por dolor articular o rigidez.
+        recomendaciones:
+          - Observa si evita moverse, cojea o tarda en levantarse.
+          - Solicita valoración veterinaria para detectar dolor oculto.
+        fin: Fin del algoritmo.
+
+      - id: 5
+        tipo: nota
+        nota: El acicalamiento selectivo o incompleto puede indicar disfunción cognitiva o confusión.
+        recomendaciones:
+          - Observa si repite conductas, se pierde en casa o evita zonas conocidas.
+          - Consulta con tu veterinario sobre cambios de comportamiento.
+        fin: Fin del algoritmo.
+
+      - id: 6
+        tipo: pregunta
+        pregunta: ¿Has notado bultos, costras, enrojecimiento o heridas que no cicatrizan?
+        opciones:
+          - afirmativo: 7
+          - negativo: 8
+
+      - id: 7
+        tipo: accion
+        nivelUsuario: técnico
+        accion: Se recomienda evaluación clínica para descartar infecciones, alergias o procesos tumorales.
+        recomendaciones:
+          - El veterinario puede realizar citología, biopsia o pruebas dermatológicas.
+          - No apliques productos sin indicación profesional.
+        fin: Fin del algoritmo.
+
+      - id: 8
+        tipo: nota
+        nota: El olor o secreciones cutáneas pueden ser signos de alteraciones hormonales, renales o hepáticas.
+        recomendaciones:
+          - Observa si hay otros signos: pérdida de peso, apetito selectivo, cambios en la orina.
+          - Consulta con tu veterinario para estudios complementarios.
+        fin: Fin del algoritmo.
+
+      - id: 9
+        tipo: pregunta
+        pregunta: ¿Tu animal presenta pelaje más opaco, zonas de caída de pelo o piel seca?
+        opciones:
+          - afirmativo: 10
+          - negativo: 12
+
+      - id: 10
+        tipo: accion
+        nivelUsuario: técnico
+        accion: Posible alteración metabólica o endocrina (hipotiroidismo, envejecimiento cutáneo).
+        recomendaciones:
+          - El veterinario puede solicitar perfil tiroideo o evaluación hormonal.
+          - Mantén una dieta adaptada a su etapa geriátrica.
+        fin: Fin del algoritmo.
+
+      - id: 12
+        tipo: diagnostico
+        nivelUsuario: experto
+        titulo: Alteración progresiva en la higiene sin causa física clara
+        recomendaciones:
+          - Puede ser parte del síndrome de disfunción cognitiva geriátrica.
+          - Realizar seguimiento comportamental y plan de enriquecimiento ambiental.
+        fin: Fin del algoritmo.
+
+
+  - id: alteraciones_sueno_geriatrico
+    nombre: Alteraciones del sueño en pacientes geriátricos
+    pagina: 149
+    tipoSintoma: conductual
+    nivelUsuario: familiar
+    especie: perro_gato
+    esquema:
+      - id: 1
+        tipo: pregunta
+        pregunta: ¿Has notado que tu animal duerme menos, se despierta con frecuencia o cambia sus horarios de descanso?
+        opciones:
+          - afirmativo: 2
+          - negativo: 12
+
+      - id: 2
+        tipo: pregunta
+        pregunta: ¿Se despierta durante la noche, deambula o vocaliza sin motivo claro?
+        opciones:
+          - afirmativo: ansiedad_nocturna_geriatrica
+          - negativo: 3
+
+      - id: 3
+        tipo: pregunta
+        pregunta: ¿Duerme más durante el día y está activo por la noche?
+        opciones:
+          - afirmativo: 4
+          - negativo: 6
+
+      - id: 4
+        tipo: nota
+        nota: La inversión del ritmo sueño-vigilia es frecuente en la disfunción cognitiva geriátrica.
+        siguiente: 5
+
+      - id: 5
+        tipo: accion
+        accion: Consultar para evaluación neurológica, revisión ambiental y ajuste del ciclo luz-oscuridad.
+        siguiente: 7
+
+      - id: 6
+        tipo: pregunta
+        pregunta: ¿Presenta sobresaltos durante el sueño, movimientos o vocalizaciones mientras duerme?
+        opciones:
+          - afirmativo: 7
+          - negativo: 9
+
+      - id: 7
+        tipo: pregunta
+        nivelUsuario: técnico
+        pregunta: ¿Se detectan signos de dolor crónico o tensión muscular al palpar?
+        opciones:
+          - afirmativo: dolor_no_especifico_geriatrico
+          - negativo: 8
+
+      - id: 8
+        tipo: diagnostico
+        nivelUsuario: técnico
+        titulo: Trastornos del sueño con componente neurosensorial
+        recomendaciones: Explorar posibles disfunciones centrales, uso de feromonoterapia, melatonina o intervención ambiental. Monitorizar evolución.
+        fin: true
+
+      - id: 9
+        tipo: pregunta
+        pregunta: ¿Duerme de forma excesiva durante el día o parece somnoliento constantemente?
+        opciones:
+          - afirmativo: 10
+          - negativo: 11
+
+      - id: 10
+        tipo: diagnostico
+        nivelUsuario: técnico
+        titulo: Somnolencia diurna excesiva
+        recomendaciones: Revisar función tiroidea, neurológica y posibles efectos secundarios de fármacos. Valorar deterioro cognitivo o fatiga crónica.
+        fin: true
+
+      - id: 11
+        tipo: nota
+        nota: Las alteraciones del sueño pueden ser sutiles. Recomendar diario de observación y seguimiento clínico.
+        fin: true
+
+      - id: 12
+        tipo: nota
+        nota: No se observan alteraciones del sueño. Mantener entorno estable, control de luz natural y horarios fijos.
+        fin: true
+
+  - id: perdida_audicion
+    nombre: Pérdida de audición o respuesta alterada a sonidos
+    pagina: 304
+    tipoSintoma: auditivo
+    nivelUsuario: familiar
+    especie: perro_gato
+    esquema:
+      - id: 1
+        tipo: pregunta
+        pregunta: ¿Has notado que tu animal no responde a sonidos habituales como su nombre, sonidos de la comida o ruidos fuertes?
+        opciones:
+          - afirmativo: 2
+          - negativo: 8
+
+      - id: 2
+        tipo: pregunta
+        pregunta: ¿Sucede en todas las situaciones o solo en momentos concretos (cuando duerme, está distraído, etc.)?
+        opciones:
+          - afirmativo: 3
+          - negativo: 5
+
+      - id: 3
+        tipo: pregunta
+        pregunta: ¿Has observado otros cambios de conducta? (inseguridad, sobresaltos, agresividad, desorientación)
+        opciones:
+          - afirmativo: 4
+          - negativo: 6
+
+      - id: 4
+        tipo: accion
+        accion: Se recomienda visita clínica para descartar causas neurológicas, infecciosas o degenerativas.
+        recomendaciones:
+          - El veterinario podría realizar otoscopia, pruebas neurológicas o test auditivo especializado.
+          - No intentes limpiar los oídos sin supervisión.
+        fin: Fin del algoritmo.
+
+      - id: 5
+        tipo: pregunta
+        pregunta: ¿Reacciona al tacto o a señales vi
+
+  - id: halitosis_geriatrica
+    nombre: Halitosis en animales geriátricos
+    pagina: 184
+    tipoSintoma: visual
+    nivelUsuario: familiar
+    especie: perro_gato
+    esquema:
+      - id: 1
+        tipo: pregunta
+        pregunta: ¿Has notado mal aliento persistente en tu animal, incluso después de comer o beber?
+        opciones:
+          - afirmativo: 2
+          - negativo: 6
+
+      - id: 2
+        tipo: pregunta
+        pregunta: ¿El aliento huele a podrido, amoníaco o tiene un olor particularmente fuerte o nuevo?
+        opciones:
+          - afirmativo: 3
+          - negativo: 4
+
+      - id: 3
+        tipo: pregunta
+        pregunta: ¿Tu animal presenta otros signos como babeo, dificultad para masticar o sangrado oral?
+        opciones:
+          - afirmativo: 5
+          - negativo: 7
+
+      - id: 4
+        tipo: nota
+        nota: La halitosis leve puede estar relacionada con la acumulación de sarro o dieta.
+        recomendaciones:
+          - Consulta sobre limpieza dental geriátrica adaptada.
+          - Observa si empeora o se combina con pérdida de apetito.
+        fin: Fin del algoritmo.
+
+      - id: 5
+        tipo: accion
+        nivelUsuario: técnico
+        accion: Se recomienda exploración oral completa para detectar infecciones, úlceras o tumores.
+        recomendaciones:
+          - El veterinario puede realizar sedación leve para evaluación dental completa.
+          - No intentes limpiar la boca si hay dolor o sangrado.
+        fin: Fin del algoritmo.
+
+      - id: 6
+        tipo: nota
+        nota: No se detecta halitosis por el momento.
+        fin: Fin del algoritmo.
+
+      - id: 7
+        tipo: pregunta
+        pregunta: ¿Tu animal ha perdido peso, tiene vómitos frecuentes o bebe más agua de lo habitual?
+        opciones:
+          - afirmativo: 8
+          - negativo: 4
+
+      - id: 8
+        tipo: accion
+        nivelUsuario: técnico
+        accion: Podría tratarse de una alteración metabólica (renal, hepática o diabetes).
+        recomendaciones:
+          - Se recomienda análisis de sangre y orina para descartar enfermedad sistémica.
+          - Observa si el aliento huele a amoníaco (riñón) o dulce/ácido (diabetes).
+        fin: Fin del algoritmo.
+
+  - id: jadeo_geriatrico
+    nombre: Jadeo en animales geriátricos
+    pagina: 221
+    tipoSintoma: visual
+    nivelUsuario: familiar
+    especie: perro_gato
+    esquema:
+      - id: 1
+        tipo: pregunta
+        pregunta: ¿Tu animal jadea con frecuencia, incluso sin haber hecho ejercicio?
+        opciones:
+          - afirmativo: 2
+          - negativo: 7
+
+      - id: 2
+        tipo: pregunta
+        pregunta: ¿El jadeo ocurre en reposo o durante actividades normales (subir escaleras, caminar)?
+        opciones:
+          - afirmativo: 3
+          - negativo: 4
+
+      - id: 3
+        tipo: pregunta
+        pregunta: ¿Has notado otros signos como tos, intolerancia al ejercicio o encías pálidas?
+        opciones:
+          - afirmativo: 5
+          - negativo: 6
+
+      - id: 4
+        tipo: nota
+        nota: El jadeo leve tras actividad es esperable en animales mayores, pero debe observarse.
+        recomendaciones:
+          - Mantén una rutina suave de ejercicio.
+          - Observa si aumenta en frecuencia o intensidad.
+        fin: Fin del algoritmo.
+
+      - id: 5
+        tipo: accion
+        nivelUsuario: técnico
+        accion: Puede tratarse de una afección cardíaca, pulmonar o dolor crónico.
+        recomendaciones:
+          - El veterinario puede realizar radiografías, auscultación o análisis cardíacos.
+          - No mediques sin indicación.
+        fin: Fin del algoritmo.
+
+      - id: 6
+        tipo: pregunta
+        pregunta: ¿Se acompaña de inquietud, temblores o se produce en la noche?
+        opciones:
+          - afirmativo: 8
+          - negativo: 4
+
+      - id: 7
+        tipo: nota
+        nota: No se observa jadeo anormal en este momento.
+        fin: Fin del algoritmo.
+
+      - id: 8
+        tipo: nota
+        nota: El jadeo nocturno o asociado a ansiedad puede reflejar dolor, confusión o disfunción cognitiva.
+        recomendaciones:
+          - Observa si coincide con cambios de comportamiento o sueño.
+          - Consulta también el algoritmo “ansiedad_nocturna_geriatrica”.
+        fin: Fin del algoritmo.
+
+  - id: ictericia_geriatrica
+    nombre: Ictericia en animales geriátricos (coloración amarilla de mucosas o piel)
+    pagina: 265
+    tipoSintoma: visual
+    nivelUsuario: familiar
+    especie: perro_gato
+    esquema:
+      - id: 1
+        tipo: pregunta
+        pregunta: ¿Has notado un color amarillento en los ojos, encías o piel de tu animal?
+        opciones:
+          - afirmativo: 2
+          - negativo: 7
+
+      - id: 2
+        tipo: pregunta
+        pregunta: ¿El animal ha mostrado también vómitos, apatía o pérdida de apetito?
+        opciones:
+          - afirmativo: 3
+          - negativo: 4
+
+      - id: 3
+        tipo: pregunta
+        pregunta: ¿La orina tiene un color más oscuro de lo normal (como té)?
+        opciones:
+          - afirmativo: 5
+          - negativo: 6
+
+      - id: 4
+        tipo: nota
+        nota: La coloración amarilla puede tener origen hepático, biliar o sanguíneo. No debe ignorarse.
+        recomendaciones:
+          - Observa si aparecen otros signos como vómitos, diarrea o pérdida de peso.
+          - Agenda una consulta clínica lo antes posible.
+        fin: Fin del algoritmo.
+
+      - id: 5
+        tipo: accion
+        nivelUsuario: técnico
+        accion: Posible ictericia hepática u obstructiva. Se requiere evaluación clínica urgente.
+        recomendaciones:
+          - El veterinario puede solicitar análisis hepáticos, ecografía y evaluación hematológica.
+          - No administres medicamentos por cuenta propia.
+        fin: Fin del algoritmo.
+
+      - id: 6
+        tipo: nota
+        nota: Aunque la orina no cambia, la ictericia puede avanzar rápido. Requiere atención.
+        recomendaciones:
+          - Vigila cambios en apetito, actividad y mucosas.
+          - Agenda evaluación médica en breve.
+        fin: Fin del algoritmo.
+
+      - id: 7
+        tipo: nota
+        nota: No se detecta ictericia por el momento.
+        fin: Fin del algoritmo.
+
+
+
+reglas_metodologicas:
+  - id: sintoma_centrada
+    descripcion: >
+      Todos los algoritmos clínico-terapéuticos están construidos desde síntomas observables por el propietario (nivel familiar), y no desde nombres de enfermedades, capítulos, diagnósticos ni estructuras académicas.
+      La lógica de cada árbol se basa en cómo se inicia la observación y en los pasos que el asistente puede seguir junto al usuario desde ese punto de partida.
+
+  - id: uso_pagina
+    descripcion: >
+      El campo "pagina" representa la página en la que comienza el tratamiento temático o la primera mención del síntoma en el libro fuente, pero no corresponde necesariamente a un algoritmo explícito o gráfico. 
+      Sirve solo como referencia para el asistente en caso de búsqueda contextual o trazabilidad hacia la fuente.

@@ -1,0 +1,188 @@
+algoritmo:
+  id: "protocolo_anestesia_integral"
+  nivelUsuario: "experto"
+  especie: ["gato", "perro"]
+
+  flujo:
+    - pregunta: "Especie"
+      opciones:
+        - valor: "gato"
+          set: { hoja_dosis: "Gatos" }
+          siguiente: "asa"
+        - valor: "perro"
+          set: { hoja_dosis: "Perros" }
+          siguiente: "asa"
+
+    - id: "asa"
+      pregunta: "Clasificación ASA"
+      opciones:
+        - valor: "I–II"
+          siguiente: "edad_i_ii"
+        - valor: "III"
+          siguiente: "patologia_iii"
+        - valor: "IV–V"
+          acciones:
+            recomendacion:
+              gato: "Protocolos mínimos: Benzodiacepina (Midazolam) + Opioide. Evitar α2. Inducción muy titulada (Propofol/Alfaxalona). Prioridad soporte vital."
+              perro: "BZD + Opioide. Evitar α2. Inducción con Propofol titulado. Prioridad soporte vital."
+            dosificacion:
+              referencia:
+                archivo: "dosis.xlsx"
+                hoja: "${hoja_dosis}"
+                peso_kg: "<indicar_peso>"
+            nota: "AINEs con extrema precaución o evitar."
+
+    - id: "edad_i_ii"
+      pregunta: "Edad (ASA I–II)"
+      opciones:
+        - valor: "Joven"
+          siguiente: "cirugia_i_ii_joven"
+        - valor: "Geriátrico"
+          acciones:
+            recomendacion:
+              gato: "Evitar o reducir α2. Premed: Midazolam + Opioide (Metadona/Buprenorfina). Añadir anestesia local. Inducción suave."
+              perro: "Considerar evitar α2. Premed: Midazolam + Opioide. Inducción suave."
+            dosificacion:
+              referencia:
+                archivo: "dosis.xlsx"
+                hoja: "${hoja_dosis}"
+                peso_kg: "<indicar_peso>"
+
+    - id: "cirugia_i_ii_joven"
+      pregunta: "Tipo de procedimiento (ASA I–II, joven)"
+      opciones:
+        - valor: "Leve (diagnóstico, maniobras cortas, mínima nocicepción)"
+          acciones:
+            recomendacion:
+              gato: "Medetomidina (baja) + Butorfanol si sin dolor; si se espera dolor → Metadona."
+              perro: "Medetomidina + Butorfanol."
+            dosificacion:
+              referencia:
+                archivo: "dosis.xlsx"
+                hoja: "${hoja_dosis}"
+                peso_kg: "<indicar_peso>"
+        - valor: "Cirugía moderada (p.ej. OVH/OVE, tejidos blandos)"
+          acciones:
+            recomendacion:
+              gato: "Medetomidina + Metadona + AINE + anestesia local (infiltración/bloqueos)."
+              perro: "Medetomidina + Metadona/Morfina + AINE."
+            dosificacion:
+              referencia:
+                archivo: "dosis.xlsx"
+                hoja: "${hoja_dosis}"
+                peso_kg: "<indicar_peso>"
+        - valor: "Cirugía mayor (torácica/abdominal amplia, ortopedia)"
+          acciones:
+            recomendacion:
+              gato: "Preferir sin α2 si comorbilidad. BZD + Opioide ± Ketamina baja + bloqueos regionales + AINE si procede."
+              perro: "BZD + Opioide ± Ketamina baja. AINE si no contraindicado. Considerar CRI si disponible."
+            dosificacion:
+              referencia:
+                archivo: "dosis.xlsx"
+                hoja: "${hoja_dosis}"
+                peso_kg: "<indicar_peso>"
+
+    - id: "patologia_iii"
+      pregunta: "Patología principal (ASA III)"
+      opciones:
+        - valor: "Cardíaca"
+          acciones:
+            recomendacion:
+              gato: "Evitar α2. Premed: Midazolam + Opioide. Inducción muy titulada con Propofol. Mantener con bajo flujo."
+              perro: "Midazolam + Opioide; valorar Ketamina microdosis. Evitar α2."
+            dosificacion:
+              referencia: { archivo: "dosis.xlsx", hoja: "${hoja_dosis}", peso_kg: "<indicar_peso>" }
+        - valor: "Renal"
+          acciones:
+            recomendacion:
+              gato: "Opioide preferente (Metadona/Buprenorfina) + BZD; evitar AINE; fluidos."
+              perro: "Opioide + BZD; AINE solo si función renal normal."
+            dosificacion:
+              referencia: { archivo: "dosis.xlsx", hoja: "${hoja_dosis}", peso_kg: "<indicar_peso>" }
+        - valor: "Hepática"
+          acciones:
+            recomendacion:
+              gato: "Opioide (Metadona/Buprenorfina) ± BZD; evitar AINE."
+              perro: "Opioide ± BZD; evitar AINE; inducción con Propofol/Alfaxalona."
+            dosificacion:
+              referencia: { archivo: "dosis.xlsx", hoja: "${hoja_dosis}", peso_kg: "<indicar_peso>" }
+        - valor: "Respiratoria"
+          acciones:
+            recomendacion:
+              gato: "Minimizar depresión respiratoria: BZD + Opioide; preoxigenación; manejo de vía aérea anticipado."
+              perro: "BZD + Opioide; preoxigenación; considerar inducción rápida controlada."
+            dosificacion:
+              referencia: { archivo: "dosis.xlsx", hoja: "${hoja_dosis}", peso_kg: "<indicar_peso>" }
+        - valor: "Endocrina (p.ej. Cushing/DM/hipertiroidismo)"
+          acciones:
+            recomendacion:
+              gato: "Estabilizar primero si es posible; evitar α2 en tirotoxicosis; BZD + Opioide; control glucémico."
+              perro: "Optimizar control endocrino; BZD + Opioide; evitar hipotensión prolongada."
+            dosificacion:
+              referencia: { archivo: "dosis.xlsx", hoja: "${hoja_dosis}", peso_kg: "<indicar_peso>" }
+
+    - pregunta: "Urgencia del procedimiento"
+      opciones:
+        - valor: "Electiva"
+          nota: "Seguir recomendaciones de la rama elegida."
+        - valor: "Emergencia"
+          acciones:
+            recomendacion:
+              comun: "Evitar α2 y AINE. Prioridad: oxígeno, fluidos, analgesia opioide. Inducción titulada (Propofol/Alfaxalona). Considerar Lidocaína como antiarrítmico si está indicado."
+            dosificacion:
+              referencia: { archivo: "dosis.xlsx", hoja: "${hoja_dosis}", peso_kg: "<indicar_peso>" }
+
+    - pregunta: "Estrés / manejo"
+      opciones:
+        - valor: "Agresivo / fóbico"
+          acciones:
+            recomendacion:
+              gato: "Ketamina IM baja + Midazolam para contención; luego inducción habitual."
+              perro: "Acepromazina baja + Opioide si hemodinámica estable; alternativa BZD + Opioide."
+            dosificacion:
+              referencia: { archivo: "dosis.xlsx", hoja: "${hoja_dosis}", peso_kg: "<indicar_peso>" }
+        - valor: "Apatía / depresión mental"
+          nota: "Buscar causa médica; ajustar dosis a la baja y monitorizar estrechamente."
+
+ejemplos:
+  - caso: "Gata 3 kg, ASA II, OVH electiva"
+    salida:
+      protocolo: "Medetomidina + Metadona + AINE + anestesia local."
+      dosis:
+        archivo: "dosis.xlsx"
+        hoja: "Gatos"
+        peso_kg: 3
+        columnas_sugeridas: ["Medetomidina (ml)", "Metadona (ml)", "Propofol mín (ml)", "Meloxidyl (ml)", "Lidocaína local (ml)", "Atipamezol (ml)"]
+
+  - caso: "Perro 28 kg, ASA I, limpieza dental corta"
+    salida:
+      protocolo: "Medetomidina + Butorfanol; inducción con Propofol; reversión con Atipamezol si procede."
+      dosis:
+        archivo: "dosis.xlsx"
+        hoja: "Perros"
+        peso_kg: 28
+        columnas_sugeridas: ["Medetomidina (ml)", "Butorfanol (ml)", "Midazolam mín/máx (ml)", "Propofol mín/máx (ml)", "Atipamezol (ml)"]
+
+  - caso: "Кот, 12 лет, 4,5 кг, ASA III, кардиопатия, cirugía tejidos blandos"
+    salida:
+      protocolo: "Sin α2; Midazolam + Opioide; inducción suave con Propofol; AINE con mucha precaución/evitar."
+      dosis:
+        archivo: "dosis.xlsx"
+        hoja: "Gatos"
+        peso_kg: 4.5
+        columnas_sugeridas: ["Midazolam mín (ml)", "Metadona (ml)", "Propofol mín (ml)"]
+
+meta:
+  nombre: "Algoritmo integral de anestesia"
+  version: "1.0"
+  descripcion: "Árbol de decisión para elegir combinaciones anestésicas en gatos y perros. Las dosis por peso NO están aquí: se leen del archivo dosis.xlsx."
+  dosis_file:
+    archivo: "dosis.xlsx"
+    hojas:
+      gatos:
+        nombre: "Gatos"
+        rango_peso: "1–10 kg (paso 1 kg)"
+      perros:
+        nombre: "Perros"
+        rango_peso: "2–40 kg (paso 1 kg)"
+    uso: "Tras elegir la rama del algoritmo, consultar la hoja correspondiente (Gatos/Perros) y tomar los volúmenes (ml) según el peso del paciente."

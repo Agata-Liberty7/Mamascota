@@ -1,0 +1,29 @@
+// app/terms-screen.tsx
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { useRouter } from 'expo-router';
+import React, { useState } from 'react';
+import TermsModal from '../components/TermsModal';
+
+export default function TermsScreen() {
+  const router = useRouter();
+  const [visible, setVisible] = useState(true); // показываем модалку сразу
+
+  const handleAccept = async () => {
+    await AsyncStorage.setItem('termsAccepted', 'true');
+    setVisible(false);
+    router.replace('/animal-selection'); // переход после согласия
+  };
+
+  const handleDecline = () => {
+    setVisible(false);
+    router.replace('/'); // возврат на главный экран при отказе
+  };
+
+  return (
+    <TermsModal
+      visible={visible}
+      onAccept={handleAccept}
+      onDecline={handleDecline}
+    />
+  );
+}

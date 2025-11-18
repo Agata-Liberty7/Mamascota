@@ -1,0 +1,128 @@
+- id: analisis_t4_preparacion_familiar
+  nombre: Preparación del animal para análisis T4
+  pagina: null
+  tipoSintoma: analitico
+  nivelUsuario: familiar
+  especie: perro_gato
+  esquema:
+    - id: 1
+      tipo: pregunta
+      pregunta: ¿Comió hace menos de 4–6 horas?
+      opciones:
+        - afirmativo: 2
+        - negativo: 3
+    - id: 2
+      tipo: acción
+      accion: Preferible esperar 4–6 h sin comida para reducir lipemia (si es posible).
+      siguiente: 3
+    - id: 3
+      tipo: pregunta
+      pregunta: ¿Recibe medicación (metimazol, corticoides, fenobarbital, AINEs)?
+      opciones:
+        - afirmativo: 4
+        - negativo: 5
+    - id: 4
+      tipo: acción
+      accion: Informar al personal de la clínica sobre toda la medicación y hora de la última dosis.
+      siguiente: 5
+    - id: 5
+      tipo: acción
+      accion: Evitar ejercicio y estrés antes de acudir; llevar al animal a la clínica para extracción.
+      siguiente: 6
+    - id: 6
+      tipo: diagnóstico
+      titulo: Preparación completada
+      recomendaciones: En la clínica realizarán la extracción y preparación de suero. Seguir indicaciones del personal.
+      fin: true
+- id: analisis_t4_preparacion_tecnico
+  nombre: Extracción y preparación de muestra para T4
+  pagina: null
+  tipoSintoma: analitico
+  nivelUsuario: técnico
+  especie: perro_gato
+  esquema:
+    - id: 1
+      tipo: acción
+      accion: Verificar anamnesis (ayuno, estrés, medicación y hora de la última dosis).
+      siguiente: 2
+    - id: 2
+      tipo: acción
+      accion: Extraer sangre venosa (yugular/safena). Volumen recomendado ≥1–2 ml.
+      siguiente: 3
+    - id: 3
+      tipo: acción
+      accion: Recolectar en tubo seco o con gel separador de suero. Dejar coagular 15–30 min a Tª ambiente.
+      siguiente: 4
+    - id: 4
+      tipo: acción
+      accion: Centrifugar 10 min a 1500–2000 g. Separar suero claro evitando hemólisis/lipemia.
+      siguiente: 5
+    - id: 5
+      tipo: pregunta
+      pregunta: ¿La muestra presenta hemólisis, lipemia o ictericia visibles?
+      opciones:
+        - afirmativo: 6
+        - negativo: 7
+    - id: 6
+      tipo: acción
+      accion: Notificar la interferencia al veterinario y considerar recolocación si el resultado será crítico.
+      siguiente: 7
+    - id: 7
+      tipo: acción
+      accion: Almacenamiento del suero — 4 °C hasta 7 días; −20 °C para conservación prolongada. Evitar recongelaciones repetidas.
+      siguiente: 8
+    - id: 8
+      tipo: diagnóstico
+      titulo: Muestra lista para envío/análisis T4 total
+      recomendaciones: Etiquetar con ID, fecha/hora de extracción, hora de última dosis si está en metimazol.
+      fin: true
+- id: analisis_t4_preparacion_experto
+  nombre: Consideraciones clínicas e interpretación T4
+  pagina: null
+  tipoSintoma: analitico
+  nivelUsuario: experto
+  especie: perro_gato
+  esquema:
+    - id: 1
+      tipo: acción
+      accion: Solicitar T4 total como prueba inicial (gato con sospecha de hipertiroidismo; perro con hipotiroidismo).
+      siguiente: 2
+    - id: 2
+      tipo: pregunta
+      pregunta: ¿El contexto clínico/analítico puede suprimir o elevar T4 (fármacos, enfermedad no tiroidea)?
+      opciones:
+        - afirmativo: 3
+        - negativo: 4
+    - id: 3
+      tipo: acción
+      accion: Registrar fármacos (corticoides, fenobarbital, AINEs, metimazol) y comorbilidades (ERC, hepatopatías, enfermedad sistémica).
+      siguiente: 4
+    - id: 4
+      tipo: pregunta
+      pregunta: ¿Paciente felino en tratamiento con metimazol/carbimazol?
+      opciones:
+        - afirmativo: 5
+        - negativo: 6
+    - id: 5
+      tipo: acción
+      accion: Programar control de T4 a las 4–6 h post-dosis. Incluir hemograma/bioquímica para detectar efectos adversos.
+      siguiente: 6
+    - id: 6
+      tipo: pregunta
+      pregunta: ¿El T4 total es concluyente con la clínica?
+      opciones:
+        - afirmativo: 9
+        - negativo: 7
+    - id: 7
+      tipo: acción
+      accion: Complementar con T4 libre, TSH y/o repetir T4. Considerar interferencias preanalíticas (hemólisis/lipemia) y recolocar muestra si precisa.
+      siguiente: 8
+    - id: 8
+      tipo: acción
+      accion: Valorar comorbilidades (ERC, cardiopatías); ajustar plan diagnóstico/terapéutico según riesgo.
+      siguiente: 9
+    - id: 9
+      tipo: diagnóstico
+      titulo: Plan de interpretación definido
+      recomendaciones: Integrar T4 con clínica y comorbilidades; definir terapia y cronograma de monitorización (2–4 semanas y luego cada 3–6 meses).
+      fin: true
