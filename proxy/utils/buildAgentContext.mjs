@@ -1,19 +1,18 @@
 import { loadKnowledgeBase } from "./knowledgeBase-loader.mjs";
-import petsMod from "../../utils/pets.ts";
+
+function normalizePet(p) {
+  return {
+    id: p?.id || null,
+    name: p?.name || "Sin nombre",
+    species: p?.species || "No especificada",
+    sex: p?.sex || "No indicado",
+    ageYears: p?.ageYears || null,
+    neutered: p?.neutered || false,
+  };
+}
 
 // 🧠 Кэш базы знаний (загружается один раз за сессию)
 let cachedKnowledgeBase = null;
-
-// безопасная инициализация normalizePet
-const normalizePet =
-  typeof petsMod?.normalizePet === "function"
-    ? petsMod.normalizePet
-    : petsMod?.default?.normalizePet ||
-      ((p) => ({
-        ...p,
-        name: p?.name || "Sin nombre",
-        species: p?.species || "No especificada",
-      }));
 
 // 🧩 Основная функция формирования контекста
 export async function buildAgentContext(

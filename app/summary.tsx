@@ -35,15 +35,17 @@ export default function SummaryScreen() {
         const stored = await AsyncStorage.getItem("chatSummary");
         const parsed: any[] = stored ? JSON.parse(stored) : [];
 
-        const globalPet = await AsyncStorage.getItem("pet").then(v => (v ? JSON.parse(v) : null));
+        // globalPet больше не используется — питомцев читаем только из pets:list
+        const globalPet = null;
+
 
         const normalized: SummaryItem[] = parsed
           .map((rec: any) => {
             const petName =
               rec?.pet?.name ||
               rec?.petName ||
-              globalPet?.name ||
               t("chat.pet_default", "Pet");
+
             const symptomKeys: string[] = rec?.symptomKeys || rec?.symptoms || [];
             const date = rec?.date || rec?.timestamp || Date.now();
             const id = rec?.id || rec?.conversationId || String(date);
@@ -62,7 +64,7 @@ export default function SummaryScreen() {
   // ▶️ Восстановить выбранную сессию
   const handleResume = async (item: SummaryItem) => {
     try {
-      await AsyncStorage.setItem("selectedSymptoms", JSON.stringify(item.symptomKeys || []));
+      await AsyncStorage.setItem("symptomKeys", JSON.stringify(item.symptomKeys || []));
       await AsyncStorage.setItem("restoreFromSummary", "1");
 
       // активируем питомца по имени (если список хранится)

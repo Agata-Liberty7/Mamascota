@@ -38,12 +38,15 @@ export default function ChatScreen() {
   
   // ♻️ Проверяем флаг восстановления — если пришли из Summary, пропускаем SymptomSelector
   useEffect(() => {
+    let isMounted = true;
+
     (async () => {
       const restoreFlag = await AsyncStorage.getItem("restoreFromSummary");
+      if (!isMounted) return;
+
       if (restoreFlag === "1") {
         console.log("♻️ Режим восстановления: пропускаем SymptomSelector");
 
-        // 💬 Восстанавливаем предыдущую историю чата
         const lastConversationId = await AsyncStorage.getItem("conversationId");
         if (lastConversationId) {
           try {
@@ -53,9 +56,6 @@ export default function ChatScreen() {
               if (Array.isArray(parsed) && parsed.length > 0) {
                 setChat(parsed);
                 setShowSelector(false);
-                console.log("💬 История диалога восстановлена:", parsed.length, "сообщений");
-              } else {
-                console.log("⚠️ История пуста — остаёмся на выборе симптомов");
               }
             }
           } catch (err) {
@@ -63,13 +63,14 @@ export default function ChatScreen() {
           }
         }
 
-        // 🧹 Убираем флаг
         await AsyncStorage.removeItem("restoreFromSummary");
       }
     })();
-  }, [pet]);
 
-
+    return () => {
+      isMounted = false;
+    };
+  }, []);
 
   const [inputHeight, setInputHeight] = useState(56);
   const flatListRef = useRef<FlatList>(null);

@@ -137,39 +137,32 @@ export default function SettingsScreen() {
 
   const handleFullReset = async () => {
     Alert.alert(
-      i18n.t("settings.clear_data_title"),      // ¿Borrar datos?
-      i18n.t("settings.clear_data_message"),    // Se eliminarán todas las sesiones...
+      i18n.t("settings.clear_data_title"),      // Заголовок
+      i18n.t("settings.clear_data_message"),    // Текст
       [
         { text: i18n.t("cancel"), style: "cancel" },
 
         {
-          text: i18n.t("settings.clear"),       // Borrar
+          text: i18n.t("settings.clear"),
           style: "destructive",
           onPress: async () => {
-            // 1️⃣ Полная очистка хранилища
+            // 1️⃣ Центральная очистка всех рабочих данных
             await clearAllAppData();
 
-            // 2️⃣ ДОП-ОЧИСТКА для Android (важно!)
-            await AsyncStorage.removeItem("pets");
-            await AsyncStorage.removeItem("activePetId");
-            await AsyncStorage.removeItem("currentPetId");
-            await AsyncStorage.removeItem("animalProfile");
-
-            // 3️⃣ Принудительно перезаписываем petsList — чтобы UI НЕ взял старый кэш
-            await AsyncStorage.setItem("petsList", JSON.stringify([]));
-
-            // 4️⃣ Сбрасываем состояние react-компонента
+            // 2️⃣ Сбрасываем локальное состояние экрана
             setPets([]);
+            setActivePetIdState(null);
 
-            console.log("🧹 Datos borrados (Android-safe)");
+            console.log("🧹 App data cleared via clearAllAppData");
 
-            // обновляем UI заново
+            // 3️⃣ Обновляем список питомцев и активного
             await refreshPets();
           },
         },
       ]
     );
   };
+
 
   const debugShowAllKeys = async () => {
     const keys = await AsyncStorage.getAllKeys();

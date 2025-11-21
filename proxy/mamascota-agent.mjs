@@ -3,22 +3,23 @@ import dotenv from "dotenv";
 import path from "path";
 import fs from "fs";
 import { buildAgentContext } from "./utils/buildAgentContext.mjs";
-import petsMod from "../utils/pets.ts";
 
 dotenv.config();
 
 // ==================================================
 // 🧩 Безопасная инициализация normalizePet
 // ==================================================
-const normalizePet =
-  typeof petsMod?.normalizePet === "function"
-    ? petsMod.normalizePet
-    : petsMod?.default?.normalizePet ||
-      ((p) => ({
-        ...p,
-        name: p?.name || "Sin nombre",
-        species: p?.species || "No especificada",
-      }));
+// 🧩 Простой normalizePet — агент НЕ должен зависеть от фронта
+function normalizePet(p) {
+  return {
+    id: p?.id || null,
+    name: p?.name || "Sin nombre",
+    species: p?.species || "No especificada",
+    sex: p?.sex || "No indicado",
+    ageYears: p?.ageYears || null,
+    neutered: !!p?.neutered,
+  };
+}
 
 // ==================================================
 // 🤖 Настройки OpenAI

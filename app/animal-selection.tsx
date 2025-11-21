@@ -16,6 +16,7 @@ import {
   View,
 } from 'react-native';
 
+
 import TermsModal from '../components/TermsModal';
 import PetForm from '../components/ui/PetForm';
 import { animals } from '../constants/animals';
@@ -23,6 +24,7 @@ import i18n from '../i18n';
 import { theme } from '../src/theme';
 import type { Pet, Species } from '../types/pet';
 import { getPets, upsertPet } from '../utils/pets';
+import { setCurrentPetId } from '../src/data/pets';
 
 export default function AnimalSelection() {
   const router = useRouter();
@@ -135,9 +137,8 @@ export default function AnimalSelection() {
     const saved = await upsertPet(candidate);
 
     // ✅ Сразу записываем активного питомца для всех модулей
-    await AsyncStorage.setItem('activePetId', saved.id);
-    await AsyncStorage.setItem('selectedPet', JSON.stringify(saved));
-    console.log('🐾 Active pet set from AnimalSelection:', saved.name);
+    await setCurrentPetId(saved.id);
+
 
     resetFields();
     setModalVisible(false);

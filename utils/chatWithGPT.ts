@@ -16,65 +16,30 @@ const AGENT_URL =
  * 1) новая модель (pets:list + pets:activeId)
  * 2) fallback к старым ключам
  */
+/**
+ * Каноничный метод получения активного питомца.
+ * Использует только новую модель: pets:list + pets:activeId.
+ * Никаких старых ключей, никаких fallbackов.
+ */
 async function getUnifiedActivePet(): Promise<any | null> {
-  // ---- 1. Новая модель ----
-  const petsListRaw = await AsyncStorage.getItem("pets:list");
-  const activeId = await AsyncStorage.getItem("pets:activeId");
+  try {
+    const [listRaw, activeId] = await Promise.all([
+      AsyncStorage.getItem("pets:list"),
+      AsyncStorage.getItem("pets:activeId"),
+    ]);
 
-  if (petsListRaw && activeId) {
-    try {
-      const pets = JSON.parse(petsListRaw);
-      const found = pets.find((p: any) => p.id === activeId);
-      if (found) return found;
-    } catch (e) {
-      console.warn("Ошибка чтения новой модели питомцев", e);
-    }
+    if (!listRaw || !activeId) return null;
+
+    const list = JSON.parse(listRaw);
+    if (!Array.isArray(list) || list.length === 0) return null;
+
+    return list.find((p: any) => p.id === activeId) ?? null;
+  } catch (e) {
+    console.warn("⚠️ Ошибка чтения pets:list:", e);
+    return null;
   }
-
-  // ---- 2. Старые ключи (fallback) ----
-  const [
-    petsLegacyRaw,
-    selectedPetRaw,
-    oldActiveId,
-    currentPetId,
-    animalProfileRaw,
-  ] = await Promise.all([
-    AsyncStorage.getItem("pets"),
-    AsyncStorage.getItem("selectedPet"),
-    AsyncStorage.getItem("activePetId"),
-    AsyncStorage.getItem("currentPetId"),
-    AsyncStorage.getItem("animalProfile"),
-  ]);
-
-  // 2.1 — selectedPet
-  if (selectedPetRaw) {
-    try {
-      return JSON.parse(selectedPetRaw);
-    } catch {}
-  }
-
-  // 2.2 — pets
-  if (petsLegacyRaw) {
-    try {
-      const list = JSON.parse(petsLegacyRaw);
-      const id = oldActiveId || currentPetId;
-      if (id) {
-        const found = list.find((p: any) => p.id === id);
-        if (found) return found;
-      }
-      if (list.length > 0) return list[0];
-    } catch {}
-  }
-
-  // 2.3 — animalProfile
-  if (animalProfileRaw) {
-    try {
-      return JSON.parse(animalProfileRaw);
-    } catch {}
-  }
-
-  return null;
 }
+
 
 // --------------------------------------------------
 // 📤 Вызов агента
@@ -156,6 +121,17 @@ export async function chatWithGPT(params: {
               JSON.stringify(updated)
             );
             console.log("💾 История чата сохранена:", updated.length, "сообщений");
+            // 🔄 Дополнительно пишем в новый канон-ключ (переходный режим)
+            try {
+              await AsyncStorage.setItem(
+                `chat:history:${conversationId}`,
+                JSON.stringify(updated)
+              );
+              console.log("💾 [NEW] История чата сохранена в chat:history:", updated.length, "сообщений");
+            } catch (err) {
+              console.warn("⚠️ Не удалось сохранить историю в новый формат chat:history:", err);
+            }
+
           }
         } catch (err) {
           console.warn("⚠️ Не удалось сохранить историю чата:", err);
