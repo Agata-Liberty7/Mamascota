@@ -7,7 +7,9 @@ import path from "path";
 import yaml from "js-yaml";
 import { fileURLToPath } from "url";
 
+//@ts-ignore
 const __filename = fileURLToPath(import.meta.url);
+//@ts-ignore
 const __dirname = path.dirname(__filename);
 
 // —————— утилиты ——————
@@ -62,14 +64,18 @@ function collectAlgorithms(root: any): any[] {
 
 // —————— основной загрузчик ——————
 
-export async function loadKnowledgeBase(): Promise<any[][]> {
+export async function loadKnowledgeBase(): Promise<any> {
   // путь стабилен независимо от cwd
   const folderPath = path.resolve(__dirname, "../assets/algoritmos");
   console.log("📂 Путь к YAML:", folderPath);
 
   if (!fs.existsSync(folderPath)) {
     console.warn("⚠ Папка с алгоритмами не найдена:", folderPath);
-    return [];
+    return {
+      algorithms: [],
+      clinicalDetails: [],
+      breedRisks: [],
+    };
   }
 
   const files = fs
@@ -79,11 +85,18 @@ export async function loadKnowledgeBase(): Promise<any[][]> {
 
   if (!files.length) {
     console.warn("⚠ Не найдено YAML-файлов в каталоге:", folderPath);
-    return [];
+    return {
+      algorithms: [],
+      clinicalDetails: [],
+      breedRisks: [],
+    };
   }
 
-  const datasets: any[][] = [];
-  let total = 0;
+  const allAlgorithms: any[] = [];
+  const clinicalDetails: any[] = [];
+  const breedRisks: any[] = [];
+
+  let totalAlgos = 0;
 
   for (const file of files) {
     const full = path.join(folderPath, file);
@@ -100,9 +113,51 @@ export async function loadKnowledgeBase(): Promise<any[][]> {
         continue;
       }
 
+      const lower = file.toLowerCase();
+
+      // 🔹 1) Klinicheskie_detali.yaml → клинические детали
+      if (lower.includes("klinicheskie_detali")) {
+        const detalles = (parsed as any).detalles_clinicos;
+        if (Array.isArray(detalles)) {
+          detalles.forEach((item: any) => {
+            clinicalDetails.push({
+              id: item.id_enfermedad,
+              nombre: item.nombre,
+              especie: item["вид"], // "perro" | "gato" | "perro_gato"
+              razasRiesgo: item["породы_риска_тестирования"] || [],
+              sintomasClave: item.sintomas_clave || "",
+              diagnosticoRelevante: item.diagnostico_relevante || "",
+            });
+          });
+        }
+        console.log(
+          `[KB] Загружен: ${file} → клин.деталей: ${clinicalDetails.length}`
+        );
+        continue; // НЕ считаем как алгоритмы
+      }
+
+      // 🔹 2) predisposiciones_raza.yaml → риски по породам
+      if (lower.includes("predisposiciones_raza")) {
+        const lista = (parsed as any).predisposiciones_raza_parte_1;
+        if (Array.isArray(lista)) {
+          lista.forEach((item: any) => {
+            breedRisks.push({
+              especie: item.especie,          // "perro" | "gato"
+              raza: item.raza,                // "Labrador Retriever"
+              predisposiciones: item.predisposiciones || [],
+            });
+          });
+        }
+        console.log(
+          `[KB] Загружен: ${file} → пород: ${breedRisks.length}`
+        );
+        continue; // НЕ считаем как алгоритмы
+      }
+
+      // 🔹 3) Все остальные YAML → алгоритмы
       const algos = collectAlgorithms(parsed);
-      total += algos.length;
-      datasets.push(algos);
+      totalAlgos += algos.length;
+      allAlgorithms.push(...algos);
 
       console.log(
         `[KB] Загружен: ${file} → алгоритмов: ${algos.length}`
@@ -112,6 +167,14 @@ export async function loadKnowledgeBase(): Promise<any[][]> {
     }
   }
 
-  console.log(`📘 YAML algorithms loaded OK (total): ${total}`);
-  return datasets;
+  console.log(`📘 YAML algorithms loaded OK (total): ${totalAlgos}`);
+  console.log(`📘 Clinical details total: ${clinicalDetails.length}`);
+  console.log(`📘 Breed risks total: ${breedRisks.length}`);
+
+  return {
+    algorithms: allAlgorithms,
+    clinicalDetails,
+    breedRisks,
+  };
 }
+

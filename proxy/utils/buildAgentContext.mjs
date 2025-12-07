@@ -1,13 +1,15 @@
 import { loadKnowledgeBase } from "./knowledgeBase-loader.mjs";
 
+// Унифицированная нормализация питомца
 function normalizePet(p) {
   return {
     id: p?.id || null,
     name: p?.name || "Sin nombre",
-    species: p?.species || "No especificada",
+    species: p?.species || "No especificada",  // 'dog' | 'cat' | ...
+    breed: p?.breed || null,
     sex: p?.sex || "No indicado",
     ageYears: p?.ageYears || null,
-    neutered: p?.neutered || false,
+    neutered: !!p?.neutered,
   };
 }
 
@@ -19,7 +21,7 @@ export async function buildAgentContext(
   pet = {},
   symptomKeys = [],
   userLang,
-  nivelFilter = "familiar" // ← добавлен параметр уровня
+  nivelFilter = "familiar" // ← фильтр по nivelUsuario
 ) {
   try {
     // 🔹 Унифицированная логика выбора языка
@@ -37,26 +39,34 @@ export async function buildAgentContext(
     console.log("🟢 [2] normalizePet завершён:", petData);
 
     // 🔹 Загрузка YAML-базы (с кэшем)
-    let knowledgeBase;
     if (!cachedKnowledgeBase) {
       cachedKnowledgeBase = await loadKnowledgeBase();
       console.log(
         "🟢 [3] База знаний загружена впервые:",
-        cachedKnowledgeBase?.length,
+        cachedKnowledgeBase?.algorithms?.length ?? "unknown",
         "алгоритмов"
       );
     } else {
       console.log(
         "🟢 [3] Используется кэшированная база знаний:",
-        cachedKnowledgeBase?.length,
+        cachedKnowledgeBase?.algorithms?.length ?? "unknown",
         "алгоритмов"
       );
     }
-    knowledgeBase = cachedKnowledgeBase;
 
-    // 🔹 Фильтрация по nivelUsuario (по умолчанию только familiar)
-    const filteredKB = Array.isArray(knowledgeBase)
-      ? knowledgeBase.filter((alg) => {
+    const knowledgeBase = cachedKnowledgeBase || {};
+
+    // Нормализуем поля
+    const algorithms = Array.isArray(knowledgeBase)
+      ? knowledgeBase
+      : knowledgeBase.algorithms || [];
+
+    const clinicalDetails = knowledgeBase.clinicalDetails || [];
+    const breedRisks = knowledgeBase.breedRisks || [];
+
+    // 🔹 Фильтрация алгоритмов по nivelUsuario (по умолчанию только familiar)
+    const filteredAlgorithms = Array.isArray(algorithms)
+      ? algorithms.filter((alg) => {
           const nivel = alg?.nivelUsuario?.toLowerCase?.() || "";
           if (!nivel) return false;
           if (nivelFilter === "all") return true;
@@ -66,7 +76,51 @@ export async function buildAgentContext(
 
     console.log(
       `🧩 [3a] Отфильтровано по nivelUsuario="${nivelFilter}":`,
-      filteredKB.length
+      filteredAlgorithms.length
+    );
+
+    // -----------------------------------
+    // 🔹 Приводим вид к формату clinical/YAML
+    // -----------------------------------
+    const speciesCode = (petData.species || "").toLowerCase(); // 'dog' / 'cat'
+    const especie =
+      speciesCode === "dog"
+        ? "perro"
+        : speciesCode === "cat"
+        ? "gato"
+        : "";
+
+    const breedLower = (petData.breed || "").toLowerCase();
+
+    // 🔹 Породные риски для этого питомца (вид + порода)
+    const breedRisksForPet = Array.isArray(breedRisks)
+      ? breedRisks.filter((br) => {
+          const esp = (br.especie || "").toLowerCase(); // 'perro' / 'gato'
+          const raza = (br.raza || "").toLowerCase();
+          return esp === especie && !!breedLower && raza === breedLower;
+        })
+      : [];
+
+    // 🔹 Клинические детали по виду (perro / gato / perro_gato)
+    const clinicalDetailsForSpecies = Array.isArray(clinicalDetails)
+      ? clinicalDetails.filter((cd) => {
+          const esp = (cd.especie || "").toLowerCase(); // 'perro' / 'gato' / 'perro_gato'
+          if (!especie) return false;
+          if (especie === "perro") {
+            return esp === "perro" || esp === "perro_gato";
+          }
+          if (especie === "gato") {
+            return esp === "gato" || esp === "perro_gato";
+          }
+          return false;
+        })
+      : [];
+
+    console.log(
+      "🧬 [3b] clinicalDetailsForSpecies:",
+      clinicalDetailsForSpecies.length,
+      "| breedRisksForPet:",
+      breedRisksForPet.length
     );
 
     // 🔹 Подготовка языкового обозначения
@@ -81,7 +135,7 @@ export async function buildAgentContext(
         it: "Italiano",
       }[lang] || lang;
 
-    // 🔹 Формирование текстового контекста
+    // 🔹 Формирование текстового контекста (краткая сводка)
     const symptomText = symptomKeys.length
       ? `Síntomas reportados: ${symptomKeys.join(", ")}.`
       : "No se han indicado síntomas específicos.";
@@ -90,6 +144,7 @@ export async function buildAgentContext(
 🧩 Contexto clínico del paciente:
 Nombre: ${petData.name || "Desconocido"}
 Especie: ${petData.species || "No especificada"}
+Raza: ${petData.breed || "No especificada"}
 Sexo: ${petData.sex || "No indicado"}
 Edad: ${petData.ageYears || "Sin datos"} años
 Esterilizado: ${petData.neutered ? "Sí" : "No"}
@@ -100,13 +155,24 @@ ${symptomText}
 
     console.log("📘 [4] Contexto для GPT сформирован:\n", context);
 
-    // 🔹 Возврат финального контекста
+    // 🔹 Возврат финального JSON-контекста
     return JSON.stringify({
       pet: petData,
       userLang: lang,
       symptomKeys,
       nivelUsuario: nivelFilter,
-      knowledgeBase: filteredKB,
+
+      // Алгоритмы (familiar/т.д.)
+      algorithms: filteredAlgorithms,
+
+      // 🆕 Клинические детали и породные риски
+      clinical_details_for_species: clinicalDetailsForSpecies,
+      breed_risks_for_pet: breedRisksForPet,
+
+      // Старое поле knowledgeBase оставляем для совместимости
+      knowledgeBase: filteredAlgorithms,
+
+      // Краткая текстовая сводка
       context,
     });
   } catch (error) {

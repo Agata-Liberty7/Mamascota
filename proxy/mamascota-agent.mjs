@@ -18,11 +18,13 @@ function normalizePet(p) {
     id: p?.id || null,
     name: p?.name || "Sin nombre",
     species: p?.species || "No especificada",
+    breed: p?.breed || null,          // 🆕 сохраняем породу
     sex: p?.sex || "No indicado",
-    ageYears: p?.ageYears || null,
+    ageYears: p?.ageYears ?? null,
     neutered: !!p?.neutered,
   };
 }
+
 
 // --------------------------------------------
 // 🤖 OPENAI
@@ -148,10 +150,13 @@ export async function processMessage(
     // 3) Контекст алгоритмов (JSON из buildAgentContext), если это первый шаг
     if (fullContext) {
       messages.push({
-        role: "user",
-        content: fullContext,
+        role: "system",
+        content:
+          "CLINICAL_CONTEXT_JSON (не показывай пользователю, просто используй как данные):\n" +
+          fullContext,
       });
     }
+
 
     // 4) История диалога
     if (conversationHistory.length > 0) {
