@@ -120,6 +120,11 @@ async function buildDecisionTree(conversationId: string, locale: string) {
 - Не добавляй ничего ДО или ПОСЛЕ JSON.
 - Не используй названия заболеваний и диагнозов.
 - Не перечисляй конкретные анализы, исследования или протоколы.
+- ОБЯЗАТЕЛЬНО анализируй ВСЮ консультацию целиком, включая ПОСЛЕДНИЕ сообщения владельца и ассистента.
+- Если в конце сессии появляются новые факты (смена корма, стресс, новые симптомы, изменение поведения), они ОБЯЗАТЕЛЬНО должны быть учтены и в "anamnesis", и в "reasoning".
+- "observations" должны отражать всё, что владелец рассказал за сессию, а не только первый запрос.
+- "clarifications" должны включать важные уточнения, появившиеся ПОЗЖЕ в диалоге.
+- "reasoning" обязан опираться на полный диалог, а не только на первые сообщения.
 - Если информации мало, заполни, чем можешь, но не выдумывай факты, которых нет в диалоге.
 
 === СЕССИЯ ===
@@ -253,6 +258,9 @@ export async function exportSummaryPDF(sessionId: string) {
     const speciesLabel = i18n.t("settings.pets.species_label", {
       defaultValue: "Species",
     });
+    const breedLabel = i18n.t("settings.pets.breed_label", {
+      defaultValue: "Breed",
+    });
     const ageLabel = i18n.t("settings.pets.age_label", {
       defaultValue: "Age",
     });
@@ -314,7 +322,13 @@ ${
       )}:</span> ${escapeHtml(species)}</div>`
     : ""
 }
-
+${
+  pet?.breed
+    ? `<div class="row"><span class="label">${escapeHtml(
+        breedLabel
+      )}:</span> ${escapeHtml(String(pet.breed))}</div>`
+    : ""
+}
 ${
   pet?.ageYears != null
     ? `<div class="row"><span class="label">${escapeHtml(
