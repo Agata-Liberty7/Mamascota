@@ -79,6 +79,33 @@ export async function buildAgentContext(
       filteredAlgorithms.length
     );
 
+    // 🔹 Разделяем гериатрические и обычные алгоритмы
+    const geriatricAlgorithms = filteredAlgorithms.filter(
+      (alg) => alg?.grupo === "geriatrico"
+    );
+    const nonGeriatricAlgorithms = filteredAlgorithms.filter(
+      (alg) => alg?.grupo !== "geriatrico"
+    );
+
+    let finalAlgorithms = filteredAlgorithms;
+
+    if (typeof petData.ageYears === "number" && petData.ageYears >= 7) {
+      // приоритет гериатрических: сначала они, потом всё остальное
+      finalAlgorithms = [...geriatricAlgorithms, ...nonGeriatricAlgorithms];
+      console.log(
+        `🧓 [3b] Возраст ${petData.ageYears} → гериатрические алгоритмы в приоритете:`,
+        geriatricAlgorithms.length
+      );
+    } else {
+      // молодое животное: гериатрические пока не используем
+      finalAlgorithms = nonGeriatricAlgorithms;
+      console.log(
+        "🧒 [3b] Молодое животное → гериатрические алгоритмы исключены:",
+        geriatricAlgorithms.length
+      );
+    }
+
+
     // -----------------------------------
     // 🔹 Приводим вид к формату clinical/YAML
     // -----------------------------------
@@ -163,7 +190,7 @@ ${symptomText}
       nivelUsuario: nivelFilter,
 
       // Алгоритмы (familiar/т.д.)
-      algorithms: filteredAlgorithms,
+      algorithms: finalAlgorithms,
 
       // 🆕 Клинические детали и породные риски
       clinical_details_for_species: clinicalDetailsForSpecies,

@@ -111,6 +111,18 @@ export async function processMessage(
         console.warn("⚠️ Ошибка JSON.parse(fullContext):", err);
       }
     }
+    if (parsedContext) {
+      console.log("🔍 [CTX] algorithms:", parsedContext.algorithms?.length || 0);
+      console.log("🔍 [CTX] senior age:", parsedContext.pet?.ageYears);
+      console.log(
+        "🔍 [CTX] clinical_details_for_species:",
+        parsedContext.clinical_details_for_species?.length || 0
+      );
+      console.log(
+        "🔍 [CTX] breed_risks_for_pet:",
+        parsedContext.breed_risks_for_pet?.length || 0
+      );
+    }
 
     // ----------------------------------------------------------
     // 🩺 Краткое резюме пациента

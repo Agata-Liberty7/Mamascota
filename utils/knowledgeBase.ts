@@ -155,13 +155,33 @@ export async function loadKnowledgeBase(): Promise<any> {
       }
 
       // 🔹 3) Все остальные YAML → алгоритмы
-      const algos = collectAlgorithms(parsed);
+      let algos = collectAlgorithms(parsed);
+
+      // пометим источник, чтобы агент знал, что это гериатрия / Т4 и т.п.
+      let grupo = "general";
+
+      if (lower.includes("algoritmos_geriatricos")) {
+        grupo = "geriatrico";
+      } else if (lower.includes("algoritmos_t4")) {
+        grupo = "t4";
+      } else if (lower.includes("algoritmos_anestesia")) {
+        grupo = "anestesia";
+      } else if (lower.includes("algoritmos_familiar")) {
+        grupo = "familiar";
+      }
+
+      algos = algos.map((algo: any) => ({
+        ...algo,
+        grupo,
+      }));
+
       totalAlgos += algos.length;
       allAlgorithms.push(...algos);
 
       console.log(
-        `[KB] Загружен: ${file} → алгоритмов: ${algos.length}`
+        `[KB] Загружен: ${file} (grupo=${grupo}) → алгоритмов: ${algos.length}`
       );
+
     } catch (e: any) {
       console.error(`[KB] ❌ Ошибка чтения ${file}:`, e?.message || e);
     }
