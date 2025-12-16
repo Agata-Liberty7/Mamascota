@@ -34,6 +34,8 @@ export default function ChatScreen() {
   const [chat, setChat] = useState<ChatMessage[]>([]);
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
+  const [thinkingHint, setThinkingHint] = useState<string | null>(null);
+
 
   // 🔥 ВАЖНО: по умолчанию не показываем селектор
   const [showSelector, setShowSelector] = useState<boolean>(false);

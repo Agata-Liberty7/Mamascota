@@ -23,7 +23,7 @@ export const CAT_BREEDS = [
   "Turkish Angora",
   "Oriental",
   "American Curl",
-  "Regular European",
+  "European Shorthair",
   "Savannah",
   "Metis",        // ← добавлено
 ];
