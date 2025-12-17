@@ -128,7 +128,13 @@
     "symptom_intro": "shows the following symptoms",
     "ask_confirmation": "Please confirm if this is correct or add more details",
     "placeholder": "Type your message...",
-    "invite": "Can you help me understand what this could mean?"
+    "invite": "Can you help me understand what this could mean?",
+    "waiting": {
+      "hint1": "Reviewing the information…",
+      "hint2": "Considering the observations…",
+      "hint3": "Taking the pet’s age into account…",
+      "hint4": "Almost ready…"
+    }
   },
   "onboarding_1_title": "Mamascota — your assistant",
   "onboarding_1_subtitle": "The app helps you notice important symptoms and calmly prepare for a visit to the vet.",

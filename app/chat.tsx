@@ -27,6 +27,14 @@ type ChatMessage = {
   content: string;
 };
 
+const THINKING_HINT_KEYS = [
+  "chat.waiting.hint1",
+  "chat.waiting.hint2",
+  "chat.waiting.hint3",
+  "chat.waiting.hint4",
+];
+
+
 export default function ChatScreen() {
   const { pet: petParam } = useLocalSearchParams<{ pet?: string }>();
 
@@ -133,6 +141,24 @@ export default function ChatScreen() {
   }, [petParam]);
 
   // ======================================================
+  // 🟦 UX: подсказки во время ожидания ответа (UI-слой)
+  // ======================================================
+  useEffect(() => {
+    if (!loading) {
+      setThinkingHint(null);
+      return;
+    }
+
+    const timeoutId = setTimeout(() => {
+      const first = i18n.t("chat.waiting.hint1");
+      setThinkingHint(first);
+    }, 700);
+
+    return () => clearTimeout(timeoutId);
+  }, [loading]);
+
+
+  // ======================================================
   // 🟦 Обработка выбора симптомов — старт нового диалога
   // ======================================================
   const handleSymptomSubmit = async (selected: string[], customSymptom?: string) => {
@@ -237,7 +263,14 @@ export default function ChatScreen() {
                 flatListRef.current?.scrollToEnd({ animated: true })
               }
             />
-
+            {loading && (
+              <View style={[styles.message, styles.assistantMsg, styles.waitingBubble]}>
+                <View style={styles.waitingRow}>
+                  <ActivityIndicator />
+                  {!!thinkingHint && <Text style={styles.waitingText}>{thinkingHint}</Text>}
+                </View>
+              </View>
+            )}
             <View
               style={styles.inputArea}
               onLayout={(e) => setInputHeight(e.nativeEvent.layout.height)}
@@ -308,5 +341,23 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
   },
+  waitingBubble: {
+    alignSelf: "flex-start",
+    marginHorizontal: 12,
+    marginBottom: 6,
+  },
+
+  waitingRow: {
+    flexDirection: "row",
+    alignItems: "center",
+  },
+  waitingText: {
+    fontSize: 14,
+    color: "#555",
+    flexShrink: 1,
+    marginLeft: 8,
+  },
+
+
 });
 

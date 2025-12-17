@@ -128,7 +128,13 @@
     "symptom_intro": "présente les symptômes suivants",
     "ask_confirmation": "Merci de confirmer si c’est exact ou d’ajouter des précisions",
     "placeholder": "Tape ton message...",
-    "invite": "Peux-tu m'aider à comprendre ce que cela pourrait signifier ?"
+    "invite": "Peux-tu m'aider à comprendre ce que cela pourrait signifier ?",
+    "waiting": {
+      "hint1": "Analyse des informations…",
+      "hint2": "Examen des observations…",
+      "hint3": "Prise en compte de l’âge…",
+      "hint4": "Encore un instant…"
+    }
   },
   "onboarding_1_title": "Mamascota — votre assistant",
   "onboarding_1_subtitle": "L’application vous aide à ne pas manquer les symptômes importants et à vous préparer sereinement à la visite chez le vétérinaire.",

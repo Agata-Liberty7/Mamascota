@@ -128,8 +128,15 @@
     "symptom_intro": "zeigt die folgenden Symptome",
     "ask_confirmation": "Bitte bestätige, ob das stimmt, oder füge weitere Details hinzu",
     "placeholder": "Gib deine Nachricht ein...",
-    "invite": "Kannst du mir helfen zu verstehen, was das bedeuten könnte?"
+    "invite": "Kannst du mir helfen zu verstehen, was das bedeuten könnte?",
+    "waiting": {
+      "hint1": "Informationen werden geprüft…",
+      "hint2": "Beobachtungen werden berücksichtigt…",
+      "hint3": "Das Alter wird einbezogen…",
+      "hint4": "Einen Moment bitte…"
+    }
   },
+  
   "onboarding_1_title": "Mamascota – dein Assistent",
   "onboarding_1_subtitle": "Die App hilft dir, wichtige Symptome nicht zu übersehen und dich in Ruhe auf den Tierarztbesuch vorzubereiten.",
   "onboarding_2_title": "Du beobachtest – ich ordne ein",
