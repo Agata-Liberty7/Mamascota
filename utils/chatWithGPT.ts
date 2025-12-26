@@ -76,12 +76,29 @@ export async function chatWithGPT(params: {
     const effectiveConversationId =
       explicitConversationId || existingId || undefined;
 
+    // ✅ гарантируем id для обычного чата
+    const ensuredConversationId =
+      isSummaryConversation
+        ? effectiveConversationId
+        : (effectiveConversationId ?? `conv-${Date.now()}`);
+
+    if (!isSummaryConversation && !effectiveConversationId) {
+      await setConversationId(ensuredConversationId!);
+    }
+
+
+    // 🧠 Хвост истории (20 сообщений) — только для обычного диалога, НЕ для summary
+    const conversationHistory = isSummaryConversation
+      ? []
+      : await getConversationHistoryTail(effectiveConversationId, 20);
+    
     const body = {
       message: message ?? "",
       pet: ensuredPet ?? undefined,
       symptomKeys: symptomKeys ?? undefined,
       userLang: effectiveLang,
       conversationId: effectiveConversationId,
+      conversationHistory,
     };
 
     // Отладка входных параметров
@@ -92,6 +109,11 @@ export async function chatWithGPT(params: {
     );
     console.log("🗣️ userLang:", body.userLang || "(не задан)");
     console.log("💬 conversationId (→ сервер):", body.conversationId);
+    console.log(
+      "🧠 conversationHistory tail:",
+      Array.isArray(body.conversationHistory) ? body.conversationHistory.length : 0
+    );
+
 
     const res = await fetch(AGENT_URL, {
       method: "POST",
@@ -198,6 +220,48 @@ function safeLogPet(pet: any) {
   if (!pet || typeof pet !== "object") return pet;
   const { id, name, species, sex, ageYears, neutered } = pet as any;
   return { id, name, species, sex, ageYears, neutered };
+}
+
+// --------------------------------------------------
+// 🧠 History: хвост последних N сообщений для модели
+// --------------------------------------------------
+async function getConversationHistoryTail(
+  conversationId?: string,
+  limit = 20
+): Promise<Array<{ role: "user" | "assistant" | "system"; content: string }>> {
+  if (!conversationId) return [];
+
+  // Пробуем сначала основной ключ, потом дубль
+  const keyA = `chatHistory:${conversationId}`;
+  const keyB = `chat:history:${conversationId}`;
+
+  try {
+    const raw =
+      (await AsyncStorage.getItem(keyA)) ||
+      (await AsyncStorage.getItem(keyB)) ||
+      "[]";
+
+    const parsed = JSON.parse(raw);
+    if (!Array.isArray(parsed) || parsed.length === 0) return [];
+
+    const cleaned = parsed
+      .filter((m: any) => m && typeof m === "object")
+      .map((m: any) => ({
+        role: m.role,
+        content: typeof m.content === "string" ? m.content : "",
+      }))
+      .filter(
+        (m: any) =>
+          (m.role === "user" || m.role === "assistant") &&
+          m.content.trim().length > 0
+      );
+
+    // хвост N сообщений
+    return cleaned.slice(-limit);
+  } catch (e) {
+    console.warn("⚠️ Не удалось прочитать историю для conversationHistory:", e);
+    return [];
+  }
 }
 
 // --------------------------------------------------
